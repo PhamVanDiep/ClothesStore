@@ -52,7 +52,7 @@
                             <p>100.000đ</p>
                         </div>
                         <div class="item-selled">
-                            <p>Đã bán 100</p>
+                            <p>Đã bán 10</p>
                         </div>
                     </div>
                 </div>
