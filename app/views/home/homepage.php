@@ -13,5 +13,5 @@
             require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
         ?>
         <div class="body col-12">
-
+            
         </div>
