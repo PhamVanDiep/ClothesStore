@@ -14,7 +14,7 @@
 <body>
     <?php
     require '../components/header.php';
-    ?>
+    ?>  
 
     <div class="body col-12">
         <div class="content col-10">
