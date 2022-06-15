@@ -1,10 +1,10 @@
 <!Doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="../../../public/css/admin_root.css" />
-        <link rel="stylesheet" href="../../../public/css/admin_leftbar.css" />
-        <link rel="stylesheet" href="../../../public/css/admin_header.css" />
-        <link rel="stylesheet" href="../../../public/css/admin/dashboard.css" />
+        <link rel="stylesheet" href="public/css/admin_root.css" />
+        <link rel="stylesheet" href="public/css/admin_leftbar.css" />
+        <link rel="stylesheet" href="public/css/admin_header.css" />
+        <link rel="stylesheet" href="public/css/admin/dashboard.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
@@ -31,36 +31,36 @@
     </head>
     <body>
         <div class="col-10" id="head-bar">
-            <?php
-                require '../components/admin_header.php';
+            <?php 
+                require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'admin_header.php';
             ?>
         </div>
         <?php 
-            require '../components/admin_leftbar.php';
+            require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'admin_leftbar.php';
         ?>
         <div class="col-10" id="content">
             <div id="dashboard-general" class="col-10">
                 <div class="general-detail" id="general-sale-wrap">
                     <span class="icon-wrap" id="sale-icon-wrap">
-                        <img src="../../../public/res/img/admin/dashboard/sale.png" >
+                        <img src="public/res/img/admin/dashboard/sale.png" >
                     </span>
                     <span class="general-quantity">100.000.000đ</span>
                     <span class="general-title">Doanh thu trong ngày</span>
                 </div><div class="general-detail" id="general-order-wrap">
                     <span class="icon-wrap" id="order-icon-wrap">
-                        <img src="../../../public/res/img/admin/dashboard/grocery-cart.png">
+                        <img src="public/res/img/admin/dashboard/grocery-cart.png">
                     </span>
                     <span class="general-quantity">500</span>
                     <span class="general-title">Đơn hàng trong ngày</span>
                 </div><div class="general-detail" id="general-customer-wrap">
                     <span class="icon-wrap" id="customer-icon-wrap">
-                        <img src="../../../public/res/img/admin/dashboard/customer.png">
+                        <img src="public/res/img/admin/dashboard/customer.png">
                     </span>
                     <span class="general-quantity">350</span>
                     <span class="general-title">Khách hàng</span>
                 </div><div class="general-detail" id="general-product-wrap">
                     <span class="icon-wrap" id="product-icon-wrap">
-                        <img src="../../../public/res/img/admin/dashboard/products.png">
+                        <img src="public/res/img/admin/dashboard/products.png">
                     </span>
                     <span class="general-quantity">200</span>
                     <span class="general-title">Sản phẩm</span>
@@ -263,7 +263,7 @@
                     <div id="best-seller-content">
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -272,7 +272,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -281,7 +281,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -290,7 +290,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -299,7 +299,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -308,7 +308,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -317,7 +317,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -326,7 +326,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -335,7 +335,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -344,7 +344,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>
@@ -353,7 +353,7 @@
                         </div>
                         <div class="best-seller-wrap">
                             <div class="best-seller-image-wrap">
-                                <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                             </div>
                             <div class="best-seller-info">
                                 <div class="best-seller-name">Áo thun nam</div>

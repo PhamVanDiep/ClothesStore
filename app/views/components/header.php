@@ -1,3 +1,7 @@
+<?php
+    global $path_project;
+?>
+
 <div class="header col-12">
     <div class="main-header col-10">
         <div class="logo col-2">
@@ -31,15 +35,12 @@
                 <span>/</span>
                 <span>Đăng nhập</span>
             </div>
-            <div class="cart">
-                <img src= "public/res/img/header-image/cart.png" alt="" onclick="linkToCart()"></img>
-                <span class="circle">5</span>
-            </div>
+            <a href=<?php echo "/" . $path_project . "/" . "cart"?>>
+                <div class="cart">
+                    <img src= "public/res/img/header-image/cart.png" alt=""></img>
+                    <span class="circle">5</span>
+                </div>
+            </a>
         </div>
     </div>
 </div>
-<script>
-    function linkToCart() {
-        window.location.href = "../cart/cart.php";
-    }
-</script>

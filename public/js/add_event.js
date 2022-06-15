@@ -18,7 +18,7 @@ let loadFile = function(event) {
 
         let newRemoveSpan = document.createElement('span');
         let newRemoveImg = document.createElement('img');
-        newRemoveImg.setAttribute('src', '../../../public/res/img/admin/remove.png');
+        newRemoveImg.setAttribute('src', 'public/res/img/admin/remove.png');
         newRemoveImg.setAttribute('id', 'remove'+ index);
         newRemoveImg.onclick = function () {
             document.getElementById('event-image-wrap'+index).remove();

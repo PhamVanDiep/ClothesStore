@@ -5,6 +5,8 @@ define('DS', '/');
 define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);
 
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'Router.php';
+$url = $_SERVER['REQUEST_URI'];
 
-$route = new Router();
+// echo $url;
+$route = new Router($path_project, $url);
 $route->show();

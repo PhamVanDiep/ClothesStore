@@ -8,11 +8,12 @@
     RewriteCond %{REQUEST_URI} /home$ [OR]
     RewriteCond %{REQUEST_URI} /products$ [OR]
     RewriteCond %{REQUEST_URI} /cart$ [OR]
+    RewriteCond %{REQUEST_URI} /test$ [OR]
     RewriteCond %{REQUEST_URI} /details [OR]
-    RewriteCond %{REQUEST_URI} /admin$ [OR]
+    RewriteCond %{REQUEST_URI} /search [OR]
+    RewriteCond %{REQUEST_URI} /dashboard$ [OR]
     RewriteCond %{REQUEST_URI} /account-management [OR]
     RewriteCond %{REQUEST_URI} /product-management [OR]
-    RewriteCond %{REQUEST_URI} /search [OR]
 
     RewriteRule (.*) public/$1 [L]
 </IfModule>

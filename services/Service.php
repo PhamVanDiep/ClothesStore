@@ -7,7 +7,7 @@ class Service{
     private $query;
 
     public function __construct(){
-        $this->db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME, DB_PORT);
+        $this->db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     }
 
     // add querry statement

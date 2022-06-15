@@ -16,7 +16,7 @@
         <div id="main-account">
             <div id="header-content-wrap">
                 <div id="header-img-wrap">
-                    <img src="../../../public/res/img/admin/avatar.jpeg" >
+                    <img src="public/res/img/admin/avatar.jpeg" >
                 </div><div id="header-info-wrap">
                     <div id="admin-name">
                         <b>Nhóm 26</b>
@@ -32,4 +32,4 @@
         </div>
     </div>
 </div>
-<script src="../../../public/js/admin_header.js"></script>
+<script src="public/js/admin_header.js"></script>
