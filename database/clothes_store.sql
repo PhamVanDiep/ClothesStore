@@ -115,11 +115,12 @@ CREATE TABLE `order_detail` (
 CREATE TABLE `price` (
   `priceID` int(11) NOT NULL,
   `productID` int(11) DEFAULT NULL,
-  `typeID` int(11) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `number` int(11) DEFAULT NULL,
   `oldPrice` int(11) DEFAULT NULL,
-  `newPrice` int(11) DEFAULT NULL
+  `newPrice` int(11) DEFAULT NULL,
+  `urlImage` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -167,18 +168,6 @@ CREATE TABLE `size` (
 CREATE TABLE `status` (
   `statusID` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `type`
---
-
-CREATE TABLE `type` (
-  `typeID` int(11) NOT NULL,
-  `name` varchar(30) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `urlImage` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -273,8 +262,8 @@ ALTER TABLE `order_detail`
 --
 ALTER TABLE `price`
   ADD PRIMARY KEY (`priceID`),
-  ADD KEY `FK_productID_price` (`productID`),
-  ADD KEY `FK_typeID` (`typeID`);
+  ADD KEY `FK_productID_price` (`productID`);
+  
 
 --
 -- Indexes for table `product`
@@ -302,13 +291,7 @@ ALTER TABLE `size`
 ALTER TABLE `status`
   ADD PRIMARY KEY (`statusID`);
 
---
--- Indexes for table `type`
---
-ALTER TABLE `type`
-  ADD PRIMARY KEY (`typeID`);
 
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -364,8 +347,8 @@ ALTER TABLE `order_detail`
 -- Constraints for table `price`
 --
 ALTER TABLE `price`
-  ADD CONSTRAINT `FK_productID_price` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`),
-  ADD CONSTRAINT `FK_typeID` FOREIGN KEY (`typeID`) REFERENCES `type` (`typeID`);
+  ADD CONSTRAINT `FK_productID_price` FOREIGN KEY (`productID`) REFERENCES `product` (`productID`);
+  
 
 --
 -- Constraints for table `product`
