@@ -115,11 +115,10 @@ CREATE TABLE `order_detail` (
 CREATE TABLE `price` (
   `priceID` int(11) NOT NULL,
   `productID` int(11) DEFAULT NULL,
-  `type` int(11) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `number` int(11) DEFAULT NULL,
   `oldPrice` int(11) DEFAULT NULL,
-  `newPrice` int(11) DEFAULT NULL,
   `urlImage` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 

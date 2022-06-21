@@ -3,6 +3,8 @@
 require_once 'Service.php';
 
 class ProductService extends Service{
+
+    // create search product with name
     public function search($product_name)
     {
         $query = "select * from product where product.name like '%" .$product_name. "%'";
@@ -11,5 +13,6 @@ class ProductService extends Service{
         return json_encode($result);
     }
 
+    
     
 }
