@@ -4,6 +4,8 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'HomepageController.p
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'CartController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'DashboardController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'TestController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EventController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AddEventController.php';
 
 class Router {
     private $_dispath;
@@ -35,9 +37,21 @@ class Router {
             return;
         }
         // test service
-        if(strcmp($this->_url,"/" . $this->_path_project . "/test/") == 0){
+        if(strcmp($this->_url,"/" . $this->_path_project . "/test") == 0){
             $this->_dispath = new TestController();
             $this->_isAdmin = false;
+            return;
+        }
+
+        if(strcmp($this->_url,"/" . $this->_path_project . "/event-management") == 0){
+            $this->_dispath = new EventController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(strcmp($this->_url,"/" . $this->_path_project . "/add-event") == 0){
+            $this->_dispath = new AddEventController();
+            $this->_isAdmin = true;
             return;
         }
     }

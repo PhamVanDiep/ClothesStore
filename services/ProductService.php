@@ -12,4 +12,15 @@ class ProductService extends Service{
         return json_encode($result);
         // echo mysqli_num_rows($result);
     }
+
+    public function getProductById($id){
+        $query = "select product.*, price.* from product, price where product.id = " . $id. "and product.productID = ";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return json_encode($result);
+    }
+
+    public function update($product){
+        
+    }
 }
