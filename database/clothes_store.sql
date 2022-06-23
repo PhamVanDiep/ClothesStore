@@ -91,7 +91,7 @@ INSERT INTO `cart` (`userID`, `priceID`, `number`) VALUES
 --
 
 CREATE TABLE `category` (
-  `categoryID` int(11) NOT NULL AUTO_INCREMENT,
+  `categoryID` int(11) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -99,21 +99,21 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`name`) VALUES
-( 'Áo thun '),
-( 'Áo polo'),
-( 'Áo khoác'),
-( 'Áo Sơ mi'),
-( 'Vest và Blazer'),
-( 'Hoodie và Áo nỉ'),
-( 'Áo len'),
-( 'Áo croptop'),
-( 'Đầm/váy'),
-( 'Quần jean'),
-( 'Áo dài'),
-( 'Quần đùi'),
-('Quần âu'),
-('Phụ kiện');
+INSERT INTO `category` (`categoryID`, `name`) VALUES
+(1, 'Áo thun '),
+(2, 'Áo polo'),
+(3, 'Áo khoác'),
+(4, 'Áo Sơ mi'),
+(5, 'Vest và Blazer'),
+(6, 'Hoodie và Áo nỉ'),
+(7, 'Áo len'),
+(8, 'Áo croptop'),
+(9, 'Đầm/váy'),
+(10, 'Quần jean'),
+(11, 'Áo dài'),
+(12, 'Quần đùi'),
+(13, 'Quần âu'),
+(14, 'Phụ kiện');
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,7 @@ INSERT INTO `category` (`name`) VALUES
 --
 
 CREATE TABLE `event` (
-  `eventID` int(11) NOT NULL AUTO_INCREMENT,
+  `eventID` int(11) NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `timeStart` date DEFAULT NULL,
   `timeEnd` date DEFAULT NULL
@@ -626,13 +626,13 @@ ALTER TABLE `cart`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
-  ADD PRIMARY KEY (`categoryID`);
+  MODIFY `categoryID` int(11) AUTO_INCREMENT PRIMARY KEY;
 
 --
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`eventID`);
+  MODIFY `eventID` int(11) AUTO_INCREMENT PRIMARY KEY;
 
 --
 -- Indexes for table `eventimage`
@@ -644,7 +644,7 @@ ALTER TABLE `eventimage`
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
-  ADD PRIMARY KEY (`orderID`),
+  MODIFY `orderID` int(11) AUTO_INCREMENT PRIMARY KEY,
   ADD KEY `FK_order_user` (`userID`),
   ADD KEY `FK_order_status` (`statusID`);
 
@@ -666,14 +666,14 @@ ALTER TABLE `order_detail`
 -- Indexes for table `price`
 --
 ALTER TABLE `price`
-  ADD PRIMARY KEY (`priceID`),
+  MODIFY `priceID` int(11) AUTO_INCREMENT PRIMARY KEY,
   ADD KEY `FK_productID_price` (`productID`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`productID`),
+  MODIFY `productID` int(11) AUTO_INCREMENT PRIMARY KEY,
   ADD KEY `FK_category` (`categoryID`);
 
 --
@@ -686,27 +686,27 @@ ALTER TABLE `role`
 -- Indexes for table `size`
 --
 ALTER TABLE `size`
-  ADD PRIMARY KEY (`sizeID`),
+  MODIFY `sizeID` int(11) AUTO_INCREMENT PRIMARY KEY,
   ADD KEY `FK_productID` (`productID`);
 
 --
 -- Indexes for table `status`
 --
 ALTER TABLE `status`
-  ADD PRIMARY KEY (`statusID`);
+  MODIFY `statusID` int(11) AUTO_INCREMENT PRIMARY KEY;
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`userID`),
+  MODIFY `userID` int(11) AUTO_INCREMENT PRIMARY KEY,
   ADD KEY `roleID` (`roleID`);
 
 --
 -- Indexes for table `voucher`
 --
 ALTER TABLE `voucher`
-  ADD PRIMARY KEY (`voucherID`),
+  MODIFY `voucherID` int(11) AUTO_INCREMENT PRIMARY KEY,
   ADD KEY `FK_event` (`eventID`);
 
 --
