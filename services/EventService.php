@@ -28,6 +28,16 @@ class EventService extends Service{
         return $result;
     }
 
+    public function getLastID() {
+        $query = "select eventID 
+                    from event 
+                    order by eventID desc 
+                    limit 1" . ";";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
     public function update($event){
         $query = "update event
                     set " . 
@@ -62,20 +72,19 @@ class EventService extends Service{
         parent::setQuery($query);
         parent::insertQuery();
 
-        // $query = "SELECT eventID FROM event ORDER BY eventID DESC LIMIT 1;";
-        // parent::setQuery($query);
-        // $eventID = parent::executeQuery();
-
-        // $event->setEventID($eventID);
+        $eventID = self::getLastID();
+        $eventID = $eventID->fetch_assoc();
+        $eventID = $eventID["eventID"];
         
-        // $images = $event->getImages();
-        // $images_length = count($images);
-
-        // for ($i=0; $i < $images_length; $i++) { 
-        //     $query = "insert into eventimage 
-        //                 values ( " . "'" . $eventID . "', " . "'" . $images[$i] . "');";
-        //     parent::setQuery($query);
-        //     parent::insertQuery(); 
-        // }
+        $event->setEventID($eventID);
+        
+        $images = $event->getImages();
+        foreach ($images as $image) { 
+            $query = "insert into eventimage (`eventID`, `urlImage`) values ( " 
+                    . $eventID . ", " . 
+                    "'" . $image . "');";
+            parent::setQuery($query);
+            parent::insertQuery(); 
+        }
     }
 }

@@ -11,6 +11,8 @@
     <body>
     <div class="col-10" id="head-bar">
             <?php 
+                $title = "Quản lý sự kiện";
+                $subtitle = "Danh sách sự kiện";
                 require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'admin_header.php';
             ?>
         </div>
