@@ -1,8 +1,3 @@
-<?php 
-    require_once ROOT . DS . 'services' . DS . 'EventService.php';
-    // require_once ROOT . DS . 'libraries' . DS . 'admin' . DS . 'event' . DS . 'insert_event.php';
- ?>
-
 <!Doctype html>
 <html>
     <head>
@@ -103,13 +98,6 @@
                     eventImage.appendChild(newDiv);
                 }
             };
-
-            function checkEmptyImages() {
-                const images = document.getElementsByName("event_images");
-                if (images.length == 0) {
-                    alert("Bạn chưa chọn ảnh.");
-                }
-            }
         </script>
     </body>
 </html>

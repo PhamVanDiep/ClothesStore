@@ -87,4 +87,22 @@ class EventService extends Service{
             parent::insertQuery(); 
         }
     }
+
+    public function delete($eventID) {
+        $query = "delete from eventimage where eventID = " . $eventID . ";";
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "delete from event where eventID = " . $eventID . ";";
+        parent::setQuery($query);
+        parent::deleteQuery();
+    }
+
+    public function getAllImages($eventID)
+    {
+        $query = "select urlImage from eventimage where eventID = " . $eventID . ";";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
 }

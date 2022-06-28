@@ -1,4 +1,7 @@
-<!Doctype html>
+<?php 
+    require_once ROOT . DS . 'services' . DS . 'EventService.php';
+ ?>
+ <!Doctype html>
 <html>
     <head>
     <link rel="stylesheet" href="public/css/admin_root.css" />
@@ -34,225 +37,40 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>15:30 11/11/2022</td>
-                            <td>15:30 12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>11/11/2022</td>
-                            <td>12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
-                        <tr>
-                            <td>#123456</td>
-                            <td>Sự kiện sale sập sàn</td>
-                            <!-- <td>Quần âu nam, Áo sơ mi nam, Áo sơ mi nữ</td> -->
-                            <td>14:30 11/11/2022</td>
-                            <td>14:30 12/12/2022</td>
-                            <td><img src="public/res/img/admin/edit.png" class="edit-button crud"></td>
-                            <td><img src="public/res/img/admin/delete.png" class="delete-button crud"></td>
-                        </tr>
+                        <?php 
+                            $eventService = new EventService();
+                            $events = $eventService->getAll();
+                            foreach($events as $event) {
+                                echo "<tr id='row_" .  $event["eventID"] . "' >" 
+                                        . "<td>#" . $event["eventID"] . "</td>"
+                                        . "<td>" . $event["name"] . "</td>"
+                                        . "<td>" . $event["timeStart"] . "</td>"
+                                        . "<td>" . $event["timeEnd"] . "</td>"
+                                        . "<td><a href=''><img src='public/res/img/admin/edit.png' class='edit-button crud'></a></td>"
+                                        . "<td><img src='public/res/img/admin/delete.png' class='delete-button crud' onclick=deleteEvent(" . $event["eventID"] .") ></td>"
+                                    . "</tr>";
+                            }
+                        ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </body>
+    <script>
+        function deleteEvent(eventID) {
+            let option = confirm('Bạn có chắc chắn muốn xoá sự kiện này không?');
+            if(!option) return;
+            let table = document.getElementsByTagName('table');
+            let row = document.getElementById('row_' + eventID);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert(this.responseText);
+                    row.style.display = "none";
+                }
+            };
+            xhttp.open("GET", "libraries/admin/event/delete_event.php?eventID=" + eventID, false);
+            xhttp.send();
+        }
+    </script>
 </html>
