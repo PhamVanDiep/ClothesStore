@@ -32,6 +32,8 @@
     <body>
         <div class="col-10" id="head-bar">
             <?php 
+                $title = "Tổng quan";
+                $subtitle = "";
                 require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'admin_header.php';
             ?>
         </div>

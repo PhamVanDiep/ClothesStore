@@ -3,13 +3,13 @@
     <div id="homepage" class="col-12">
         <a href= <?php echo "/" . $path_project . "/"; ?>>THDD</a>
     </div>
-    <div class="list-managements col-12" id="dashboard-wrap">
+    <a href= <?php echo "/" . $path_project . "/dashboard"; ?>><div class="list-managements col-12" id="dashboard-wrap">
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/dashboard.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
             <span class="left-title">Tổng quan</span>
         </div>
-    </div>
+    </div></a>
     <div class="list-managements col-12" id="order-wrap">
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/order.png" class="left-icon">
@@ -58,11 +58,11 @@
         </div>
     </div>
     <div class="col-12" id="list-event-wrap">
-        <div class="leftbar-small-title-wrap">
+        <a href= <?php echo "/" . $path_project . "/event-management"; ?>><div class="leftbar-small-title-wrap">
             <span class="left-title">Danh sách sự kiện</span>
-        </div><div class="leftbar-small-title-wrap">
+        </div></a><a href= <?php echo "/" . $path_project . "/add-event"; ?>><div class="leftbar-small-title-wrap">
             <span class="left-title">Thêm sự kiện</span>
-        </div>
+        </div></a>
     </div>
     <div class="list-managements col-12" id="voucher-wrap">
         <div class="leftbar-icon-wrap">
