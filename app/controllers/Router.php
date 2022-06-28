@@ -6,6 +6,7 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'DashboardController.
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'TestController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EventController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AddEventController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EditEventController.php';
 
 class Router {
     private $_dispath;
@@ -51,6 +52,14 @@ class Router {
 
         if(strcmp($this->_url,"/" . $this->_path_project . "/add-event") == 0){
             $this->_dispath = new AddEventController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(str_contains($this->_url, 'edit-event')) {
+            $eventID = strrpos($this->_url, '=');
+            $eventID = substr($this->_url, $eventID + 1);
+            $this->_dispath = new EditEventController($eventID);
             $this->_isAdmin = true;
             return;
         }

@@ -1,5 +1,6 @@
 <?php 
     require_once ROOT . DS . 'services' . DS . 'EventService.php';
+    global $path_project;
  ?>
  <!Doctype html>
 <html>
@@ -41,13 +42,14 @@
                             $eventService = new EventService();
                             $events = $eventService->getAll();
                             foreach($events as $event) {
-                                echo "<tr id='row_" .  $event["eventID"] . "' >" 
-                                        . "<td>#" . $event["eventID"] . "</td>"
+                                $eventID = $event["eventID"];
+                                echo "<tr id='row_" .  $eventID . "' >" 
+                                        . "<td>#" . $eventID . "</td>"
                                         . "<td>" . $event["name"] . "</td>"
                                         . "<td>" . $event["timeStart"] . "</td>"
                                         . "<td>" . $event["timeEnd"] . "</td>"
-                                        . "<td><a href=''><img src='public/res/img/admin/edit.png' class='edit-button crud'></a></td>"
-                                        . "<td><img src='public/res/img/admin/delete.png' class='delete-button crud' onclick=deleteEvent(" . $event["eventID"] .") ></td>"
+                                        . "<td><a href='/$path_project/edit-event?eventID=$eventID'><img src='public/res/img/admin/edit.png' class='edit-button crud'></a></td>"
+                                        . "<td><img src='public/res/img/admin/delete.png' class='delete-button crud' onclick=deleteEvent(" . $eventID .") ></td>"
                                     . "</tr>";
                             }
                         ?>
