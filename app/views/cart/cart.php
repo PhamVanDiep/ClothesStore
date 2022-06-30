@@ -15,6 +15,8 @@
         <div class="body col-12">
             <h1>This page is cart.</h1>
         </div>
+
+        
         <?php 
             require '../components/footer.php';
         ?>

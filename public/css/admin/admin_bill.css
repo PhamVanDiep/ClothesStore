@@ -1,0 +1,241 @@
+#content{
+    height: 1000px;
+}
+
+@media only screen and (max-width: 768px){
+    #content{
+        margin-left: 0;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px){
+    #content{
+        margin-left: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #head-bar{
+        position: fixed;
+        z-index: 2;
+        margin-left: 16.66%;
+    }
+
+    #content{
+        position: relative;
+        margin-left: 16.66%;
+        margin-top: 10vh;
+    }
+}
+.bill-status-classify{
+    height: auto;
+    position: relative;
+    margin: 20px 60px 20px 60px ;
+    font-size: large;
+    font-weight: bold;
+    white-space: nowrap;
+}
+#bill-filter{
+    display: flex;
+    background-color: #ffffff;
+    min-height: 40px;
+    width: fit-content;
+    right: 0;
+    margin: auto;
+    left: 0;
+}
+
+#bill-list{
+    margin: 5%;
+}
+.bill-info{
+    background-color: #f4f4f4;
+    margin: 30px 10px 30px 10px;
+    border-radius: 5px;
+}
+.bill-header{
+    background-color: #d2f9e5;
+    border: 2px solid #68d69d;
+    padding: 10px;
+    font-size: large;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+    border-radius: 5px;
+
+}
+.status{
+    color: #68d69d;
+    font-weight: bold;
+}
+.bill-detail{
+    display: flex;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+.item-list{
+    flex: 7;
+    width: 300px;
+    border-right:1px solid #f4f4f4 ;
+    padding: 10px;
+}
+.customer-info{
+    flex: 4;
+}
+.item-img{
+    max-width: 75px;
+    max-height: 75px;
+    margin-right: 10px;
+    border: 1px solid #e8e8e8;
+}
+.item-info{
+    display: flex;
+    margin: 10px;
+}
+.item-info a{
+    display: block;
+}
+.user-avt{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+.item-detail{
+    flex:1;
+    position: relative;
+
+}
+.item-variation, .item-quantity {
+    display: flex;
+    justify-content: space-between;
+
+}
+.item-quantity{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.item-variation{
+    font-size: 14px;
+    color:#898989;
+}
+.item-name{
+    font-size: 18px;
+}
+.account-info a{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-left: 10px;
+}
+.account-info{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    
+}
+
+.cost-info{
+    padding-top: 10px;
+    border-top: 2px solid #c6edd8;
+    padding-right: 10px;
+}
+.cost-info div{
+    padding-top: 2px;
+    padding-left: 20px;
+    justify-content: space-between;
+    display: flex;
+    
+    
+}
+.items-cost{
+    font-weight: bold;
+}
+.order-total{
+    font-weight: bold;
+    font-size: larger;
+    color:#68d69d;
+}
+.account-detail{
+    border-bottom: 2px solid #f4f4f4;
+    text-align:center;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+.receiver-info{
+    display: flex;
+}
+.receiver-info img{
+    height: 30px;
+    width: 30px;
+    margin : 10px;
+    margin-left: 7%;
+}
+.receiver-info div{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.receiver-tel{
+    color:#898989;
+    margin-top: 5px;
+    margin-bottom:5px;
+}
+.delivery-address{
+    color:#898989;
+}
+.tracking-info{
+    margin: 10px;
+    margin-left: 7%;
+    padding-top: 10px;
+}
+.payment-option{
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-row{
+    background-color: #ffffff;
+    padding: 10px;
+    margin-top: 2px;
+    display: flex;
+}
+.first-column{
+    flex: 7;
+    padding-left: 20px;
+    padding-right: 30px;
+}
+.second-column{
+    flex: 4;
+}
+.bill-timeline div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-column{
+    display: flex;
+    justify-content: space-around;
+
+}
+.second-column button{
+        height: fit-content;
+        padding: 10px;
+        font-size: larger;
+        font-weight: bold;
+        color:#ffffff;
+        border-radius: 10px;
+        border:0px;
+        text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+.edit-btn{
+    background-color: #68d69d;
+   
+}
+.del-btn{
+    background-color: #da251d;  
+}
