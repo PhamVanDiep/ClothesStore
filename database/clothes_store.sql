@@ -632,7 +632,7 @@ ALTER TABLE `category`
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`eventID`);
+  ADD PRIMARY KEY (`eventID`) AUTO_INCREMENT;
 
 --
 -- Indexes for table `eventimage`

@@ -13,6 +13,16 @@ class ProductService extends Service{
         return json_encode($result);
     }
 
+    //xem thong tin san pham
+    public function viewProductDetail($product_id){
+        $query = "select * from product where productID = '$product_id' ";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+    }
+    
+    
+    
+
     
     
 }
