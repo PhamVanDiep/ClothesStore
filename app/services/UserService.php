@@ -46,11 +46,11 @@ class UserService extends Service{
 
     // insert to cart
     // param user + product + number
-    public function insertProduct($userID, $product, $quantity){
+    public function insertProduct($userID, $product, $number){
         $cart_id = self::getCartID($userID);
         $product_id = $product->getProductID();
-        $query = "insert into cart_product(cart_id, product_id, quantity)
-                    value($cart_id, $product_id, $quantity)
+        $query = "insert into cart_product(cart_id, product_id, number)
+                    value($cart_id, $product_id, $number)
                   ";
 
         parent::setQuery($query);
