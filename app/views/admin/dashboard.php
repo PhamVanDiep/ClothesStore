@@ -1,3 +1,49 @@
+<?php 
+    require_once ROOT . DS . 'services' . DS . 'TurnoverService.php';
+    $turnover_service = new TurnoverService();
+    $week_revenue = $turnover_service->getTurnOverOfWeek();
+    $week_revenue = $week_revenue['total_turnover_of_week'];
+    $data_chart = $turnover_service->getTurnOverEachDayOfWeek();
+
+    $month_revenue = $turnover_service->getTurnOverOfMonth();
+    $month_revenue = $month_revenue['total_turnover_of_month'];
+    $data_chart = $turnover_service->getTurnOverEachDayOfMonth();
+
+    $xValue = array();
+    $yValue = array();
+    $month = date('m');
+    $year = date('Y');
+
+    for($d = 1; $d <= 31; $d++)
+    {
+        $time = mktime(12, 0, 0, $month, $d, $year);          
+        if (date('m', $time) == $month) {
+            $date_this = date('d-m', $time);
+            array_push($xValue, $date_this);
+            $had = false;
+            foreach ($data_chart as $row) {
+                if ($row['day'] == $date_this) {
+                    array_push($yValue, $row['turnover']);
+                    $had = true;
+                    break;
+                }
+            }
+            if(!$had) array_push($yValue, 0);
+        }
+    }
+
+    function js_str($s)
+    {
+        return '"' . addcslashes($s, "\0..\37\"\\") . '"';
+    }
+
+    function js_array($array)
+    {
+        $temp = array_map('js_str', $array);
+        return '[' . implode(',', $temp) . ']';
+    }
+?>
+
 <!Doctype html>
 <html>
     <head>
@@ -11,8 +57,8 @@
         <script>
             window.onload = function () {
                 let myChart = document.getElementById('myChart').getContext('2d');
-                var xValues = [50,60,70,80,90,100,110,120,130,140,150];
-                var yValues = [7,8,8,9,9,9,10,11,14,14,15];
+                <?php echo 'var xValues = '. js_array($xValue). ';' ?>
+                <?php echo 'var yValues = '. js_array($yValue). ';' ?>
 
                 new Chart(myChart, {
                     type: "line",
@@ -368,11 +414,11 @@
             <div id="chart-wrap">
                 <div id="chart-header">
                     <div id="chart-title" class="order-seller-sale-title">Doanh thu</div>
-                    <div id="total-sale">Tổng doanh thu: 100.000.000đ</div>
+                    <div id="total-sale">Tổng doanh thu: <?php echo number_format($month_revenue) . " vnđ"; ?></div>
                     <div id="chart-filter" class="my-filter">
                         <select name="chart-filter" id="chart-filter">
-                            <option value="month">Tháng</option>
-                            <option value="week">Tuần</option>
+                            <option value="month">Tuần</option>
+                            <option value="week">Tháng</option>
                         </select>
                     </div>
                 </div>

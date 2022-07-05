@@ -7,6 +7,8 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'TestController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EventController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AddEventController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EditEventController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'ProductController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AddProductController.php';
 
 class Router {
     private $_dispath;
@@ -60,6 +62,18 @@ class Router {
             $eventID = strrpos($this->_url, '=');
             $eventID = substr($this->_url, $eventID + 1);
             $this->_dispath = new EditEventController($eventID);
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(strcmp($this->_url,"/" . $this->_path_project . "/product-management") == 0){
+            $this->_dispath = new ProductController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(strcmp($this->_url,"/" . $this->_path_project . "/add-product") == 0){
+            $this->_dispath = new AddProductController();
             $this->_isAdmin = true;
             return;
         }

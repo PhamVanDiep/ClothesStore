@@ -1,0 +1,135 @@
+#content{
+    position: relative;
+    overflow-y: auto;
+}
+
+#body{
+    background-color: #FFFFFF;
+    padding: 10px 20px 10px 20px;
+}
+
+.element{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.element-title{
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    opacity: 0.8;
+    text-align: left;
+}
+
+.element-text input, .element-text select{
+    display: inline-block;
+    width: 100%;
+    outline: none;
+    height: 5vh;
+    font-size: medium;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.element-text textarea {
+    display: inline-block;
+    width: 100%;
+    outline: none;
+    font-size: medium;
+    resize: none;
+    height: 200px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.style-price-wrap {
+    display: table;
+    margin-bottom: 10px;
+}
+
+.style-wrap, .ad-price-wrap, .sell-price-wrap  {
+    display: table-cell;
+}
+
+.style-price-input {
+    width: fit-content;
+    display: inline-block;
+    outline: none;
+    height: 5vh;
+    font-size: medium;
+}
+
+#add-event-btn input:hover{
+    background-color: darkgreen;
+}
+
+#product-style-header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+#product-style-header img{
+    width: 30px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px){
+    .style-price-wrap {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .style-wrap, .ad-price-wrap, .sell-price-wrap  {
+        display: table;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .style-price-title {
+        display: table-cell;
+        width: 40%;
+    }
+    .style-price-input {
+        display: table-cell;
+        width: 100%;
+        outline: none;
+        height: 5vh;
+        font-size: medium;
+    }
+}
+
+@media only screen and (max-width: 992px) and (min-width: 768px){
+    .ad-price-wrap, .sell-price-wrap {
+        padding-left: 20px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #head-bar{
+        position: fixed;
+        z-index: 2;
+        margin-left: 16.66%;
+    }
+    
+    #content{
+        margin-left: 16.66%;
+        margin-top: 10vh;
+        padding-bottom: 10px;
+    }
+
+    #body{
+        margin-top: 3vh;
+        margin-left: 5%;
+        width: 90%;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+        padding: 20px 20px 20px 20px;
+    }
+
+    .ad-price-wrap, .sell-price-wrap {
+        padding-left: 20px;
+    }
+}

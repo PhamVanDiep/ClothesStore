@@ -1,3 +1,4 @@
+<?php global $path_project; ?>
 <div class="col-12" id="header">
     <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
         <div class="nav-wrap">
@@ -27,7 +28,7 @@
             </div>
             <div id="dropdown-content">
                 <a href="#">Thông tin cá nhân</a>
-                <a href="#">Đăng xuất</a>
+                <a href=<?php echo "/" . $path_project; ?>>Đăng xuất</a>
             </div>
         </div>
     </div>
