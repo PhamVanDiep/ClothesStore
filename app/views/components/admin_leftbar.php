@@ -74,11 +74,16 @@
         </div>
     </div>
     <div class="col-12" id="list-voucher-wrap">
-        <div class="leftbar-small-title-wrap">
-            <span class="left-title">Danh sách mã giảm giá</span>
-        </div><div class="leftbar-small-title-wrap">
-            <span class="left-title">Thêm mã giảm giá</span>
-        </div>
+        <a href=<?php echo "/$path_project/manage-voucher" ?>>
+            <div class="leftbar-small-title-wrap">
+                <span class="left-title">Danh sách mã giảm giá</span>
+            </div>
+        </a>
+        <a href=<?php echo "/$path_project/add-voucher" ?>>
+            <div class="leftbar-small-title-wrap">
+                <span class="left-title">Thêm mã giảm giá</span>
+            </div>
+        </a>
     </div>
 </div>
 <!-- <script src="public/js/admin_leftbar.js"></script> -->

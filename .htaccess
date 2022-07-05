@@ -14,6 +14,12 @@
     RewriteCond %{REQUEST_URI} /product-management [OR]
     RewriteCond %{REQUEST_URI} /event-management [OR]
     RewriteCond %{REQUEST_URI} /add-event [OR]
+    RewriteCond %{REQUEST_URI} /add-voucher [OR]
+    RewriteCond %{REQUEST_URI} /manage-voucher [OR]
+    RewriteCond %{REQUEST_URI} /login [OR]
+    RewriteCond %{REQUEST_URI} /register [OR]
+    RewriteCond %{REQUEST_URI} /edit-info [OR]
+    RewriteCond %{REQUEST_URI} /update-voucher [OR]
     RewriteCond %{REQUEST_URI} /$
     RewriteRule (.*) public/$1 [L]
 </IfModule>

@@ -1,5 +1,5 @@
 <?php
-$path_project = 'web/ClothesStore'; // may be change
+$path_project = 'ClothesStore'; // may be change
 
 define('DS', '/');
 define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);

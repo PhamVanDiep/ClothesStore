@@ -6,6 +6,12 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'DashboardController.
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'TestController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EventController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AddEventController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AddVoucherController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'ManageVoucherController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'UpdateVoucherController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'LoginController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'RegisterController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'InfoController.php';
 
 class Router {
     private $_dispath;
@@ -51,6 +57,48 @@ class Router {
 
         if(strcmp($this->_url,"/" . $this->_path_project . "/add-event") == 0){
             $this->_dispath = new AddEventController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        // Login
+        if(strcmp($this->_url,"/" . $this->_path_project . "/login") == 0){
+            $this->_dispath = new LoginController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        // Register
+        if(strcmp($this->_url,"/" . $this->_path_project . "/register") == 0){
+            $this->_dispath = new RegisterController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        // Info
+        if(strcmp($this->_url,"/" . $this->_path_project . "/edit-info") == 0){
+            $this->_dispath = new InfoController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        // Voucher
+        if(strcmp($this->_url,"/" . $this->_path_project . "/add-voucher") == 0){
+            $this->_dispath = new AddVoucherController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(strcmp($this->_url,"/" . $this->_path_project . "/manage-voucher") == 0){
+            $this->_dispath = new ManageVoucherController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(str_contains($this->_url, 'update-voucher')) {
+            $voucherID = strrpos($this->_url, '=');
+            $voucherID = substr($this->_url, $voucherID + 1);
+            $this->_dispath = new UpdateVoucherController($voucherID);
             $this->_isAdmin = true;
             return;
         }

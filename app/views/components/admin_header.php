@@ -8,9 +8,9 @@
     </div>
     <div id="header-title">
         <div id="category-title">
-            This is title
+            <?php echo $title ?>
         </div><div id="category-subtitle">
-            This is subtitle
+            <?php echo $subtitle ?>
         </div>
     </div><div id="header-account">
         <div id="main-account">

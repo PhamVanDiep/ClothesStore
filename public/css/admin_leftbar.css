@@ -3,6 +3,10 @@
     color: #FFFFFF;
 }
 
+a span {
+    color: #FFFFFF;
+}
+
 #homepage{
     height: 10vh;
     text-align: center;

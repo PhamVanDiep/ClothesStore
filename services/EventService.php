@@ -19,13 +19,10 @@ class EventService extends Service{
 
     public function getOnce($eventID)
     {
-        $query = "select event.*, eventimage.* 
-                    from event, eventimage 
-                    where event.eventID = eventimage.eventID 
-                        and event.eventID = " . $eventID . ";";
+        $query = "select * from event where eventID = " . $eventID . ";";
         parent::setQuery($query);
         $result = parent::executeQuery();
-        return $result;
+        return mysqli_fetch_assoc($result);
     }
 
     public function update($event){
@@ -77,5 +74,15 @@ class EventService extends Service{
         //     parent::setQuery($query);
         //     parent::insertQuery(); 
         // }
+    }
+
+    public function delete($eventID) {
+        $query = "delete from eventimage where eventID = " . $eventID . ";";
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "delete from event where eventID = " . $eventID . ";";
+        parent::setQuery($query);
+        parent::deleteQuery();
     }
 }
