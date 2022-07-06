@@ -1,7 +1,7 @@
 <?php
 
 class Cart {
-    private $username;      // String
+    private $userID;      // int
     private $listProducts;  // array
     private $date;          // date
     

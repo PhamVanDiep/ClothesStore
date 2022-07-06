@@ -33,6 +33,8 @@ class OrderService extends Service{
         where MONTH(o.timeCreate) = '$month'";
         parent::setQuery($query);
         $result = parent::executeQuery();
-    }    
+    } 
+    
+    
 
 }

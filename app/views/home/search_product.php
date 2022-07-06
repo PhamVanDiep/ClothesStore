@@ -19,7 +19,6 @@
     <div class="body col-12">
         <div class="content col-10">
 
-        
             <!-- product suggest-->
             <div class="product-suggest col-12">
                 <div class="product-suggest-item col-2">
