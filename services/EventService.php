@@ -94,4 +94,16 @@ class EventService extends Service{
         $result = parent::executeQuery();
         return $result;
     }
+
+    public function deleteImage($eventID, $urlImage) {
+        $query = "delete from eventimage where eventID = " . $eventID . " and urlImage = '" . $urlImage . "';";
+        parent::setQuery($query);
+        parent::deleteQuery();
+    }
+
+    public function updateImage($eventID, $urlImage) {
+        $query = "insert into eventimage values (" . $eventID . ", '" . $urlImage . "');";
+        parent::setQuery($query);
+        parent::deleteQuery();
+    }
 }

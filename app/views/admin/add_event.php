@@ -46,6 +46,7 @@
                             </label>
                         </div>
                     </div>
+                    <div id="event-images-wrap" class="element"></div>
                     <div class="element" id="add-event-btn">
                         <input type="submit" value="Tạo sự kiện">
                     </div>
@@ -54,22 +55,24 @@
         </div>
         <!-- <script src="public/js/add_event.js"></script> -->
         <script type="text/javascript">
-            let eventImage = document.getElementById('event-image');
+            let eventImage = document.getElementById('event-images-wrap');
             let numCheck = 0;
+
             let loadFile = function(event) {
                 let numberOfImages = event.target.files.length;
-                numCheck += numberOfImages;
-                // console.log(event.target.files.length);
-                for (let index = 0; index < event.target.files.length; index++) {
+                numCheck = numberOfImages;
+                
+                eventImage.innerHTML = "";
+
+                for (let index = 0; index < numberOfImages; index++) {
                     const element = event.target.files[index];
-                    // console.log(element.name);
-                    // eventImage.length++;
+
                     let newDiv = document.createElement('div');
                     newDiv.className = 'event-image-wrap';
                     newDiv.setAttribute('id', 'event-image-wrap' + index);
                     let newImageOutput = document.createElement('img');
                     newImageOutput.className = 'event-img';
-                    newImageOutput.setAttribute('id', 'output'+ index);
+                    newImageOutput.setAttribute('id', 'output' + index);
                     newImageOutput.setAttribute('src', URL.createObjectURL(element));
                     newImageOutput.setAttribute('name', 'event_images[]');
                     newDiv.appendChild(newImageOutput);
@@ -84,10 +87,9 @@
                     let newRemoveSpan = document.createElement('span');
                     let newRemoveImg = document.createElement('img');
                     newRemoveImg.setAttribute('src', 'public/res/img/admin/remove.png');
-                    newRemoveImg.setAttribute('id', 'remove'+ index);
+                    newRemoveImg.setAttribute('id', 'remove' + index);
                     newRemoveImg.onclick = function () {
-                        document.getElementById('event-image-wrap'+index).remove();
-                        numberOfImages--;
+                        document.getElementById('event-image-wrap' + index).remove();
                         numCheck--;
                     }
                     newRemoveSpan.appendChild(newRemoveImg);

@@ -75,10 +75,11 @@
                                     . "<input type='hidden' name='event_images[]' value='" . $image['urlImage'] . "' />"
                                     . "<span><img src='public/res/img/admin/remove.png' id='remove" . $num . "' onclick='removeImage(". $num .")' /></span>"
                                     . "</div>";
-                                    $num;
+                                    $num++;
                             }
                         ?>
                     </div>
+                    <div id="event-images-wrap" class="element"></div>
                     <div class="element" id="add-event-btn">
                         <input type="submit" value="Lưu thay đổi" id="submit-btn">
                     </div>
@@ -87,27 +88,24 @@
         </div>
         <!-- <script src="public/js/add_event.js"></script> -->
         <script type="text/javascript">
-            // const eventImageWraps = document.getElementsByClassName('event-image-wrap');
-            let eventImage = document.getElementById('event-image');
-            let eventImgs = document.getElementsByClassName('event-img');
-            let numOfEventImgs = eventImgs.length;
-            let numCheck = numOfEventImgs;
+            let eventImage = document.getElementById('event-images-wrap');
+            let numCheck = document.getElementsByClassName('event-image-wrap').length;
 
             let loadFile = function(event) {
                 let numberOfImages = event.target.files.length;
-                numOfEventImgs += numberOfImages;
                 numCheck += numberOfImages;
-                console.log(event.target.files.length);
-                for (let index = 0; index < event.target.files.length; index++) {
+                
+                eventImage.innerHTML = "";
+
+                for (let index = 0; index < numberOfImages; index++) {
                     const element = event.target.files[index];
-                    let newIndex = index + numOfEventImgs;
 
                     let newDiv = document.createElement('div');
                     newDiv.className = 'event-image-wrap';
-                    newDiv.setAttribute('id', 'event-image-wrap' + newIndex);
+                    newDiv.setAttribute('id', 'event-image-wrap' + index);
                     let newImageOutput = document.createElement('img');
                     newImageOutput.className = 'event-img';
-                    newImageOutput.setAttribute('id', 'output'+ newIndex);
+                    newImageOutput.setAttribute('id', 'output' + index);
                     newImageOutput.setAttribute('src', URL.createObjectURL(element));
                     newImageOutput.setAttribute('name', 'event_images[]');
                     newDiv.appendChild(newImageOutput);
@@ -122,9 +120,9 @@
                     let newRemoveSpan = document.createElement('span');
                     let newRemoveImg = document.createElement('img');
                     newRemoveImg.setAttribute('src', 'public/res/img/admin/remove.png');
-                    newRemoveImg.setAttribute('id', 'remove'+ newIndex);
+                    newRemoveImg.setAttribute('id', 'remove' + index);
                     newRemoveImg.onclick = function () {
-                        document.getElementById('event-image-wrap'+newIndex).remove();
+                        document.getElementById('event-image-wrap' + index).remove();
                         numCheck--;
                     }
                     newRemoveSpan.appendChild(newRemoveImg);
@@ -137,7 +135,7 @@
             function removeImage(index) {
                 document.getElementById('event-image-wrap' + index).remove();
                 numCheck--;
-                console.log(numOfEventImgs);
+                console.log(numCheck);
             }
 
             function checkNumOfImages(event) {
