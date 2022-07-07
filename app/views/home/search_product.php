@@ -16,8 +16,21 @@
     <?php
     require '../components/header.php';
     ?>
+
+
     <div class="body col-12">
+
+
+
+
+
+
         <div class="content col-10">
+
+            <div class="search-text col-12">
+                <h1>Danh sách sản phẩm</h1>
+                <p>Tìm kiếm sản phẩm cho "Áo ba lỗ"</p>
+            </div>
 
             <!-- product suggest-->
             <div class="product-suggest col-12">
