@@ -12,7 +12,7 @@
     </head>
     <body>
         <?php 
-            require '../components/header.php';
+            require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
         ?>
         
         <div class="body col-12">

@@ -2,8 +2,8 @@
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'Controller.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'ComponentsController.php';
 
-class HomepageController extends ComponentsController implements Controller{
+class TestController extends ComponentsController implements Controller{
     public function __render(){
-        require_once ROOT . DS . 'app' . DS . 'views' . DS . 'home' . DS . 'homepage.php';
+        require_once ROOT . DS . 'app' . DS . 'views' . DS . 'test' . DS . 'test_service.php';
     }
 }

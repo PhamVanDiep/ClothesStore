@@ -112,6 +112,10 @@
     #start-time{
         margin-bottom: 20px;
     }
+
+    .choose-hour{
+        width: 28.5%;
+    }
 }
 
 @media only screen and (max-width: 992px) and (min-width: 768px){
@@ -143,6 +147,7 @@
     #content{
         margin-left: 16.66%;
         margin-top: 10vh;
+        padding-bottom: 10px;
     }
 
     #body{

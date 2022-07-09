@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="public/css/admin_root.css" />
         <link rel="stylesheet" href="public/css/admin_leftbar.css" />
         <link rel="stylesheet" href="public/css/admin_header.css" />
-        <link rel="stylesheet" href="public/css/admin/event.css" />
+        <link rel="stylesheet" href="public/css/admin/product.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
     <div class="col-10" id="head-bar">
             <?php 
-                $title = "Sự kiện";
-                $subtitle = "Danh sách sự kiện";
+                $title = "Sản phẩm";
+                $subtitle = "Danh sách sản phẩm";
                 require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'admin_header.php';
             ?>
         </div>
@@ -29,10 +29,13 @@
                     <thead> 
                         <tr>
                             <td>ID</td>
-                            <td>Tên sự kiện</td>
-                            <!-- <td>Đối tượng</td> -->
-                            <td>Bắt đầu</td>
-                            <td>Kết thúc</td>
+                            <td>Tên sản phẩm</td>
+                            <td>Loại sản phẩm</td>
+                            <td>Mô tả</td>
+                            <td>Kích cỡ</td>
+                            <td>Kiểu dáng</td>
+                            <td>Giá quảng cáo</td>
+                            <td>Giá bán</td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -48,6 +51,7 @@
                                         . "<td>" . $event["name"] . "</td>"
                                         . "<td>" . $event["timeStart"] . "</td>"
                                         . "<td>" . $event["timeEnd"] . "</td>"
+                                        . "<td></td>"
                                         . "<td><a href='/$path_project/edit-event?eventID=$eventID'><img src='public/res/img/admin/edit.png' class='edit-button crud'></a></td>"
                                         . "<td><img src='public/res/img/admin/delete.png' class='delete-button crud' onclick=deleteEvent(" . $eventID .") ></td>"
                                     . "</tr>";
