@@ -29,20 +29,23 @@
 }
 .bill-status-classify{
     height: auto;
-    position: relative;
-    margin: 20px 60px 20px 60px ;
+    flex :1;
+    margin: 20px 0px 20px 0px ;
     font-size: large;
     font-weight: bold;
     white-space: nowrap;
+    text-align: center;
 }
 #bill-filter{
+    margin-left: 5%;
+    margin-right:5%;
     display: flex;
+    width: 90%;
     background-color: #ffffff;
     min-height: 40px;
-    width: fit-content;
     right: 0;
-    margin: auto;
     left: 0;
+    justify-content: space-around;
 }
 
 #bill-list{
@@ -82,12 +85,8 @@
 .customer-info{
     flex: 4;
 }
-.item-img{
-    max-width: 75px;
-    max-height: 75px;
-    margin-right: 10px;
-    border: 1px solid #e8e8e8;
-}
+
+
 .item-info{
     display: flex;
     margin: 10px;
@@ -238,4 +237,10 @@
 }
 .del-btn{
     background-color: #da251d;  
+}
+.item-img{
+    max-width: 75px;
+    max-height: 75px;
+    margin-right: 10px;
+    border: 1px solid #e8e8e8;
 }
