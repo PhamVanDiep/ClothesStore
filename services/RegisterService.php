@@ -1,7 +1,7 @@
 <?php
 
 require_once ROOT . DS . 'services' . DS . 'Service.php';
-require_once ROOT . DS . 'app' . DS . 'models' . DS . 'Register.php';
+require_once ROOT . DS . 'app' . DS . 'models' . DS . 'User.php';
 
 class RegisterService extends Service{
 

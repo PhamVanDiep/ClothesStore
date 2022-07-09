@@ -1,3 +1,4 @@
+<?php global $path_project; ?>
 <div class="login-body">
     <h2 class="body-title">Đăng nhập</h2>
     <form action="">
@@ -20,7 +21,7 @@
                     <input class="login-button" type="submit" value="Đăng nhập">
                 </div>
                 <div class="switch-login col-12 mt-16">
-                    <a href="#">Đăng ký</a>
+                    <a href=<?php echo "/$path_project/register" ?>>Đăng ký</a>
                 </div>
             </div>
         </div>

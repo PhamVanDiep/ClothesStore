@@ -1,16 +1,16 @@
 <?php
 
 class User {
-    $private userID;
-    $private name;
-    $private username;
-    $private email;
-    $private phoneNumber;
-    $private gender;
-    $private password;
-    $private address;
-    $private roleID;
-    $private urlAvatar;
+    private $userID;
+    private $name;
+    private $username;
+    private $email;
+    private $phoneNumber;
+    private $gender;
+    private $password;
+    private $address;
+    private $roleID;
+    private $urlAvatar;
 
     public function __construct($userID, $name, $username, $email, $phoneNumber, $gender, $password, $address, $roleID, $urlAvatar) {
         self::setUserID($userID);
