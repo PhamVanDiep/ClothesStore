@@ -15,7 +15,7 @@
     <body>
     <div class="col-10" id="head-bar">
             <?php 
-                $title = "Quản lý sản phẩm";
+                $title = "Sản phẩm";
                 $subtitle = "Danh sách sản phẩm";
                 require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'admin_header.php';
             ?>
@@ -32,7 +32,10 @@
                             <td>Tên sản phẩm</td>
                             <td>Loại sản phẩm</td>
                             <td>Mô tả</td>
-                            <td>Thông tin chi tiết</td>
+                            <td>Kích cỡ</td>
+                            <td>Kiểu dáng</td>
+                            <td>Giá quảng cáo</td>
+                            <td>Giá bán</td>
                             <td></td>
                             <td></td>
                         </tr>

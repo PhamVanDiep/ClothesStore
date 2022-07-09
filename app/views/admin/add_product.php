@@ -12,7 +12,7 @@
     <body>
         <div class="col-10" id="head-bar">
             <?php 
-                $title = "Quản lý sản phẩm";
+                $title = "Sản phẩm";
                 $subtitle = "Thêm sản phẩm";
                 require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'admin_header.php';
             ?>
@@ -48,6 +48,14 @@
                         <input type="text" id="productStyles"  name="productStyles" 
                             placeholder="Nhập các kiểu dáng cho sản phẩm, cách nhau bởi dấu phẩy (,). VD: Xanh,Đỏ,Vàng" class="form-data" required>
                     </div>
+                    <div id="product-adv-price" class="element element-text">
+                        <span class="element-title">Giá quảng cáo</span>
+                        <input type="number" id="productAdvPrice"  name="productAdvPrice" placeholder="Nhập giá quảng cáo" class="form-data" required>
+                    </div>
+                    <div id="product-price" class="element element-text">
+                        <span class="element-title">Giá bán</span>
+                        <input type="number" id="productPrice"  name="productPrice" placeholder="Nhập giá bán" class="form-data" required>
+                    </div>
                     <div id="event-image" class="element">
                         <div id="event-image-header">
                             <span id="event-image-title" class="element-title">Hình ảnh</span>
@@ -57,6 +65,7 @@
                             </label>
                         </div>
                     </div>
+                    <div id="event-images-wrap" class="element"></div>
                     <div class="element" id="add-event-btn">
                         <input type="submit" value="Thêm sản phẩm" id="submit-btn">
                     </div>
@@ -64,22 +73,24 @@
             </div>
         </div>
         <script type="text/javascript">
-            let eventImage = document.getElementById('event-image');
+            let eventImage = document.getElementById('event-images-wrap');
             let numCheck = 0;
+
             let loadFile = function(event) {
                 let numberOfImages = event.target.files.length;
-                numCheck += numberOfImages;
-                // console.log(event.target.files.length);
-                for (let index = 0; index < event.target.files.length; index++) {
+                numCheck = numberOfImages;
+                
+                eventImage.innerHTML = "";
+
+                for (let index = 0; index < numberOfImages; index++) {
                     const element = event.target.files[index];
-                    // console.log(element.name);
-                    // eventImage.length++;
+
                     let newDiv = document.createElement('div');
                     newDiv.className = 'event-image-wrap';
                     newDiv.setAttribute('id', 'event-image-wrap' + index);
                     let newImageOutput = document.createElement('img');
                     newImageOutput.className = 'event-img';
-                    newImageOutput.setAttribute('id', 'output'+ index);
+                    newImageOutput.setAttribute('id', 'output' + index);
                     newImageOutput.setAttribute('src', URL.createObjectURL(element));
                     newImageOutput.setAttribute('name', 'event_images[]');
                     newDiv.appendChild(newImageOutput);
@@ -94,9 +105,9 @@
                     let newRemoveSpan = document.createElement('span');
                     let newRemoveImg = document.createElement('img');
                     newRemoveImg.setAttribute('src', 'public/res/img/admin/remove.png');
-                    newRemoveImg.setAttribute('id', 'remove'+ index);
+                    newRemoveImg.setAttribute('id', 'remove' + index);
                     newRemoveImg.onclick = function () {
-                        document.getElementById('event-image-wrap'+index).remove();
+                        document.getElementById('event-image-wrap' + index).remove();
                         numCheck--;
                     }
                     newRemoveSpan.appendChild(newRemoveImg);
@@ -114,7 +125,6 @@
                 }
                 else return true;
             }
-
         </script>
     </body>
 </html>
