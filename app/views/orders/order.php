@@ -1,23 +1,23 @@
 <!Doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="../../../public/css/root.css" />
-        <link rel="stylesheet" href="../../../public/css/header.css" />
-        <link rel="stylesheet" href="../../../public/css/footer.css" />
-        <link rel="stylesheet" href="../../../public/css/body.css" />
-        <link rel="stylesheet" href="../../../public/css/orders/order_header.css" />
-        <link rel="stylesheet" href="../../../public/css/orders/order_search.css" />
-        <link rel="stylesheet" href="../../../public/css/orders/order_detail.css" />
+        <link rel="stylesheet" href="public/css/root.css" />
+        <link rel="stylesheet" href="public/css/header.css" />
+        <link rel="stylesheet" href="public/css/footer.css" />
+        <link rel="stylesheet" href="public/css/body.css" />
+        <link rel="stylesheet" href="public/css/orders/order_header.css" />
+        <link rel="stylesheet" href="public/css/orders/order_search.css" />
+        <link rel="stylesheet" href="public/css/orders/order_detail.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <?php 
-            require '../components/header.php';
+    <?php 
+            require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
         ?>
         <div class="body col-12" id="body">
             <?php 
-                require 'order_header.php';
+                require_once ROOT . DS . 'app' . DS . 'views' . DS . 'orders' . DS . 'order_header.php';
             ?>
         </div>
         <?php 
@@ -25,11 +25,11 @@
         ?>
         <div class="order-detail-wrap col-10">
             <div class="order-detail-status">
-                <img src="../../../public/res/img/orders/shipped.png" alt="" srcset="">
+                <img src="public/res/img/orders/shipped.png" alt="" srcset="">
                 <b class="ship-success">Giao hàng thành công</b>
             </div><div class="order-detail-product">
                 <div class="product-image">
-                    <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                    <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                 </div><div class="product-info">
                     <div class="info-detail product-title">Áo phông tay lỡ Hàn Quốc, áo phông màu trắng form...</div>
                     <div class="info-detail product-category">Phân loại hàng : M(30-50kg)</div>
@@ -50,11 +50,11 @@
 
         <div class="order-detail-wrap col-10">
             <div class="order-detail-status">
-                <img src="../../../public/res/img/orders/shipped.png" alt="" srcset="">
+                <img src="public/res/img/orders/shipped.png" alt="" srcset="">
                 <b class="confirm-waiting">Chờ xác nhận</b>
             </div><div class="order-detail-product">
                 <div class="product-image">
-                    <img src="../../../public/res/img/products/product1.jpg" alt="" srcset="">
+                    <img src="public/res/img/products/product1.jpg" alt="" srcset="">
                 </div><div class="product-info">
                     <div class="info-detail product-title">Áo phông tay lỡ Hàn Quốc, áo phông màu trắng form...</div>
                     <div class="info-detail product-category">Phân loại hàng : M(30-50kg)</div>
@@ -72,9 +72,6 @@
                 </div>
             </div>
         </div>
-        <?php 
-            require '../components/footer.php';
-        ?>
-        <script src="../../../public/js/order.js"></script>
+        <script src="public/js/order.js"></script>
     </body>
 </html>

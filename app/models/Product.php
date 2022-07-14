@@ -7,14 +7,18 @@ class Product {
     private $description;      
     private $name;
     private $categoryID;
+    private $price;
+    private $oldPrice;
 
     // public $type = Type::NONE;
 
-    public function __construct($productID, $name, $categoryID, $description) {
+    public function __construct($productID, $name, $categoryID, $price, $oldPrice, $description) {
         self::setProductID($productID);
         self::setName($name);
         self::setCategoryID($categoryID);
         self::setDescription($description);
+        self::setPrice($price);
+        self::setOldPrice($oldPrice);
     }
 
     public function getProductID()
@@ -54,5 +58,25 @@ class Product {
     public function getName()
     {
         return $this->name;
+    }
+
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    public function getOldPrice()
+    {
+        return $this->oldPrice;
+    }
+
+    public function setOldPrice($oldPrice)
+    {
+        $this->oldPrice = $oldPrice;
     }
 }
