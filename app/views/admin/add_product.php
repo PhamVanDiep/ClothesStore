@@ -1,3 +1,8 @@
+<?php
+    require_once ROOT . DS . 'services' . DS . 'ProductService.php';
+    $product_service = new ProductService();
+    $categories = $product_service->getCategories();
+?>
 <!Doctype html>
 <html>
     <head>
@@ -34,8 +39,11 @@
                     <div id="product-category" class="element element-text">
                         <span class="element-title">Loại sản phẩm</span>
                         <select name="category" id="category">
-                            <option value="1">Quần</option>
-                            <option value="2">Áo</option>
+                            <?php
+                                foreach($categories as $category) {
+                                    echo "<option value='" . $category['categoryID'] . "'>" . $category['name'] . "</option>";
+                                }
+                            ?>
                         </select>
                     </div>
                     <div id="product-size" class="element element-text">
