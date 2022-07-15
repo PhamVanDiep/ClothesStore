@@ -1,47 +1,39 @@
 <?php 
     require_once ROOT . DS . 'services' . DS . 'TurnoverService.php';
+    require_once ROOT . DS . 'services' . DS . 'ProductService.php';
+    require_once ROOT . DS . 'services' . DS . 'OrderService.php';
+    require_once ROOT . DS . 'services' . DS . 'UserService.php';
+
     $turnover_service = new TurnoverService();
-    $week_revenue = $turnover_service->getTurnOverOfWeek();
-    $week_revenue = $week_revenue['total_turnover_of_week'];
-    $data_chart = $turnover_service->getTurnOverEachDayOfWeek();
 
-    $month_revenue = $turnover_service->getTurnOverOfMonth();
-    $month_revenue = $month_revenue['total_turnover_of_month'];
-    $data_chart = $turnover_service->getTurnOverEachDayOfMonth();
+    // Revenue in current day.
+    $current_day_revenue = $turnover_service->getTurnOverOfDay();
+    $current_day_revenue = $current_day_revenue['res'];
+    $current_day_revenue = number_format($current_day_revenue);
 
-    $xValue = array();
-    $yValue = array();
-    $month = date('m');
-    $year = date('Y');
+    // number of orders in current day.
+    $order_service = new OrderService();
+    $current_day_orders = $order_service->getNumberOfOrderADay();
+    $current_day_orders = $current_day_orders['res'];
+    $current_day_orders = number_format($current_day_orders);
 
-    for($d = 1; $d <= 31; $d++)
-    {
-        $time = mktime(12, 0, 0, $month, $d, $year);          
-        if (date('m', $time) == $month) {
-            $date_this = date('d-m', $time);
-            array_push($xValue, $date_this);
-            $had = false;
-            foreach ($data_chart as $row) {
-                if ($row['day'] == $date_this) {
-                    array_push($yValue, $row['turnover']);
-                    $had = true;
-                    break;
-                }
-            }
-            if(!$had) array_push($yValue, 0);
-        }
-    }
+    // number of customers
+    $user_service = new UserService();
+    $number_of_customers = $user_service->getNumberOfCustomers();
+    $number_of_customers = $number_of_customers['res'];
+    $number_of_customers = number_format($number_of_customers);
 
-    function js_str($s)
-    {
-        return '"' . addcslashes($s, "\0..\37\"\\") . '"';
-    }
+    // number of products
+    $product_service = new ProductService();
+    $number_of_products = $product_service->getNumberOfProducts();
+    $number_of_products = $number_of_products['res'];
+    $number_of_products = number_format($number_of_products);
+    
+    // get orders of current day.
+    $orders_of_current_day = $order_service->getOrdersOfCurrentDay();
 
-    function js_array($array)
-    {
-        $temp = array_map('js_str', $array);
-        return '[' . implode(',', $temp) . ']';
-    }
+    $week_revenue = 0;
+
 ?>
 
 <!Doctype html>
@@ -54,26 +46,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
-        <script>
-            window.onload = function () {
-                let myChart = document.getElementById('myChart').getContext('2d');
-                <?php echo 'var xValues = '. js_array($xValue). ';' ?>
-                <?php echo 'var yValues = '. js_array($yValue). ';' ?>
-
-                new Chart(myChart, {
-                    type: "line",
-                    data: {
-                        labels: xValues,
-                        datasets: [{
-                            label: "Doanh thu (nghìn vnđ)",
-                            data: yValues,
-                            backgroundColor: "#FFFFFF",
-                            borderColor: "blue"
-                        }]
-                    }
-                });
-            }
-        </script>
     </head>
     <body>
         <div class="col-10" id="head-bar">
@@ -92,25 +64,25 @@
                     <span class="icon-wrap" id="sale-icon-wrap">
                         <img src="public/res/img/admin/dashboard/sale.png" >
                     </span>
-                    <span class="general-quantity">100.000.000đ</span>
+                    <span class="general-quantity"><?php echo $current_day_revenue; ?>đ</span>
                     <span class="general-title">Doanh thu trong ngày</span>
                 </div><div class="general-detail" id="general-order-wrap">
                     <span class="icon-wrap" id="order-icon-wrap">
                         <img src="public/res/img/admin/dashboard/grocery-cart.png">
                     </span>
-                    <span class="general-quantity">500</span>
+                    <span class="general-quantity"><?php echo $current_day_orders; ?></span>
                     <span class="general-title">Đơn hàng trong ngày</span>
                 </div><div class="general-detail" id="general-customer-wrap">
                     <span class="icon-wrap" id="customer-icon-wrap">
                         <img src="public/res/img/admin/dashboard/customer.png">
                     </span>
-                    <span class="general-quantity">350</span>
+                    <span class="general-quantity"><?php echo $number_of_customers; ?></span>
                     <span class="general-title">Khách hàng</span>
                 </div><div class="general-detail" id="general-product-wrap">
                     <span class="icon-wrap" id="product-icon-wrap">
                         <img src="public/res/img/admin/dashboard/products.png">
                     </span>
-                    <span class="general-quantity">200</span>
+                    <span class="general-quantity"><?php echo $number_of_products; ?></span>
                     <span class="general-title">Sản phẩm</span>
                 </div>
             </div>
@@ -123,174 +95,69 @@
                                 <tr>
                                     <td>Mã đơn hàng</td>
                                     <td>Sản phẩm</td>
-                                    <td>Số lượng</td>
                                     <td>Thành tiền</td>
                                     <td>Trạng thái</td>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro. Áo vải đẹp siêu cấp vip pro. Áo vải đẹp siêu cấp vip pro.</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td><span id="confirm-waiting" class="general-status">Chờ xác nhận</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td><span id="shipping" class="general-status">Đang giao</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td><span id="shipped" class="general-status">Đã giao</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td><span id="canceled" class="general-status">Đã hủy</span></td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
-                                <tr>
-                                    <td>#111111</td>
-                                    <td>Áo vải đẹp siêu cấp vip pro</td>
-                                    <td>3</td>
-                                    <td>300.000đ</td>
-                                    <td>Chờ xác nhận</td>
-                                </tr>
+                                <?php
+                                    $pre_orderID = 0;
+                                    $product_concat = '';
+                                    $price = 0;
+                                    $status = '';
+                                    $status_class = '';
+                                    foreach ($orders_of_current_day as $res) {
+                                        if ($pre_orderID > 0) {
+                                            if ($res['orderID'] === $pre_orderID) {
+                                                $product_concat = $product_concat . ", " . $res['name'] . " (x" . $res['number'] . ") ";
+                                            } else {
+                                                echo "<tr>"
+                                                        . "<td>#" . $res['orderID'] . "</td>"
+                                                        . "<td>" . $product_concat . "</td>"
+                                                        . "<td>" . number_format($price) .  "đ</td>"
+                                                        . "<td><span class='general-status " . $status_class . "'>" . $status . "</span></td>"
+                                                    . "</tr>";
+                                                $pre_orderID = $res['orderID'];
+                                                $product_concat = $res['name'] . " (x" . $res['number'] . ") ";
+                                                $price = $res['totalCost'];
+                                                $status = $res['status_name'];
+                                                if ($status === "Chờ xác nhận") {
+                                                    $status_class = "confirm-waiting";
+                                                } else if ($status === "Đã xác nhận") {
+                                                    $status_class = "confirmed";
+                                                } else if ($status === "Đang giao hàng") {
+                                                    $status_class = "shipping";
+                                                } else if ($status === "Đã giao hàng") {
+                                                    $status_class = "shipped";
+                                                } else {
+                                                    $status_class = "canceled";
+                                                }
+                                            }
+                                        } else {
+                                            $pre_orderID = $res['orderID'];
+                                            $product_concat = $res['name'] . " (x" . $res['number'] . ") ";
+                                            $price = $res['totalCost'];
+                                            $status = $res['status_name'];
+                                            if ($status === "Chờ xác nhận") {
+                                                $status_class = "confirm-waiting";
+                                            } else if ($status === "Đã xác nhận") {
+                                                $status_class = "confirmed";
+                                            } else if ($status === "Đang giao hàng") {
+                                                $status_class = "shipping";
+                                            } else if ($status === "Đã giao hàng") {
+                                                $status_class = "shipped";
+                                            } else {
+                                                $status_class = "canceled";
+                                            }
+                                        }
+                                    }
+                                    echo "<tr>"
+                                            . "<td>#" . $pre_orderID . "</td>"
+                                            . "<td>" . $product_concat . "</td>"
+                                            . "<td>" . number_format($price) .  "đ</td>"
+                                            . "<td><span class='general-status " . $status_class . "'>" . $status . "</span></td>"
+                                        . "</tr>";
+                                ?>
                             </tbody>
                         </table>
                     </div>
@@ -414,11 +281,11 @@
             <div id="chart-wrap">
                 <div id="chart-header">
                     <div id="chart-title" class="order-seller-sale-title">Doanh thu</div>
-                    <div id="total-sale">Tổng doanh thu: <?php echo number_format($month_revenue) . " vnđ"; ?></div>
+                    <div id="total-sale"></div>
                     <div id="chart-filter" class="my-filter">
-                        <select name="chart-filter" id="chart-filter">
-                            <option value="month">Tuần</option>
-                            <option value="week">Tháng</option>
+                        <select name="chart-filter" id="chart-filter" onchange="changeChart(this)">
+                            <option value="week">Tuần</option>
+                            <option value="month">Tháng</option>
                         </select>
                     </div>
                 </div>
@@ -427,5 +294,55 @@
                 </div>
             </div>
         </div>
+        <script>
+            let myChart = document.getElementById('myChart').getContext('2d');
+            let xValues = [];
+            let yValues = [];
+            let selectedChartType = 'week';
+
+            let chartObject = new Chart(myChart, {
+                    type: "line",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                            label: "Doanh thu (nghìn vnđ)",
+                            data: yValues,
+                            backgroundColor: "#FFFFFF",
+                            borderColor: "blue"
+                        }]
+                    }
+                });
+            changeChartView('week');
+
+            function numberWithCommas(x) {
+                return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            }
+
+            function changeChartView(type) {
+                // console.log(type);
+                let xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function() {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                        // console.log(this.responseText);
+                        let responseArray = JSON.parse(this.responseText);
+                        xValues = responseArray[2];
+                        yValues = responseArray[1];
+                        document.getElementById("total-sale").innerHTML = "Tổng doanh thu: " + numberWithCommas(responseArray[0]) + " vnđ";
+                        chartObject.data.labels = JSON.parse(xValues);
+                        chartObject.data.datasets.forEach((dataset) => {
+                            dataset.data = JSON.parse(yValues);;
+                        });
+                        chartObject.update();
+                    }
+                }
+                xmlhttp.open("GET", "libraries/admin/dashboard/revenue.php?type=" + type, true);
+                xmlhttp.send();
+            }
+
+            function changeChart(selector) {
+                changeChartView(selector.value);
+                // console.log(selector.value);
+            }
+        </script>
     </body>
 </html>

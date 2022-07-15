@@ -1,6 +1,7 @@
 <?php
     require_once '../../library_config.php';
     require_once ROOT . DS . 'services' . DS . 'EventService.php';
+    require_once ROOT . DS . 'app' . DS . 'models' . DS . 'Event.php';
 
     $targetDir = "../../../public/res/img/events/";
     if (isset($_POST)) {
@@ -20,9 +21,12 @@
             // File upload path 
             $fileName = basename($_FILES['files']['name'][$key]); 
             if (in_array($fileName, $images_post)) {
-                $targetFilePath = $targetDir . $fileName; 
-                move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath);
-                $event_service->updateImage($eventID, $fileName);
+                $check = $event_service->checkImageExist($eventID, $fileName);
+                if($check['num'] === 0) {
+                    $targetFilePath = $targetDir . $fileName; 
+                    move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath);
+                    $event_service->updateImage($eventID, $fileName);
+                }
             }
         }
 

@@ -106,4 +106,12 @@ class EventService extends Service{
         parent::setQuery($query);
         parent::deleteQuery();
     }
+
+    public function checkImageExist($eventID, $urlImage)
+    {
+        $query = "select count(*) as num from eventimage where eventID = " . $eventID . " and urlImage = '" . $urlImage . "';";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
+    }
 }
