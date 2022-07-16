@@ -169,110 +169,101 @@
                     <div class="order-seller-sale-title order-seller-title" id="best-seller-header">
                         <div id="best-seller-title">Mua nhiều</div>
                         <div id="sell-filter" class="my-filter">
-                            <select name="sell-filter" id="sell-filter">
-                                <option value="month">Tháng</option>
+                            <select name="sell-filter" id="sell-filter" onchange="changeBestSeller(this)">
                                 <option value="week">Tuần</option>
+                                <option value="month">Tháng</option>
                             </select>
                         </div>
                     </div>
                     <div id="best-seller-content">
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-0">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-0">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-0"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-0"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-1">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-1">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-1"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-1"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-2">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-2">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-2"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-2"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-3">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-3">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-3"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-3"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-4">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-4">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-4"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-4"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-5">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-5">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-5"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-5"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-6">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-6">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-6"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-6"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-7">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-7">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-7"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-7"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-8">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-8">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-8"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-8"></div>
                             </div>
                         </div>
-                        <div class="best-seller-wrap">
+                        <div class="best-seller-wrap" id="best-seller-wrap-9">
                             <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
+                                <img src="" alt="" srcset="" id="best-seller-img-9">
                             </div>
                             <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
-                            </div>
-                        </div>
-                        <div class="best-seller-wrap">
-                            <div class="best-seller-image-wrap">
-                                <img src="public/res/img/products/product1.jpg" alt="" srcset="">
-                            </div>
-                            <div class="best-seller-info">
-                                <div class="best-seller-name">Áo thun nam</div>
-                                <div class="best-seller-quantity">x1000</div>
+                                <div class="best-seller-name" id="best-seller-name-9"></div>
+                                <div class="best-seller-quantity" id="best-seller-quantity-9"></div>
                             </div>
                         </div>
                     </div>
@@ -295,6 +286,8 @@
             </div>
         </div>
         <script>
+            changeBestSellerView("week");
+
             let myChart = document.getElementById('myChart').getContext('2d');
             let xValues = [];
             let yValues = [];
@@ -319,11 +312,9 @@
             }
 
             function changeChartView(type) {
-                // console.log(type);
                 let xmlhttp = new XMLHttpRequest();
                 xmlhttp.onreadystatechange=function() {
                     if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-                        // console.log(this.responseText);
                         let responseArray = JSON.parse(this.responseText);
                         xValues = responseArray[2];
                         yValues = responseArray[1];
@@ -341,7 +332,29 @@
 
             function changeChart(selector) {
                 changeChartView(selector.value);
-                // console.log(selector.value);
+            }
+
+            function changeBestSellerView(type) {
+                let num = 0;
+                let xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange=function() {
+                    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+                        let data = JSON.parse(this.responseText);
+                        data.forEach(element => {
+                            document.getElementById("best-seller-img-" + num).setAttribute("src","public/res/img/products/" + element["urlimage"]);
+                            document.getElementById("best-seller-name-" + num).innerHTML = element["name"];
+                            document.getElementById("best-seller-quantity-" + num).innerHTML = "x" + element["so_luong"];
+                            document.getElementById("best-seller-wrap-" + num).style.display = "block";
+                            num++;
+                        });
+                    }
+                }
+                xmlhttp.open("GET", "libraries/admin/dashboard/best_seller.php?type=" + type, true);
+                xmlhttp.send();
+            }
+
+            function changeBestSeller(selector) {
+                changeBestSellerView(selector.value);
             }
         </script>
     </body>
