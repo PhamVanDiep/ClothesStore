@@ -169,4 +169,36 @@ class ProductService extends Service{
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
     }
+
+    public function getTop10ProductOfWeek()
+    {
+        $query = "select x.name, temp.so_luong, pi.urlimage from product x, 
+        (select od.productID as productID, od.orderID as orderID, SUM(od.number) as so_luong from order_detail od 
+        INNER join `order` o on o.orderID = od.orderID 
+        where o.timeCreate >= CURRENT_DATE - 6 
+        GROUP by productID 
+        order BY so_luong DESC 
+        LIMIT 10) as temp, product_image pi 
+        where x.productID = temp.productID 
+        AND pi.urlimage = (SELECT pi.urlimage FROM product_image pi WHERE pi.productID = x.productID LIMIT 1);";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function getTop10ProductOfMonth()
+    {
+        $query = "select x.name, temp.so_luong, pi.urlimage from product x, 
+        (select od.productID as productID, od.orderID as orderID, SUM(od.number) as so_luong from order_detail od 
+        INNER join `order` o on o.orderID = od.orderID 
+        where MONTH(o.timeCreate) = MONTH(CURRENT_DATE) 
+        GROUP by productID 
+        order BY so_luong DESC 
+        LIMIT 10) as temp, product_image pi 
+        where x.productID = temp.productID 
+        AND pi.urlimage = (SELECT pi.urlimage FROM product_image pi WHERE pi.productID = x.productID LIMIT 1);";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
 }

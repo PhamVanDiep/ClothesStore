@@ -202,6 +202,7 @@
     padding-top: 1vh;
     padding-bottom: 1vh;
     border-bottom: 1px solid #a1a0a0;
+    display: none;
 }
 
 .best-seller-image-wrap{
