@@ -2,11 +2,11 @@
 
 class Cart {
     private $userID;      // int
-    private $listProducts;  // array
+    private $listProduct;  // array
     private $date;          // date
     
-    public function __construct($username, $listProducts) {
-        self::setUsername($username);
+    public function __construct($userID, $listProducts) {
+        self::setUserID($userID);
         self::setListProduct($listProducts);
         self::setDate(date("Y-m-d"));
     }
@@ -14,9 +14,9 @@ class Cart {
     /**
      * @return mixed
      */
-    public function getUsername()
+    public function getUserID()
     {
-        return $this->username;
+        return $this->userID;
     }
 
     /**
@@ -36,11 +36,11 @@ class Cart {
     }
 
     /**
-     * @param mixed $username
+     * @param mixed $userID
      */
-    public function setUsername($username)
+    public function setUserID($userID)
     {
-        $this->username = $username;
+        $this->userID = $userID;
     }
 
     /**

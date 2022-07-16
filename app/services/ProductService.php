@@ -19,6 +19,14 @@ class ProductService extends Service{
         parent::setQuery($query);
         $result = parent::executeQuery();
     }
+
+    public function getOnce($productID)
+    {
+        $query = "select * from product where productID = " . $productID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
+    }
     
     
     

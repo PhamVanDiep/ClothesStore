@@ -7,10 +7,10 @@ class OrderService extends Service{
     // lay tat ca don hang
     public function getAllOrder()
     {
-        $query = "select o.* from order o";
+        $query = "select o.* from `order` o";
         parent::setQuery($query);
         $result = parent::executeQuery();
-        return json_encode($result);
+        return $result;
     }
 
 
@@ -18,7 +18,7 @@ class OrderService extends Service{
     // Param StatusID
     public function getOrder($statusId)
     {
-        $query = "select o.* from order o 
+        $query = "select o.* from `order` o 
         where o.statusID = '$statusId' ";
         parent::setQuery($query);
         $result = parent::executeQuery();
