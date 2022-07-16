@@ -12,6 +12,8 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'UpdateVoucherControl
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'LoginController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'RegisterController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'InfoController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'HomeTestController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'LogoutController.php';
 
 class Router {
     private $_dispath;
@@ -68,6 +70,19 @@ class Router {
             return;
         }
 
+        //hometest
+        if(strcmp($this->_url,"/" . $this->_path_project . "/home-test") == 0){
+            $this->_dispath = new HomeTestController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(strcmp($this->_url,"/" . $this->_path_project . "/logout") == 0){
+            $this->_dispath = new LogoutController();
+            $this->_isAdmin = true;
+            return;
+        }
+
         // Register
         if(strcmp($this->_url,"/" . $this->_path_project . "/register") == 0){
             $this->_dispath = new RegisterController();
@@ -99,6 +114,12 @@ class Router {
             $voucherID = strrpos($this->_url, '=');
             $voucherID = substr($this->_url, $voucherID + 1);
             $this->_dispath = new UpdateVoucherController($voucherID);
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(str_contains($this->_url, '/login')) {
+            $this->_dispath = new LoginController();
             $this->_isAdmin = true;
             return;
         }

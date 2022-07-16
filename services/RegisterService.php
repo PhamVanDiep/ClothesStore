@@ -7,7 +7,7 @@ class RegisterService extends Service{
 
     public function insert($user)
     {
-        $query = "insert into user (`name`, `username`, `gmail`, `phoneNumber`, `gender`, `password`, `address`, `roleID`, `urlAvatar`)  values (" . 
+        $query = "insert into user (`name`, `username`, `gmail`, `phoneNumber`, `gender`, `password`, `address`, `roleID`, `urlAvatar`, `googleId`)  values (" . 
                     "'" . $user->getName() . "', " . 
                     "'" . $user->getUsername() . "', " . 
                     "'" . $user->getEmail() . "', " . 
@@ -16,9 +16,10 @@ class RegisterService extends Service{
                     "'" . $user->getPassword() . "', " . 
                     "'" . $user->getAddress() . "', " . 
                     "'" . $user->getRoleID() . "', " . 
-                    "'" . $user->getUrlAvatar() . "');";
+                    "'" . $user->getUrlAvatar() . "', " . 
+                    "'" . $user->getGoogleId() . "');";
         parent::setQuery($query);
-        parent::insertQuery();
+        return parent::insertQuery();
     }
 
 }

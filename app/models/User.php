@@ -11,8 +11,9 @@ class User {
     private $address;
     private $roleID;
     private $urlAvatar;
+    private $googleId;
 
-    public function __construct($userID, $name, $username, $email, $phoneNumber, $gender, $password, $address, $roleID, $urlAvatar) {
+    public function __construct($userID, $name, $username, $email, $phoneNumber, $gender, $password, $address, $roleID, $urlAvatar, $googleId) {
         self::setUserID($userID);
         self::setName($name);
         self::setUsername($username);
@@ -23,6 +24,7 @@ class User {
         self::setAddress($address);
         self::setRoleID($roleID);
         self::setUrlAvatar($urlAvatar);
+        self::setGoogleId($googleId);
     }
 
     public function getUserID() {
@@ -103,5 +105,13 @@ class User {
 
     public function setUrlAvatar($urlAvatar) {
         $this->urlAvatar = $urlAvatar;
+    }
+
+    public function getGoogleId() {
+        return $this->googleId;
+    }
+
+    public function setGoogleId($googleId) {
+        $this->googleId = $googleId;
     }
 }

@@ -1,3 +1,21 @@
+<?php
+require_once ROOT . DS . 'config' . DS . 'config.php';
+require_once ROOT . DS . 'app' . DS . 'models' . DS . 'User.php';
+require_once ROOT . DS . 'services' . DS . 'RegisterService.php';
+require_once ROOT . DS . 'services' . DS . 'UserService.php';
+require_once ROOT . DS . 'services' . DS . 'Service.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'Router.php';
+
+$id = $_SESSION['login_id'];
+
+$user_service = new UserService();
+$user = $user_service->getUserByID($id);
+
+if (is_null($user)) {
+    header('/ClothesStore/logout');
+}
+?>
+
 <div class="info-body">
     <div class="body-header">
         <img src="public/res/img/info/user.png" alt="">
@@ -8,68 +26,43 @@
     </div>
     <hr>
     <div class="wrap-content">
-        <form action="">
+        <form action="libraries\edit_info\edit_info.php" method="post">
             <div class="col-12">
                 <div class="col-7 pl-6">
+                    <input type="hidden" value="<?php echo $id?>">
                     <div class="wrap-input">
                         <label for="">Họ tên:</label>
-                        <input type="text"><br>
+                        <input name="name" value="<?php echo $user['name']?>" type="text"><br>
                     </div>
                     <div class="wrap-input">
                         <label for="">Username:</label>
-                        <input type="text"><br>
+                        <input name="username" value="<?php echo $user['username']?>" type="text"><br>
                     </div>
                     <div class="wrap-input">
                         <label for="">Điện thoại:</label>
-                        <input type="text"><br>
+                        <input name="phoneNumber" value="<?php echo $user['phoneNumber']?>" type="text"><br>
                     </div>
                     <div class="wrap-input">
                         <label for="">Địa chỉ:</label>
-                        <input type="text"><br>
+                        <input name="address" value="<?php echo $user['address']?>" type="text"><br>
                     </div>
                     <div class="wrap-input">
                         <label for="">Email:</label>
-                        <input type="text"><br>
+                        <input name="email" value="<?php echo $user['gmail']?>" type="text"><br>
                     </div>
                     <div class="wrap-input">
                         <label for="">Giới tính:</label>
-                        <input id="man" type="radio" name="gender">
+                        <input id="man" type="radio" name="gender" value="Nam" <?php if (strcmp($user['gender'],'Nam')==0) echo 'checked';?>>
                         <label for="man">Nam</label>
-                        <input id="woman" type="radio" name="gender">
+                        <input id="woman" type="radio" name="gender" value="Nữ" <?php if (strcmp($user['gender'],'Nữ')==0) echo 'checked';?>>
                         <label for="woman">Nữ</label>
-                        <input id="other" type="radio" name="gender">
+                        <input id="other" type="radio" name="gender" value="Khác" <?php if (strcmp($user['gender'],'Khác')==0) echo 'checked';?>>
                         <label for="other">Khác</label><br>
-                    </div>
-                    <div class="wrap-input">
-                        <label for="birth">Ngày sinh:</label>
-                        <select id="day" name="birth">
-                            <?php
-                                for ($i = 1; $i <= 31; $i++) {
-                                    echo '<option value="'.$i.'">'.$i.'</option>';
-                                }
-                            ?>
-                        </select>
-                        <select id="month" name="birth">
-                            <?php
-                                for ($i = 1; $i <= 12; $i++) {
-                                    echo '<option value="'.$i.'">'.$i.'</option>';
-                                }
-                            ?>
-                        </select>
-                        <select id="year" name="birth">
-                            <?php
-                                $mydate = getdate();
-                                $year = (int)"$mydate[year]";
-                                for ($i = $year; $i >= 1800; $i--) {
-                                    echo '<option value="'.$i.'">'.$i.'</option>';
-                                }
-                            ?>
-                        </select>
                     </div>
                 </div>
                 <div class="col-5">
                     <div class="wrap-edit-avt">
-                        <img id="output" src="public/res/img/info/avt.png" alt="">
+                        <img id="output" src="<?php echo $user['urlAvatar']?>" alt="">
                         <input type="file"  accept="image/*" name="image" id="selectedFile"  onchange="loadFile(event)" style="display: none;">
                         <input type="button" value="Chọn ảnh" onclick="document.getElementById('selectedFile').click();" />
     
@@ -86,5 +79,6 @@
                 <input type="submit" value="Cập nhật">
             </div>
         </form>
+        <a href="/ClothesStore/logout">Logout</a>
     </div>
 </div>
