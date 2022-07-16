@@ -151,7 +151,7 @@ class ProductService extends Service{
     public function updateImage($productID, $urlImage) {
         $query = "insert into product_image values (" . $productID . ", '" . $urlImage . "');";
         parent::setQuery($query);
-        parent::deleteQuery();
+        parent::insertQuery();
     }
 
     public function checkImageExist($productID, $urlImage)

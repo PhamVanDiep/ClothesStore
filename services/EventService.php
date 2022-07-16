@@ -104,7 +104,7 @@ class EventService extends Service{
     public function updateImage($eventID, $urlImage) {
         $query = "insert into eventimage values (" . $eventID . ", '" . $urlImage . "');";
         parent::setQuery($query);
-        parent::deleteQuery();
+        parent::insertQuery();
     }
 
     public function checkImageExist($eventID, $urlImage)

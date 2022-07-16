@@ -31,11 +31,11 @@
         $images_post = $_POST['event_images'];
         foreach($_FILES['files']['name'] as $key=>$val){ 
             // File upload path 
-            $fileName = basename($_FILES['files']['name'][$key]); 
+            $fileName = basename($_FILES['files']['name'][$key]);
             if (in_array($fileName, $images_post)) {
                 $check = $product_service->checkImageExist($productID, $fileName);
-                if($check['num'] === 0) {
-                    $targetFilePath = $targetDir . $fileName; 
+                if($check['num'] == 0) {
+                    $targetFilePath = $targetDir . $fileName;
                     move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath);
                     $product_service->updateImage($productID, $fileName);
                 }

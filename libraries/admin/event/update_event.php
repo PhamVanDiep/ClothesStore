@@ -22,7 +22,7 @@
             $fileName = basename($_FILES['files']['name'][$key]); 
             if (in_array($fileName, $images_post)) {
                 $check = $event_service->checkImageExist($eventID, $fileName);
-                if($check['num'] === 0) {
+                if($check['num'] == 0) {
                     $targetFilePath = $targetDir . $fileName; 
                     move_uploaded_file($_FILES["files"]["tmp_name"][$key], $targetFilePath);
                     $event_service->updateImage($eventID, $fileName);

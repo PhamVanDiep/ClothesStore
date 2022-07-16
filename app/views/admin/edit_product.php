@@ -176,7 +176,6 @@
             function removeImage(index) {
                 document.getElementById('event-image-wrap-old' + index).remove();
                 numCheck--;
-                console.log(numCheck);
             }
 
             function checkNumOfImages(event) {
