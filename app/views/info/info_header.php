@@ -1,3 +1,13 @@
+<?php
+require_once ROOT . DS . 'config' . DS . 'config.php';
+require_once ROOT . DS . 'app' . DS . 'models' . DS . 'User.php';
+require_once ROOT . DS . 'services' . DS . 'UserService.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'Router.php';
+$id = $_SESSION['login_id'];
+$user_service = new UserService();
+$get_user = $user_service->getUserByID($id);
+?>
+
 <div class="header col-12">
     <div class="main-header col-10">
         <div class="logo col-2">
@@ -25,9 +35,15 @@
             </div>
         </div>
         <div class="login-cart col-3">
-            <div class="login">
-                <img src= "public/res/img/header-image/person.png" alt=""></img>
-                <p>Customer_1</p>
+            <div class="wrap-user">
+                <div class="login">
+                    <img src= "public/res/img/header-image/person.png" alt=""></img>
+                    <p><?php echo $get_user['username']?></p>
+                </div>
+                <div id="dropdown-content">
+                    <a href="#">Thông tin cá nhân</a>
+                    <a href="/ClothesStore/logout">Đăng xuất</a>
+                </div>
             </div>
             <div class="cart">
                 <img src= "public/res/img/header-image/cart.png" alt="" onclick="linkToCart()"></img>

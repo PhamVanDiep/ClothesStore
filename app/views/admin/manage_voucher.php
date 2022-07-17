@@ -1,6 +1,21 @@
 <?php 
     require_once ROOT . DS . 'services' . DS . 'VoucherService.php';
     require_once ROOT . DS . 'services' . DS . 'EventService.php';
+    require_once ROOT . DS . 'services' . DS . 'UserService.php';
+
+    if(!isset($_SESSION['login_id'])){
+        header('Location: /ClothesStore/logout');
+        exit;
+    }
+
+    $id = $_SESSION['login_id'];
+    $user_service = new UserService();
+    $get_user = $user_service->getUserByID($id);
+
+    if($get_user['roleID'] != 2) {
+        header('Location: /ClothesStore/logout');
+        exit;
+    }
  ?>
 
 <!Doctype html>

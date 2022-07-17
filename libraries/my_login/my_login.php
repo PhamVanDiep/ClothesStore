@@ -24,7 +24,7 @@
                 if ($get_user['roleID'] == 1) {
                     header('Location: /ClothesStore/edit-info');
                 } else if ($get_user['roleID'] == 2) {
-                    header('Location: /ClothesStore/manage-voucher');
+                    header('Location: /ClothesStore/dashboard');
                 }
                 exit;
             } else {

@@ -65,7 +65,7 @@ if(isset($_GET['code'])):
         else{
             $user = new User(0, $name, $name, $email, NULL, $gender, NULL, NULL, 1, $urlAvatar, $googleId);
             $register_service = new RegisterService();
-            $checkRegister = $register_service->insert($user);
+            $checkRegister = $register_service->insertGoogle($user);
             $new_user = $user_service->getUserByEmail($email);
             $_SESSION['login_id'] = $new_user['userID'];
             if (is_null($checkRegister)) {

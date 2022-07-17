@@ -6,13 +6,20 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
 require_once ROOT . DS . 'services' . DS . 'Service.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'Router.php';
 
+if(!isset($_SESSION['login_id'])){
+    header('Location: /ClothesStore/logout');
+    exit;
+}
+
+
 $id = $_SESSION['login_id'];
 
 $user_service = new UserService();
 $user = $user_service->getUserByID($id);
 
 if (is_null($user)) {
-    header('/ClothesStore/logout');
+    header('Location: /ClothesStore/logout');
+    exit;
 }
 ?>
 <!DOCTYPE html>

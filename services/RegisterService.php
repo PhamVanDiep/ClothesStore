@@ -17,6 +17,23 @@ class RegisterService extends Service{
                     "'" . $user->getAddress() . "', " . 
                     "'" . $user->getRoleID() . "', " . 
                     "'" . $user->getUrlAvatar() . "', " . 
+                    "NULL);";
+        parent::setQuery($query);
+        return parent::insertQuery();
+    }
+
+    public function insertGoogle($user)
+    {
+        $query = "insert into user (`name`, `username`, `gmail`, `phoneNumber`, `gender`, `password`, `address`, `roleID`, `urlAvatar`, `googleId`)  values (" . 
+                    "'" . $user->getName() . "', " . 
+                    "'" . $user->getUsername() . "', " . 
+                    "'" . $user->getEmail() . "', " . 
+                    "NULL, " . 
+                    "NULL, " . 
+                    "'" . $user->getPassword() . "', " . 
+                    "NULL, " . 
+                    "'" . $user->getRoleID() . "', " . 
+                    "'" . $user->getUrlAvatar() . "', " . 
                     "'" . $user->getGoogleId() . "');";
         parent::setQuery($query);
         return parent::insertQuery();

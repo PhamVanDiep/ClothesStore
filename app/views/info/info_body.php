@@ -6,10 +6,16 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
 require_once ROOT . DS . 'services' . DS . 'Service.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'Router.php';
 
+if(!isset($_SESSION['login_id'])){
+    header('Location: /ClothesStore/logout');
+    exit;
+}
+
 $id = $_SESSION['login_id'];
 
 $user_service = new UserService();
 $user = $user_service->getUserByID($id);
+$checkGoogleUser = !is_null($user['googleId']);
 
 if (is_null($user)) {
     header('/ClothesStore/logout');
@@ -64,8 +70,10 @@ if (is_null($user)) {
                     <div class="wrap-edit-avt">
                         <img id="output" src="<?php echo $user['urlAvatar']?>" alt="">
                         <input type="file"  accept="image/*" name="image" id="selectedFile"  onchange="loadFile(event)" style="display: none;">
-                        <input type="button" value="Chọn ảnh" onclick="document.getElementById('selectedFile').click();" />
-    
+                        <input type="button" value="Chọn ảnh" onclick="document.getElementById('selectedFile').click();" <?php if($checkGoogleUser) echo 'disabled';?> />
+                        <?php
+                            if($checkGoogleUser) echo '<p style="text-align:center;color:red;">Bạn không thể thay đổi ảnh từ tài khoản Google.</p>';
+                        ?>
                         <script>
                         var loadFile = function(event) {
                             var image = document.getElementById('output');
@@ -75,10 +83,12 @@ if (is_null($user)) {
                     </div>
                 </div>
             </div>
+            <?php
+
+            ?>
             <div class="col-12" style="margin-top: 32px;">
                 <input type="submit" value="Cập nhật">
             </div>
         </form>
-        <a href="/ClothesStore/logout">Logout</a>
     </div>
 </div>

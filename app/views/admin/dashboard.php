@@ -1,5 +1,21 @@
 <?php 
     require_once ROOT . DS . 'services' . DS . 'TurnoverService.php';
+    require_once ROOT . DS . 'services' . DS . 'UserService.php';
+
+    if(!isset($_SESSION['login_id'])){
+        header('Location: /ClothesStore/logout');
+        exit;
+    }
+
+    $id = $_SESSION['login_id'];
+    $user_service = new UserService();
+    $get_user = $user_service->getUserByID($id);
+
+    if($get_user['roleID'] != 2) {
+        header('Location: /ClothesStore/logout');
+        exit;
+    }
+
     $turnover_service = new TurnoverService();
     $week_revenue = $turnover_service->getTurnOverOfWeek();
     $week_revenue = $week_revenue['total_turnover_of_week'];

@@ -1,6 +1,8 @@
 <?php
     require_once ROOT . DS . 'services' . DS . 'EventService.php';
     require_once ROOT . DS . 'services' . DS . 'VoucherService.php';
+    
+
     $event_service = new EventService();
     $events = $event_service->getAll();
 

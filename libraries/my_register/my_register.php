@@ -17,7 +17,7 @@
         $confirmedPassword = $_POST['confirmedPassword'];
         $gender = $_POST['gender'];
         $roleID = 1;
-        $urlAvatar = NULL;
+        $urlAvatar = 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg';
         $googleId = NULL;
      
 
