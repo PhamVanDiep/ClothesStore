@@ -16,6 +16,7 @@ for (let index = 0; index < titles.length; index++) {
         preIndex = index;
         element.style.color = '#401D83';
         element.style.borderBottom = '2px solid #401D83';
+        filterByStatus(index);
     }
 
     element.onmouseenter = function () {
@@ -52,4 +53,32 @@ const selectElement = document.getElementsByTagName('select');
 const inputSearch = document.getElementById('search-order-status');
 function getSelectChange() {
     inputSearch.setAttribute("placeholder", "Nhập " + selectElement[0].value.toLowerCase());
+}
+
+function filterByStatus(statusID) {
+    if (statusID == 0) {
+        for (let index = 1; index <= 5; index++) {
+            let elements = document.getElementsByClassName('order-detail-wrap-' + index);
+            for (let i = 0; i < elements.length; i++) {
+                const element = elements[i];
+                element.style.display = "block";
+            }
+        }
+    } else {
+        for (let index = 1; index <= 5; index++) {
+            let elements = document.getElementsByClassName('order-detail-wrap-' + index);
+            if (index == statusID) {
+                for (let i = 0; i < elements.length; i++) {
+                    const element = elements[i];
+                    element.style.display = "block";
+                }
+            }
+            else {
+                for (let i = 0; i < elements.length; i++) {
+                    const element = elements[i];
+                    element.style.display = "none";
+                }
+            }
+        }
+    }
 }

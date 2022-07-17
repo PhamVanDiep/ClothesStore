@@ -105,8 +105,10 @@ class Router {
             $productID = strrpos($this->_url, '=');
             $productID = substr($this->_url, $productID + 1);
             $this->_dispath = new EditProductController($productID);
+            $this->_isAdmin = true;
+            return;
         }
-        
+
         if(strcmp($this->_url,"/" . $this->_path_project . "/logout") == 0){
             $this->_dispath = new LogoutController();
             $this->_isAdmin = true;

@@ -21,13 +21,26 @@
     margin-right: 5px;
 }
 
-.ship-success{
-    color: #009F4D;
-}
-
 .confirm-waiting{
     color: orange;
 }
+
+.confirmed{
+    color: brown;
+}
+
+.shipping{
+    color: blue;
+}
+
+.shipped{
+    color: green;
+}
+
+.canceled{
+    color: red;
+}
+
 .order-detail-product{
     width: 90%;
     margin-left: 5%;

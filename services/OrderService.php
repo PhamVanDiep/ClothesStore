@@ -26,14 +26,23 @@ class OrderService extends Service {
 
     public function getAllOrdersOfUser($userID)
     {
-        $query = "SELECT o.orderID , o.totalCost, o.statusID, 
-                            od.number, od.size, od.type, 
-                            p.name as product_name 
-                    FROM `order` o, product p, order_detail od 
-                    WHERE userID = 1
-                        AND	o.userID = userID
-                        AND o.orderID = od.orderID
-                        AND od.productID = p.productID";
+        $query = "SELECT o.orderID , o.totalCost, o.statusID, s.name  
+                    FROM `order` o, status s 
+                    WHERE o.statusID = s.statusID;";
+        // them dk AND o.userID = $userID
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function getAllProductsOfOrder($orderID)
+    {
+        $query = "SELECT od.number, od.size, od.type, pi.urlimage,  
+                            p.productID, p.name, p.price 
+                    FROM product p, order_detail od, product_image pi  
+                    WHERE od.orderID = " . $orderID . 
+                       " AND od.productID = p.productID
+                        AND pi.urlimage = (SELECT urlimage FROM product_image WHERE productID = p.productID LIMIT 1);";
         parent::setQuery($query);
         $result = parent::executeQuery();
         return $result;

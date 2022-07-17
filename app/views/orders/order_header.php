@@ -5,7 +5,7 @@
         </div><div class="order-status">
             Chờ xác nhận
         </div><div class="order-status">
-            Chờ lấy hàng
+            Đã xác nhận
         </div><div class="order-status">
             Đang giao
         </div><div class="order-status">
@@ -26,7 +26,7 @@
             </div><div class="order-status">
                 Chờ xác nhận
             </div><div class="order-status">
-                Chờ lấy hàng
+                Đã xác nhận
             </div><div class="order-status">
                 Đang giao
             </div><div class="order-status">
