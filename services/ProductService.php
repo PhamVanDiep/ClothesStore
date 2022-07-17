@@ -201,4 +201,43 @@ class ProductService extends Service{
         $result = parent::executeQuery();
         return $result;
     }
+
+    public function checkCanDelete($productID)
+    {
+        $query = "SELECT COUNT(*) AS num FROM order_detail WHERE productID = " . $productID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        $result = mysqli_fetch_assoc($result);
+        if ($result['num'] != 0) {
+            return false;
+        } else {
+            $query = "SELECT COUNT(*) AS num FROM cart_product WHERE productID = " . $productID;
+            parent::setQuery($query);
+            $result = parent::executeQuery();
+            $result = mysqli_fetch_assoc($result);
+            if ($result['num'] != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function deleteProduct($productID)
+    {
+        $query = "DELETE FROM size WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "DELETE FROM `type` WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "DELETE FROM product_image WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "DELETE FROM product WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+    }
 }

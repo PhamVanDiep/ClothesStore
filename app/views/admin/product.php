@@ -93,8 +93,13 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                    row.style.display = "none";
+                    // alert(this.responseText);
+                    if (this.responseText == "success") {
+                        alert("Xóa sản phẩm thành công!");
+                        row.style.display = "none";
+                    } else {
+                        alert("Không thể xóa sản phẩm này!");
+                    }
                 }
             };
             xhttp.open("GET", "libraries/admin/product/delete_product.php?productID=" + productID, false);

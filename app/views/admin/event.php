@@ -67,8 +67,12 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                    row.style.display = "none";
+                    if (this.responseText == "success") {
+                        alert("Xóa sự kiện thành công!");
+                        row.style.display = "none";
+                    } else {
+                        alert("Không thể xóa sự kiện này!");
+                    }
                 }
             };
             xhttp.open("GET", "libraries/admin/event/delete_event.php?eventID=" + eventID, false);

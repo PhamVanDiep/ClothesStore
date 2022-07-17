@@ -114,4 +114,16 @@ class EventService extends Service{
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
     }
+
+    public function checkCanDelete($eventID)
+    {
+        $query = "SELECT COUNT(*) AS num FROM voucher WHERE eventID = " . $eventID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        $result = mysqli_fetch_assoc($result);
+        if ($result['num'] != 0) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -6,15 +6,17 @@
     if (isset($_GET)) {
         $eventID = $_GET['eventID'];
         $event_service = new EventService();
+        $canDelete = $event_service->checkCanDelete($eventID);
 
-        $images = $event_service->getAllImages($eventID);
-
-        foreach ($images as $image) {
-            if(file_exists($targetDir . $image['urlImage']))
-                unlink($targetDir . $image['urlImage']);
+        if ($canDelete == false) {
+            echo 'fail';
+        } else {
+            $images = $event_service->getAllImages($eventID);
+            foreach ($images as $image) {
+                if(file_exists($targetDir . $image['urlImage']))
+                    unlink($targetDir . $image['urlImage']);
+            }
+            $event_service->delete($eventID);
+            echo 'success';
         }
-
-        $event_service->delete($eventID);
-
-        echo "Xóa sự kiện thành công!";
     }
