@@ -1,3 +1,7 @@
+<?php
+require_once 'C:/xampp/htdocs/web/ClothesStore/app/services/ProductService.php';
+
+?>
 <!Doctype html>
 <html>
 
@@ -14,7 +18,7 @@
 <body>
     <?php
     require '../components/header.php';
-    ?>  
+    ?>
 
     <div class="body col-12">
         <div class="content col-10">
@@ -40,107 +44,48 @@
 
             <!-- product suggest-->
             <div class="product-suggest col-12">
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="../../../public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 10</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="../../../public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                $service = new ProductService();
+                $listProduct = $service->viewProductHomepage();
+                
+                $cnt = 0;
+                foreach ($listProduct as $product) {
+                    $cnt++;
+                ?>
+                    <div class="product-suggest-item col-2">
+                        <div class="item-image col-12">
+                            <?php
+                            //echo  $images;
+                            $service = new ProductService();
+                            $images = $service->getImageHomepage($product->getProductID());
+                            $urlimage = "public/res/img/products/" . $images . "";
+                            echo '
+                            <img src="../../../public/res/img/products/' . $images . '" >'
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="../../../public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
+                            // 
+                            ?>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="../../../public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
                         </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
+                        <div class="item-name">
+                            <p> <?php echo $product->getName() ?></p>
+                        </div>
+                        <div class="item-description">
+                            <div class="item-cost">
+                                <p><?php echo $product->getPrice() . " VNĐ" ?></p>
+                            </div>
+                            <div class="item-selled">
+                                <p>Đã bán 10</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php
+                    if ($cnt > 15) break;
+                }
+                ?>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="../../../public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="../../../public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!-- pagination  -->
                 <div class="container">

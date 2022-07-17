@@ -1,9 +1,10 @@
 <?php
-require_once 'C:\xampp\htdocs\web\ClothesStore\config\config.php';
+require_once 'C:/xampp/htdocs/web/ClothesStore/config/config.php';
 require_once 'Service.php';
-require_once "C:\xampp\htdocs\web\ClothesStore\app\models\Cart.php";
-require_once 'C:\xampp\htdocs\web\ClothesStore\app\models\Product.php';
-require_once 'C:\xampp\htdocs\web\ClothesStore\app\models\User.php';
+require_once 'ProductService.php';
+require_once "C:/xampp/htdocs/web/ClothesStore/app/models/Cart.php";
+require_once 'C:/xampp/htdocs/web/ClothesStore/app/models/Product.php';
+require_once 'C:/xampp/htdocs/web/ClothesStore/app/models/User.php';
 
 
 class UserService extends Service{
@@ -84,9 +85,8 @@ class UserService extends Service{
 
         while($row = mysqli_fetch_array($result)){
             $product_id = $row["productID"];
-
             $service = new ProductService();
-            $product = $service->getOnce($product_id);
+            $product = $service->getProduct($product_id);
             array_push($listCartProducts,$product);
 
         }

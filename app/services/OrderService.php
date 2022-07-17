@@ -29,7 +29,7 @@ class OrderService extends Service{
     // lay doanh thu theo thang
     // param : Month
     public function getTotalCostByMonth($month){
-        $query = "SELECT sum(o.totalCost) from `order` o 
+        $query = "SELECT sum(o.totalCost) as tong from `order` o 
         where MONTH(o.timeCreate) = '$month'";
         parent::setQuery($query);
         $result = parent::executeQuery();

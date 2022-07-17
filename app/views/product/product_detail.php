@@ -1,3 +1,6 @@
+<?php
+require_once 'C:/xampp/htdocs/web/ClothesStore/app/services/ProductService.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +26,10 @@
         <div class="card-wrapper col-10">
             <div class="content-card col-10">
                 <div class="box-card col-12">
+                    <?php
+                        $service = new ProductService();
+                        $product = $service->getProduct(6);
+                    ?>
                     <div class="card">
                         <!-- card left -->
                         <div class="product-imgs">
@@ -59,7 +66,7 @@
                         </div>
                         <!-- card right -->
                         <div class="product-content">
-                            <h2 class="product-title">Áo phông tay lỡ Hàn Quốc, áo phông màu trắng form rộng unisex, áo thun 1k, áo phông 1k TEE SHOP 35-70kg|| Mã ATU1s</h2>
+                            <h2 class="product-title"><?php echo $product->getName() ?></h2>
                             <div class="product-rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -70,14 +77,14 @@
                             </div>
 
                             <div class="product-price">
-                                <p class="last-price">Old Price: <span>257.000Đ</span></p>
-                                <p class="new-price">New Price: <span>200.000Đ (5%)</span></p>
+                                <p class="last-price">Old Price: <span><?php echo $product->getOldPrice() . " VNĐ" ?></span></p>
+                                <p class="new-price">New Price: <span> <?php echo $product->getPrice() . " .VNĐ"?></span></p>
                             </div>
 
                             <div class="product-detail">
                                 <h2>Thông tin sản phẩm: </h2>
-                                <p>Sản phẩm với mẫu mã đa dạng, phù hợp với mọi lứa tuổi</p>
-                                <p>Với những thông tin mới hoàn toàn phù hợp, đep mắt</p>
+                                <p><?php echo $product->getDescription() ?></p>
+                               
                                 <ul>
                                     <li> Màu sắc: <span class="custom-select" style="width:200px;">
                                             <select>
@@ -98,7 +105,7 @@
                                             </select>
                                         </span></li>
                                     <li>Trạng thái: <span>Còn hàng</span></li>
-                                    <li>Loại: <span>Giày</span></li>
+                                    <li>Loại: <span>Quần áo</span></li>
 
 
                                 </ul>
