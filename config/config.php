@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     if(!defined("ROOT")) define("ROOT", dirname(dirname(__FILE__)));
     define("URL",' http://localhost/web/ClothesStore/');
     define("DB_HOST", 'localhost');

@@ -6,25 +6,9 @@
     margin-top: 60px;
 }
 
-#category-wrap{
-    height: 40px;
-    display: table-cell;
-}
-
 #order-input-wrap{
     height: 40px;
     display: table-cell;
-}
-
-#category-wrap select{
-    width: 100%;
-    border: 1px solid #b3a9a9;
-    border-radius: 5px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 4px 0px;
-    background-color: #FFFFFF;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    text-align: center;
 }
 
 #order-input-wrap input{
@@ -44,18 +28,6 @@
 }
 
 @media only screen and (max-width: 768px){
-    #category-wrap{
-        width: 30%;
-    }
-
-    #order-input-wrap{
-        width: 60%;
-    }
-
-    #category-wrap select{
-        height: 30px;
-        margin-top: 5px;
-    }
     #order-input-wrap input{
         height: 30px;
         margin-top: 5px;
@@ -75,18 +47,7 @@
     #search-wrap{
         margin-left: 8.33%;
     }
-    #category-wrap{
-        width: 20%;
-    }
 
-    #order-input-wrap{
-        width: 80%;
-    }
-
-    #category-wrap select{
-        height: 35px;
-        font-size: medium;
-    }
     #order-input-wrap input{
         height: 35px;
         font-size: medium;
@@ -107,18 +68,6 @@
         margin-left: 8.33%;
     }
 
-    #category-wrap{
-        width: 20%;
-    }
-
-    #order-input-wrap{
-        width: 80%;
-    }
-
-    #category-wrap select{
-        height: 35px;
-        font-size: medium;
-    }
     #order-input-wrap input{
         font-size: medium;
         height: 35px;

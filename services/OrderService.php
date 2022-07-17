@@ -23,4 +23,19 @@ class OrderService extends Service {
         $result = parent::executeQuery();
         return $result;
     }
+
+    public function getAllOrdersOfUser($userID)
+    {
+        $query = "SELECT o.orderID , o.totalCost, o.statusID, 
+                            od.number, od.size, od.type, 
+                            p.name as product_name 
+                    FROM `order` o, product p, order_detail od 
+                    WHERE userID = 1
+                        AND	o.userID = userID
+                        AND o.orderID = od.orderID
+                        AND od.productID = p.productID";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
 }

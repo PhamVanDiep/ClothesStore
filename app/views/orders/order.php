@@ -17,61 +17,24 @@
         ?>
         <div class="body col-12" id="body">
             <?php 
-                require_once ROOT . DS . 'app' . DS . 'views' . DS . 'orders' . DS . 'order_header.php';
+                require_once 'order_header.php';
             ?>
         </div>
-        <?php 
-            require 'order_search.php';
+        <div id="search-wrap" class="col-10">
+            <div id="order-input-wrap" class="col-12">
+                <span id="search-icon"><img src="public/res/img/orders/search.png" alt="" srcset=""></span>
+                <input id="search-order-status" type="text" placeholder="Nhập tên sản phẩm" />
+            </div>
+        </div>
+        <?php
+            require_once ROOT . DS . 'services' . DS . 'OrderService.php';
+            $order_service = new OrderService();
+            $all_orders = $order_service->getAllOrdersOfUser(1); // must reconfig
+            // print_r($all_orders);
+            foreach ($all_orders as $order) {
+                
+            }
         ?>
-        <div class="order-detail-wrap col-10">
-            <div class="order-detail-status">
-                <img src="public/res/img/orders/shipped.png" alt="" srcset="">
-                <b class="ship-success">Giao hàng thành công</b>
-            </div><div class="order-detail-product">
-                <div class="product-image">
-                    <img src="public/res/img/products/product1.jpg" alt="" srcset="">
-                </div><div class="product-info">
-                    <div class="info-detail product-title">Áo phông tay lỡ Hàn Quốc, áo phông màu trắng form...</div>
-                    <div class="info-detail product-category">Phân loại hàng : M(30-50kg)</div>
-                    <div class="info-detail product-quantity">x1</div>
-                    
-                </div><div class="total-price">
-                    <span>100.000đ</span>
-                </div>
-            </div><div class="order-detail-bottom">
-                <div class="total-pay">
-                    <b>Tổng số tiền: </b>
-                    <span><b>100.000đ</b></span>
-                </div><div class="order-button order-success">
-                    <button class="success-btn">Mua lại</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="order-detail-wrap col-10">
-            <div class="order-detail-status">
-                <img src="public/res/img/orders/shipped.png" alt="" srcset="">
-                <b class="confirm-waiting">Chờ xác nhận</b>
-            </div><div class="order-detail-product">
-                <div class="product-image">
-                    <img src="public/res/img/products/product1.jpg" alt="" srcset="">
-                </div><div class="product-info">
-                    <div class="info-detail product-title">Áo phông tay lỡ Hàn Quốc, áo phông màu trắng form...</div>
-                    <div class="info-detail product-category">Phân loại hàng : M(30-50kg)</div>
-                    <div class="info-detail product-quantity">x2</div>
-                    
-                </div><div class="total-price">
-                    <span>200.000đ</span>
-                </div>
-            </div><div class="order-detail-bottom">
-                <div class="total-pay">
-                    <b>Tổng số tiền: </b>
-                    <span><b>180.000đ</b></span>
-                </div><div class="order-button order-cancel">
-                    <button class="cancel-btn">Hủy đơn hàng</button>
-                </div>
-            </div>
-        </div>
-        <script src="public/js/order.js"></script>
+        <script src="public/js/order.js"></script> 
     </body>
 </html>
