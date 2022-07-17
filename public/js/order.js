@@ -17,6 +17,7 @@ for (let index = 0; index < titles.length; index++) {
         element.style.color = '#401D83';
         element.style.borderBottom = '2px solid #401D83';
         filterByStatus(index);
+        document.getElementById('search-order-status').value = "";
     }
 
     element.onmouseenter = function () {
@@ -35,28 +36,10 @@ for (let index = 0; index < titles.length; index++) {
     }
 }
 
-// clicked on menu bar - responsive
-let navOpened = false;
-function toggleMobileMenu(menu) { 
-    menu.classList.toggle('open');
-    if (!navOpened) {
-        navOpened = true;
-        document.getElementById('body').style.height = "345px";
-    }else{
-        navOpened = false;
-        document.getElementById('body').style.height = "auto";
-    }
-}
-
-// change placeholder when choose category
-const selectElement = document.getElementsByTagName('select');
-const inputSearch = document.getElementById('search-order-status');
-function getSelectChange() {
-    inputSearch.setAttribute("placeholder", "Nhập " + selectElement[0].value.toLowerCase());
-}
-
 function filterByStatus(statusID) {
     if (statusID == 0) {
+        document.getElementById('order-input-wrap').style.display = "block";
+        document.getElementById('search-wrap').style.height = "40px";
         for (let index = 1; index <= 5; index++) {
             let elements = document.getElementsByClassName('order-detail-wrap-' + index);
             for (let i = 0; i < elements.length; i++) {
@@ -65,6 +48,8 @@ function filterByStatus(statusID) {
             }
         }
     } else {
+        document.getElementById('order-input-wrap').style.display = "none";
+        document.getElementById('search-wrap').style.height = "0px";
         for (let index = 1; index <= 5; index++) {
             let elements = document.getElementsByClassName('order-detail-wrap-' + index);
             if (index == statusID) {
@@ -79,6 +64,20 @@ function filterByStatus(statusID) {
                     element.style.display = "none";
                 }
             }
+        }
+    }
+}
+
+function filterByName(input) {
+    inputValue = input.value.toUpperCase();
+    let elements = document.getElementsByClassName("order-detail-wrap");
+
+    for (let index = 0; index < elements.length; index++) {
+        const element = elements[index];
+        if (!element.innerHTML.toUpperCase().includes(inputValue)) {
+            element.style.display = "none";
+        } else {
+            element.style.display = "block";
         }
     }
 }

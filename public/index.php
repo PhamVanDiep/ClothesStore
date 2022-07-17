@@ -1,5 +1,5 @@
 <?php
-$path_project = 'ClothesStore'; // may be change
+$path_project = 'web/ClothesStore'; // may be change
 session_start();
 session_regenerate_id(true);
 

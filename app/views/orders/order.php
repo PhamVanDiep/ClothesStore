@@ -16,14 +16,28 @@
             require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
         ?>
         <div class="body col-12" id="body">
-            <?php 
-                require_once 'order_header.php';
-            ?>
+            <div class="order-header-wrap col-12">
+                <div class="main-order-header-wrap col-10">
+                    <div class="order-status">
+                        Tất cả
+                    </div><div class="order-status">
+                        Chờ xác nhận
+                    </div><div class="order-status">
+                        Đã xác nhận
+                    </div><div class="order-status">
+                        Đang giao
+                    </div><div class="order-status">
+                        Đã giao
+                    </div><div class="order-status">
+                        Đã hủy
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="search-wrap" class="col-10">
             <div id="order-input-wrap" class="col-12">
                 <span id="search-icon"><img src="public/res/img/orders/search.png" alt="" srcset=""></span>
-                <input id="search-order-status" type="text" placeholder="Nhập tên sản phẩm" />
+                <input id="search-order-status" type="text" placeholder="Nhập tên sản phẩm" onkeyup="filterByName(this)"/>
             </div>
         </div>
         <?php
@@ -36,8 +50,17 @@
                 $totalCost = $order['totalCost'];
                 $statusID = $order['statusID'];
                 $statusName = $order['name'];
+                $allProductsOfOrder = $order_service->getAllProductsOfOrder($orderID);
+                
+                $num = 0;
+                foreach ($allProductsOfOrder as $product) {
+                    $num++;
+                }
+                if ($num == 0) {
+                    continue;
+                }
 
-                echo '<div class="order-detail-wrap col-10 order-detail-wrap-' . $statusID . '">
+                echo '<div class="order-detail-wrap col-10 order-detail-wrap-' . $statusID . '" style="display:block;">
                         <div class="order-detail-status">
                             <img src="public/res/img/orders/shipped.png" alt="" srcset="">
                             <b class="';
@@ -54,7 +77,7 @@
                 }
                 echo '">' . $statusName . '</b>
                         </div>';
-                $allProductsOfOrder = $order_service->getAllProductsOfOrder($orderID);
+
                 foreach ($allProductsOfOrder as $product) {
                     echo '<div class="order-detail-product">
                             <div class="product-image">
