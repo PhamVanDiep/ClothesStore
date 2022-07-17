@@ -1,4 +1,16 @@
 <?php global $path_project; ?>
+<?php
+    require_once ROOT . DS . 'config' . DS . 'config.php';
+    require_once ROOT . DS . 'app' . DS . 'models' . DS . 'User.php';
+    require_once ROOT . DS . 'services' . DS . 'UserService.php';
+    require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'Router.php';
+
+    $id = $_SESSION['login_id'];
+    $user_service = new UserService();
+    $get_user = $user_service->getUserByID($id);
+
+?>
+
 <div class="col-12" id="header">
     <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
         <div class="nav-wrap">
@@ -17,10 +29,10 @@
         <div id="main-account">
             <div id="header-content-wrap">
                 <div id="header-img-wrap">
-                    <img src="public/res/img/admin/avatar.jpeg" >
+                    <img src="<?php echo $get_user['urlAvatar']; ?>" >
                 </div><div id="header-info-wrap">
                     <div id="admin-name">
-                        <b>Nhóm 26</b>
+                        <b><?php echo $get_user['name']; ?></b>
                     </div><div id="admin-title">
                         Manager
                     </div>
@@ -28,7 +40,7 @@
             </div>
             <div id="dropdown-content">
                 <a href="#">Thông tin cá nhân</a>
-                <a href=<?php echo "/" . $path_project; ?>>Đăng xuất</a>
+                <a href="/ClothesStore/logout">Đăng xuất</a>
             </div>
         </div>
     </div>

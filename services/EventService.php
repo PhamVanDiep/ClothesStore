@@ -12,21 +12,12 @@ class EventService extends Service{
         return $result;
     }
 
-    public function getOnce($eventID) {
+    public function getOnce($eventID)
+    {
         $query = "select * from event where eventID = " . $eventID . ";";
         parent::setQuery($query);
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
-    }
-
-    public function getLastID() {
-        $query = "select eventID 
-                    from event 
-                    order by eventID desc 
-                    limit 1" . ";";
-        parent::setQuery($query);
-        $result = parent::executeQuery();
-        return $result;
     }
 
     public function update($event){
@@ -113,5 +104,15 @@ class EventService extends Service{
         parent::setQuery($query);
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
+    }
+
+    public function delete($eventID) {
+        $query = "delete from eventimage where eventID = " . $eventID . ";";
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "delete from event where eventID = " . $eventID . ";";
+        parent::setQuery($query);
+        parent::deleteQuery();
     }
 }
