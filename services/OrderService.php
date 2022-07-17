@@ -47,4 +47,40 @@ class OrderService extends Service {
         $result = parent::executeQuery();
         return $result;
     }
+
+    public function cancelOrder($orderID)
+    {
+        $query = "UPDATE `order` SET statusID = 5 WHERE orderID = " . $orderID;
+        parent::setQuery($query);
+        parent::updateQuery();
+    }
+
+    public function reBuy($orderID, $userID)
+    {
+        $query = "INSERT INTO cart(userID) values(" . $userID . ");";
+        parent::setQuery($query);
+        parent::insertQuery();
+        
+        $query = "SELECT cartID FROM cart ORDER BY cartID DESC LIMIT 1";
+        parent::setQuery($query);
+        $result = parent::executeQuery($query);
+        $result = mysqli_fetch_assoc($result);
+        $cartID = $result['cartID'];
+
+        $query = "SELECT * FROM order_detail WHERE orderID = " . $orderID;
+        parent::setQuery($query);
+        $order_details = parent::executeQuery();
+
+        foreach ($order_details as $order_detail) {
+            $productID = $order_detail['productID'];
+            $number = $order_detail['number'];
+            $size = $order_detail['size'];
+            $type = $order_detail['type'];
+
+            $query = "INSERT INTO cart_product values (" 
+                        . $cartID . ", " . $productID . ", " . $number . ", '" . $size  . "', '" . $type . "');";
+            parent::setQuery($query);
+            parent::insertQuery($query);
+        }
+    }
 }

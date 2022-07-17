@@ -81,3 +81,49 @@ function filterByName(input) {
         }
     }
 }
+
+function cancelOrder(orderID, button) {
+    let option = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
+    if(!option) return;
+    else {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText.toLowerCase() == "success") {
+                    alert("Hủy đơn hàng thành công!");
+                    button.style.display = "none";
+                    let statusText = document.getElementById("status-text-" + orderID);
+                    statusText.className = "canceled";
+                    statusText.innerHTML = "Đã hủy";
+                    document.getElementById("order-success-" + orderID).style.display = "";
+                    document.getElementById("order-cancel-" + orderID).style.display = "none";
+                } else {
+                    console.log(this.responseText);
+                    alert("Hủy đơn hàng không thành công!");
+                }
+            }
+        };
+        xhttp.open("GET", "libraries/customer/order/order_process.php?cancel=" + orderID, false);
+        xhttp.send();
+    }
+}
+
+function reBuy(orderID, userID) {
+    let option = confirm('Bạn có chắc chắn muốn mua lại những sản phẩm này không?');
+    if(!option) return;
+    else {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText.toLowerCase() == "success") {
+                    alert("Sản phẩm đã được thêm vào giỏ hàng!");
+                } else {
+                    console.log(this.responseText);
+                    alert("Không thể mua lại sản phẩm này!");
+                }
+            }
+        };
+        xhttp.open("GET", "libraries/customer/order/order_process.php?rebuy=" + orderID + "&userID=" + userID, false);
+        xhttp.send();
+    }
+}

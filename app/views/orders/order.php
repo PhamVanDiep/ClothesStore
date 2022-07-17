@@ -43,7 +43,8 @@
         <?php
             require_once ROOT . DS . 'services' . DS . 'OrderService.php';
             $order_service = new OrderService();
-            $all_orders = $order_service->getAllOrdersOfUser(1); // must reconfig
+            $userID = 1;
+            $all_orders = $order_service->getAllOrdersOfUser($userID); // must reconfig
             // print_r($all_orders);
             foreach ($all_orders as $order) {
                 $orderID = $order['orderID'];
@@ -63,7 +64,7 @@
                 echo '<div class="order-detail-wrap col-10 order-detail-wrap-' . $statusID . '" style="display:block;">
                         <div class="order-detail-status">
                             <img src="public/res/img/orders/shipped.png" alt="" srcset="">
-                            <b class="';
+                            <b id="status-text-' . $orderID . '" class="';
                 if ($statusID == 1) {
                     echo 'confirm-waiting';
                 } elseif ($statusID == 2) {
@@ -99,11 +100,14 @@
                             </div>';
                 if ($statusID == 4 || $statusID == 5) {
                     echo '<div class="order-button order-success">
-                            <button class="success-btn">Mua lại</button>
+                            <button class="success-btn" onclick="reBuy('. $orderID . ',' . $userID . ')">Mua lại</button>
                         </div>';
                 } else if ($statusID == 1 || $statusID == 2) {
-                    echo '<div class="order-button order-cancel">
-                            <button class="cancel-btn">Hủy đơn hàng</button>
+                    echo '<div class="order-button order-cancel" id="order-cancel-' . $orderID .'">
+                            <button class="cancel-btn" onclick="cancelOrder(' . $orderID . ',' . $userID . ')">Hủy đơn hàng</button>
+                        </div>
+                        <div class="order-button order-success" id="order-success-' . $orderID . '" style="display:none;">
+                            <button class="success-btn" onclick="reBuy('. $orderID . ',' . $userID . ')">Mua lại</button>
                         </div>';
                 }
                             
