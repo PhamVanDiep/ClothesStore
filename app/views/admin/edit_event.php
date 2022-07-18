@@ -85,7 +85,7 @@
                             $num = 0;
                             $targetDir = "public/res/img/events/";
                             foreach ($images as $image) {
-                                echo "<div id='event-image-wrap" . $num . "' class='event-image-wrap'>"
+                                echo "<div id='event-image-wrap-old" . $num . "' class='event-image-wrap'>"
                                     . "<img class='event-img' id = 'output". $num . "' src='" . $targetDir . $image['urlImage'] . "' name='event_images[]' />" 
                                     . "<input type='hidden' name='event_images[]' value='" . $image['urlImage'] . "' />"
                                     . "<span><img src='public/res/img/admin/remove.png' id='remove" . $num . "' onclick='removeImage(". $num .")' /></span>"
@@ -148,9 +148,8 @@
             };
 
             function removeImage(index) {
-                document.getElementById('event-image-wrap' + index).remove();
+                document.getElementById('event-image-wrap-old' + index).remove();
                 numCheck--;
-                console.log(numCheck);
             }
 
             function checkNumOfImages(event) {

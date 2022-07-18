@@ -25,6 +25,8 @@
         </div><div class="leftbar-small-title-wrap">
             <span class="left-title">Đơn hàng mới</span>
         </div><div class="leftbar-small-title-wrap">
+            <span class="left-title">Đơn hàng đã xác nhận</span>
+        </div><div class="leftbar-small-title-wrap">
             <span class="left-title">Đơn hàng đang giao</span>
         </div><div class="leftbar-small-title-wrap">
             <span class="left-title">Đơn hàng đã giao</span>

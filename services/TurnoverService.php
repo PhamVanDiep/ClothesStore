@@ -30,7 +30,7 @@ class TurnoverService extends Service {
 
     public function getTurnOverEachDayOfWeek()
     {
-        $query = "SELECT CONCAT(DAY(timeCreate), '-', MONTH(timeCreate)) as day, SUM(totalCost) as turnover 
+        $query = "SELECT DATE_FORMAT(timeCreate,'%d-%m') as day, SUM(totalCost) as turnover 
             FROM `order`
             WHERE `statusID` != 1 and `statusID` != 5
             and timeCreate >= CURRENT_DATE - 6
@@ -53,5 +53,16 @@ class TurnoverService extends Service {
         parent::setQuery($query);
         $data = parent::executeQuery();
         return $data;
+    }
+
+    public function getTurnOverOfDay()
+    {
+        $query = "select sum(o.totalCost) as res from `order` o, status st"
+                    . " where st.statusID = o.statusID"
+                    . " and st.name NOT IN ('Chờ xác nhận', 'Đã huỷ')"
+                    . " and o.timeCreate = CURRENT_DATE()";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
     }
 }

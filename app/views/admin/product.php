@@ -1,5 +1,5 @@
 <?php 
-    require_once ROOT . DS . 'services' . DS . 'EventService.php';
+    require_once ROOT . DS . 'services' . DS . 'ProductService.php';
     global $path_project;
     require_once ROOT . DS . 'services' . DS . 'UserService.php';
 
@@ -57,18 +57,40 @@
                     </thead>
                     <tbody>
                         <?php 
-                            $eventService = new EventService();
-                            $events = $eventService->getAll();
-                            foreach($events as $event) {
-                                $eventID = $event["eventID"];
-                                echo "<tr id='row_" .  $eventID . "' >" 
-                                        . "<td>#" . $eventID . "</td>"
-                                        . "<td>" . $event["name"] . "</td>"
-                                        . "<td>" . $event["timeStart"] . "</td>"
-                                        . "<td>" . $event["timeEnd"] . "</td>"
-                                        . "<td></td>"
-                                        . "<td><a href='/$path_project/edit-event?eventID=$eventID'><img src='public/res/img/admin/edit.png' class='edit-button crud'></a></td>"
-                                        . "<td><img src='public/res/img/admin/delete.png' class='delete-button crud' onclick=deleteEvent(" . $eventID .") ></td>"
+                            $product_service = new ProductService();
+                            $products = $product_service->getAll();
+                            
+                            foreach($products as $product) {
+                                $productID = $product["productID"];
+
+                                $category = $product_service->getCategoryByID($product['categoryID']);
+                                $category = $category['name'];
+
+                                $sizeRoot = $product_service->getSizeByID($productID);
+                                $size_string = "";
+                                foreach($sizeRoot as $size) {
+                                    $size_string = $size['name'] . ", " . $size_string; 
+                                }
+                                $size_string = substr($size_string, 0, -2);
+
+                                $typeRoot = $product_service->getTypeByID($productID);
+                                $type_string = "";
+                                foreach($typeRoot as $type) {
+                                    $type_string = $type['name'] . ", " . $type_string;
+                                }
+                                $type_string = substr($type_string, 0, -2);
+
+                                echo "<tr id='row_" .  $productID . "' >" 
+                                        . "<td>#" . $productID . "</td>"
+                                        . "<td>" . $product["name"] . "</td>"
+                                        . "<td>" . $category . "</td>"
+                                        . "<td>" . $product["description"] . "</td>"
+                                        . "<td>" . $size_string . "</td>"
+                                        . "<td>" . $type_string . "</td>"
+                                        . "<td>" . number_format($product["oldPrice"]) . 'đ' . "</td>"
+                                        . "<td>" . number_format($product["price"]) . 'đ' . "</td>"
+                                        . "<td><a href='/$path_project/edit-product?productID=$productID'><img src='public/res/img/admin/edit.png' class='edit-button crud'></a></td>"
+                                        . "<td><img src='public/res/img/admin/delete.png' class='delete-button crud' onclick=deleteEvent(" . $productID .") ></td>"
                                     . "</tr>";
                             }
                         ?>
@@ -78,19 +100,24 @@
         </div>
     </body>
     <script>
-        function deleteEvent(eventID) {
-            let option = confirm('Bạn có chắc chắn muốn xoá sự kiện này không?');
+        function deleteEvent(productID) {
+            let option = confirm('Bạn có chắc chắn muốn xoá sản phẩm này không?');
             if(!option) return;
             let table = document.getElementsByTagName('table');
-            let row = document.getElementById('row_' + eventID);
+            let row = document.getElementById('row_' + productID);
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                    row.style.display = "none";
+                    // alert(this.responseText);
+                    if (this.responseText == "success") {
+                        alert("Xóa sản phẩm thành công!");
+                        row.style.display = "none";
+                    } else {
+                        alert("Không thể xóa sản phẩm này!");
+                    }
                 }
             };
-            xhttp.open("GET", "libraries/admin/event/delete_event.php?eventID=" + eventID, false);
+            xhttp.open("GET", "libraries/admin/product/delete_product.php?productID=" + productID, false);
             xhttp.send();
         }
     </script>

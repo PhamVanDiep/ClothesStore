@@ -5,6 +5,14 @@ require_once ROOT . DS . 'app' . DS . 'models' . DS . 'User.php';
 
 class UserService extends Service{
 
+    public function getNumberOfCustomers()
+    {
+        $query = "select count(*) as res from user where roleID = 1";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
+    }
+
     public function getUserByID($id)
     {
         $query = "select * from user where userID = '" . $id . "';";
