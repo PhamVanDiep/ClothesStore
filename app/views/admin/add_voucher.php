@@ -1,7 +1,7 @@
 <?php
 require_once ROOT . DS . 'services' . DS . 'UserService.php';
 if(!isset($_SESSION['login_id'])){
-    header('Location: /ClothesStore/logout');
+    header('Location: /web/ClothesStore/logout');
     exit;
 }
 
@@ -10,7 +10,7 @@ $user_service = new UserService();
 $get_user = $user_service->getUserByID($id);
 
 if($get_user['roleID'] != 2) {
-    header('Location: /ClothesStore/logout');
+    header('Location: /web/ClothesStore/logout');
     exit;
 }
 ?>

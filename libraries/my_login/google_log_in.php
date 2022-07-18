@@ -11,7 +11,7 @@ require_once ROOT . DS . 'api' . DS . 'google-api' . DS . 'vendor' . DS . 'autol
 
 
 if(isset($_SESSION['login_id'])){
-    header('Location: /ClothesStore/edit-info');
+    header('Location: /web/ClothesStore/edit-info');
     exit;
 }
 
@@ -24,7 +24,7 @@ $client->setClientId('733975949854-uunu6ud6s9eaa2eh3tiibmufkijgkpj5.apps.googleu
 // Enter your Client Secrect
 $client->setClientSecret('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');
 // Enter the Redirect URL
-$client->setRedirectUri('http://localhost/ClothesStore/login');
+$client->setRedirectUri('http://localhost/web/ClothesStore/login');
 
 // Adding those scopes which we want to get (email & profile Information)
 $client->addScope("email");
@@ -58,7 +58,7 @@ if(isset($_GET['code'])):
         $get_user = $user_service->getUserByEmail($email);
         if(!is_null($get_user)){
             $_SESSION['login_id'] = $get_user['userID']; 
-            header('Location: /ClothesStore/edit-info');
+            header('Location: /web/ClothesStore/edit-info');
             exit;
 
         }
@@ -69,16 +69,16 @@ if(isset($_GET['code'])):
             $new_user = $user_service->getUserByEmail($email);
             $_SESSION['login_id'] = $new_user['userID'];
             if (is_null($checkRegister)) {
-                header('Location: /ClothesStore/edit-info');
+                header('Location: /web/ClothesStore/edit-info');
             } else {
-                header('Location: /ClothesStore/login');
+                header('Location: /web/ClothesStore/login');
             }
 
         }
 
     }
     else{
-        header('Location: /ClothesStore/login');
+        header('Location: /web/ClothesStore/login');
         exit;
     }
     

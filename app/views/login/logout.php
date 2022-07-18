@@ -18,6 +18,6 @@ if (ini_get("session.use_cookies")) {
 
 // Finally, destroy the session.
 session_destroy();
-header('Location: /ClothesStore/login');
+header('Location: /web/ClothesStore/login');
 exit;
 ?>

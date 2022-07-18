@@ -14,21 +14,21 @@
         $get_user = $user_service->getUserByEmail($email);
 
         // $_SESSION['login_id'] = $get_user['userID']; 
-        // header('Location: /ClothesStore/home-test');
+        // header('Location: /web/ClothesStore/home-test');
         
         if (is_null($get_user)) {
-            header('Location: /ClothesStore/edit-info');
+            header('Location: /web/ClothesStore/edit-info');
         } else {
             if (strcmp($password, $get_user['password']) == 0) {
                 $_SESSION['login_id'] = $get_user['userID']; 
                 if ($get_user['roleID'] == 1) {
-                    header('Location: /ClothesStore/edit-info');
+                    header('Location: /web/ClothesStore/edit-info');
                 } else if ($get_user['roleID'] == 2) {
-                    header('Location: /ClothesStore/dashboard');
+                    header('Location: /web/ClothesStore/dashboard');
                 }
                 exit;
             } else {
-                header('Location: /ClothesStore/login');
+                header('Location: /web/ClothesStore/login');
             }
         }
         

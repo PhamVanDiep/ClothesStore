@@ -40,7 +40,7 @@
             </div>
             <div id="dropdown-content">
                 <a href="#">Thông tin cá nhân</a>
-                <a href="/ClothesStore/logout">Đăng xuất</a>
+                <a href="/web/ClothesStore/logout">Đăng xuất</a>
             </div>
         </div>
     </div>

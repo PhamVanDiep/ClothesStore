@@ -20,5 +20,5 @@
         $edit_service = new EditInfoService();
         $edit_service->update($user);
 
-        header('Location: /ClothesStore/edit-info');
+        header('Location: /web/ClothesStore/edit-info');
     }

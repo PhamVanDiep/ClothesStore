@@ -1,6 +1,6 @@
 <?php
 if(!isset($_SESSION['login_id'])){
-    header('Location: /ClothesStore/logout');
+    header('Location: /web/ClothesStore/logout');
     exit;
 }
 ?>
