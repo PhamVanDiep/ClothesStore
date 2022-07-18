@@ -13,6 +13,7 @@ class EditInfoService extends Service{
                     "phoneNumber = " . "'" . $user->getPhoneNumber() . "', " . 
                     "address = " . "'" . $user->getAddress() . "', " . 
                     "gmail = " . "'" . $user->getEmail() . "', " . 
+                    "urlAvatar = " . "'" . $user->getUrlAvatar() . "', " . 
                     "gender = " . "'" . $user->getGender() . "' " . 
                     "where userID = " . $user->getUserID();
         echo $query;

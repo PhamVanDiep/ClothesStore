@@ -84,6 +84,7 @@ a span {
     margin-right: 10px;
     height: 8vh;
     width: 8vh;
+    object-fit: contain;
 }
 
 #header-info-wrap{

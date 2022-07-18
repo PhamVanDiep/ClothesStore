@@ -6,6 +6,9 @@
     if ($_GET['type'] == "month") {
         $month_revenue = $turnover_service->getTurnOverOfMonth();
         $month_revenue = $month_revenue['total_turnover_of_month'];
+        if ($month_revenue == NULL) {
+            $month_revenue = 0;
+        }
         $data_chart = $turnover_service->getTurnOverEachDayOfMonth();
 
         $xValue = array();
@@ -36,6 +39,9 @@
     } else if ($_GET['type'] == "week") {
         $week_revenue = $turnover_service->getTurnOverOfWeek();
         $week_revenue = $week_revenue['total_turnover_of_week'];
+        if ($week_revenue == NULL) {
+            $week_revenue = 0;
+        }
         $data_chart = $turnover_service->getTurnOverEachDayOfWeek();
 
         $xValue = array();

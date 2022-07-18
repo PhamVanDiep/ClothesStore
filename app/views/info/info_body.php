@@ -35,7 +35,7 @@ if (is_null($user)) {
     </div>
     <hr>
     <div class="wrap-content">
-        <form action="libraries\edit_info\edit_info.php" method="post">
+        <form action="libraries\edit_info\edit_info.php" method="post" enctype="multipart/form-data">
             <div class="col-12">
                 <div class="col-7 pl-6">
                     <input type="hidden" value="<?php echo $id?>">
@@ -71,7 +71,7 @@ if (is_null($user)) {
                 </div>
                 <div class="col-5">
                     <div class="wrap-edit-avt">
-                        <img id="output" src="<?php echo $user['urlAvatar']?>" alt="">
+                        <img id="output" src="<?php if ($checkGoogleUser) echo $user['urlAvatar']; else echo 'public/res/img/info/' . $user['urlAvatar']; ?>" alt="">
                         <input type="file"  accept="image/*" name="image" id="selectedFile"  onchange="loadFile(event)" style="display: none;">
                         <input type="button" value="Chọn ảnh" onclick="document.getElementById('selectedFile').click();" <?php if($checkGoogleUser) echo 'disabled';?> />
                         <?php

@@ -37,4 +37,11 @@ class UserService extends Service{
         return mysqli_fetch_assoc($result);
     }
 
+    public function getUserAvatar($userID)
+    {
+        $query = "select urlAvatar from `user` where userID = " . $userID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
+    }
 }

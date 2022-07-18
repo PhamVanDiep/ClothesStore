@@ -370,6 +370,9 @@
             }
 
             function changeBestSeller(selector) {
+                for (let index = 0; index < 10; index++) {
+                    document.getElementById("best-seller-wrap-" + index).style.display = "none";
+                }
                 changeBestSellerView(selector.value);
             }
         </script>

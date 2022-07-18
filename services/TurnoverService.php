@@ -22,7 +22,7 @@ class TurnoverService extends Service {
                 . "from `order` "
                 . "where statusID != 1 "
                 . "and statusID != 5 "
-                . "and timeCreate > CURRENT_DATE - 6;";
+                . "and timeCreate >= CURRENT_DATE - 6;";
         parent::setQuery($query);
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);

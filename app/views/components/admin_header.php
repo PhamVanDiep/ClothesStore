@@ -29,7 +29,7 @@
         <div id="main-account">
             <div id="header-content-wrap">
                 <div id="header-img-wrap">
-                    <img src="<?php echo $get_user['urlAvatar']; ?>" >
+                    <img src="<?php echo 'public/res/img/admin/' . $get_user['urlAvatar']; ?>" >
                 </div><div id="header-info-wrap">
                     <div id="admin-name">
                         <b><?php echo $get_user['name']; ?></b>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div id="dropdown-content">
-                <a href="#">Thông tin cá nhân</a>
+                <a href="/web/ClothesStore/admin-edit-info">Thông tin cá nhân</a>
                 <a href="/web/ClothesStore/logout">Đăng xuất</a>
             </div>
         </div>

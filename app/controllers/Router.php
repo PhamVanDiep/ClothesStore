@@ -19,6 +19,7 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'RegisterController.p
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'InfoController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'HomeTestController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'LogoutController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AdminInfoController.php';
 
 class Router {
     private $_dispath;
@@ -130,6 +131,13 @@ class Router {
         // Info
         if(strcmp($this->_url,"/" . $this->_path_project . "/edit-info") == 0){
             $this->_dispath = new InfoController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        // Info
+        if(strcmp($this->_url,"/" . $this->_path_project . "/admin-edit-info") == 0){
+            $this->_dispath = new AdminInfoController();
             $this->_isAdmin = true;
             return;
         }
