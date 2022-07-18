@@ -1,0 +1,149 @@
+
+
+#bill-filter a span{
+    color: #000;
+}
+table  {
+    background-color: #fff;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+
+}
+tr{
+    display: flex;
+   
+    justify-items: center;
+}
+.col1{
+    flex:1;
+}
+.col2{
+    flex:2;
+}
+.col3{
+    flex:2;
+}
+.col4{
+    flex:3;
+}
+.col5{
+    flex:1;
+}
+.col6{
+    flex:1.5;
+    position: relative;
+}
+.col7{
+    flex:2;
+}
+
+td {
+    word-wrap: normal;
+}
+
+thead{
+    background-color: #a8a8a8
+}
+thead tr td{
+    font-weight: bold;
+}
+td{
+    padding: 1%;
+   
+
+}
+tr{
+    border-bottom: 1px solid #a8a8a8 ;
+    
+}
+
+.btn-confirm{
+    background-color: #db2017;
+    padding: 5%;
+    width: fit-content;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.confirmed{
+    background-color: #f4ecdf;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #FEB139;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #FEB139;
+    white-space: nowrap;
+}
+
+
+.delivering{
+    background-color: #c2ecec;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #66BFBF;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #66BFBF;
+    white-space: nowrap;
+}
+.completed{
+    background-color: #c7f3dc;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #68d69d;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #68d69d;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.cancelled{
+    background-color: #ffcaca;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #ff0000;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #ff0000;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.onmouse{
+    background-color: #a8a8a8;
+}
+
+.selector{
+    display: none;
+    margin-top: 5px;
+    position: absolute;
+    background-color: #fff;
+    padding : 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    border: 1px solid #a8a8a8;
+    padding-right: 20px;
+    z-index: 1;
+}
+.selector div{
+    margin-top: 5px;
+}
+
+#content{
+    overflow-x: auto;
+    
+}
+
+table{
+    min-width: 900px;
+}

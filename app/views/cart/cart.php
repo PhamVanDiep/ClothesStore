@@ -6,14 +6,18 @@
         <link rel="stylesheet" href="../../../public/css/footer.css" />
         <link rel="stylesheet" href="../../../public/css/body.css" />
         <link rel="stylesheet" href="../../../public/css/cart/cart.css" />
-
+        
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <?php 
-            require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
+    <div class="col-10" id="head-bar">
+        <?php
+        
+        require '../components/header.php';
         ?>
+    </div>
+  
         
         <div class="body col-12">
             <div class="cart-title">
@@ -137,9 +141,9 @@
                     <div class = "item-price"> ₫100.000</div>
                     <div class = "quantity-select"> 
                    
-                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
+                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCost()">-</button>
                         <input class="quantity" id="id_form-0-quantity" min="1" value="1" type="number">
-                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
+                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCost()">+</button>
                     </div>
                     <button class= "btn-del" >Delete</button>
                 </div>
@@ -170,16 +174,16 @@
                 <div class = "cost-info">
                     <div class="total-items">
                         <a> Tổng: </a>
-                        <a> 170.000 </a>
+                        <a id="total-item"> </a>
                     </div>
-                    <div class="delivery-cost">
+                    <div class="delivery-cost" style="display: none">
                         <a> Phí vận chuyển:</a>
-                        <a> 15.000</a>
+                        <a id ="delivery-cost"> 15.000</a>
                     </div>
                     <div style="flex:1; border-bottom: 2px solid #b8b8b8"></div>
                     <div class ="total-cost">
                         <a> Tạm tính:</a>
-                        <a id="total-cost"> 185.000</a>
+                        <a id="total-cost">  </a>
                     </div>
                 </div>
 
