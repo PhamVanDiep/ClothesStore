@@ -3,7 +3,6 @@
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'HomepageController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'CartController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'DashboardController.php';
-require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'TestController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EventController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AddEventController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'EditEventController.php';
@@ -48,12 +47,6 @@ class Router {
         if(strcmp($this->_url,"/" . $this->_path_project . "/dashboard") == 0){
             $this->_dispath = new DashboardController();
             $this->_isAdmin = true;
-            return;
-        }
-        // test service
-        if(strcmp($this->_url,"/" . $this->_path_project . "/test") == 0){
-            $this->_dispath = new TestController();
-            $this->_isAdmin = false;
             return;
         }
 

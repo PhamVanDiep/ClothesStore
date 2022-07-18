@@ -6,7 +6,6 @@
     RewriteCond %{REQUEST_URI} /home$ [OR]
     RewriteCond %{REQUEST_URI} /products$ [OR]
     RewriteCond %{REQUEST_URI} /cart$ [OR]
-    RewriteCond %{REQUEST_URI} /test$ [OR]
     RewriteCond %{REQUEST_URI} /details [OR]
     RewriteCond %{REQUEST_URI} /search [OR]
     RewriteCond %{REQUEST_URI} /dashboard$ [OR]
