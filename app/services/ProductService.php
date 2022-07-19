@@ -66,12 +66,33 @@ class ProductService extends Service{
         return $listProduct;
     }
 
+    public function getSizeByID($productID)
+    {
+        $query = "select * from size where productID = " . $productID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function getTypeByID($productID)
+    {
+        $query = "select * from type where productID = " . $productID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
 
     public function getAllImages($productID) {
         $query = "select urlimage from product_image where productID = " . $productID . ";";
         parent::setQuery($query);
         $result = parent::executeQuery();
-        return $result;
+        $listImageUrl = array();
+        while($row = mysqli_fetch_array($result)){
+            $url = $row['urlimage'];
+            array_push($listImageUrl, $url);
+        }
+        return $listImageUrl;
     }
 
     public function getImageHomepage($productID) {

@@ -1,0 +1,319 @@
+.item-img{
+    max-width: 75px;
+    max-height: 75px;
+    margin-right: 10px;
+    border: 1px solid #e8e8e8;
+    flex:1;
+}
+.item-name{
+  font-weight: bold;
+  font-size: large;
+  flex:2.5;
+  overflow-wrap: normal;
+}
+.item-price{
+  display: flex;
+  flex:1;
+  align-items: center;
+}
+
+.item-variation {
+    display: flex;
+    align-items: center;
+    flex:1;
+    margin: 10px;
+
+}
+.item-detail{
+    flex:1;
+    position: relative;
+
+}
+.cart-title{
+    margin-left: 5%;
+    position: relative;
+    top:20px;   
+}
+.cart-title a {
+    font-size: xx-large;
+    color:#68d69d;
+    font-weight: bold;
+    text-shadow: 1px 0 0 #000, -1px 0 0 #000, 0 1px 0 #000, 0 -1px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+    
+}
+.item-list{
+ 
+    width: 60%;
+    margin-top:110px;
+    margin-left: 5%;
+    margin-right:10%;
+    background-color: #f4f4f4;
+    margin-bottom: 500px;
+}
+.body{
+    min-height: 1000px;
+    position: relative; 
+}
+.footer{
+    position: absolute;
+    bottom: 0px;
+}
+.list-header{
+    position: absolute;
+    width: 60%;
+    margin-top:40px;
+    margin-left: 5%;
+    background-color: #fff;
+    padding: 15px;
+    display: flex;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px ;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  
+}
+
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -12px;
+  margin-left: -12px;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #68d69d;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.item-info{
+  display: flex;
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+.quantity-select button{
+      height:20px;
+      width: 20px;
+}
+.quantity-select{
+  display:flex;
+  width:160px;
+  flex:1;
+  align-items: center;
+}
+.btn-del{
+  flex:0.5;
+  margin:20px;
+  height: 30px;
+  width: 60px;
+  cursor: pointer;
+  background-color: #ee4d2d;
+  border:none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+/* it will support chrome and firefox */
+.quantity-select input[type=number]::-webkit-inner-spin-button,
+.quantity-select input[type=number]::-webkit-outer-spin-button{
+  -webkit-appearance:none;
+}
+.quantity-select{
+  display: flex;
+  justify-items: center;
+  top:35%;
+  width: fit-content;
+  vertical-align: middle;
+}
+.quantity{
+  vertical-align: middle;
+  box-sizing: content-box;
+  margin: 0;
+  text-align: center;
+  height: 20px;
+  width: 40px;
+  font-weight: bold;
+  justify-items: center;
+  background-color: #fff;
+  border: 1px solid #8a8a8a;
+  border-left:none ;
+  border-right:none ;
+  
+
+}
+.quantity-select button{
+  vertical-align:middle;
+  height: 22px;
+  width: 24px;
+  font-size: large;
+  font-weight: 300;
+  background-color: #68d69d;
+  border: 1px solid #8a8a8a;
+  cursor: pointer;
+}
+.item{
+  display: flex;
+  flex:3;
+  cursor: pointer;
+}
+.feature-bar{
+  margin-left: 10%;
+  width: 80%;
+  height: 100px;
+  background-color: #fff;
+  box-shadow: 0px -20px 20px rgb(0 0 0 / 20%);
+  position: fixed;
+  bottom: 0;
+}
+      
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}       
+
+.purchase-info{
+  background-color: #f4f4f4;
+  width: 25%;
+  height: 70%;
+  margin-left: 70%;
+  position: fixed;
+  top:21%;
+  display: flex;
+  flex-direction: column;
+}
+.delivery-info{
+  flex:1;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
+.cost-info{
+  background-color: #fff;
+  flex: 4;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 5%;
+
+}
+.payment-info{
+  background-color: #fff;
+  flex:0.7;
+  margin-bottom: 5px;
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+
+}
+.payment-info a{
+  font-weight: bolder;
+  font-size: larger;
+}
+.delivery-address img{
+  height: 15px;
+  width: 15px;
+}        
+.delivery-info div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin:2px;
+}       
+        
+.delivery-info{
+  padding: 5%;
+  border-radius: 5px;
+}     
+.receiver-info{
+  font-weight: bold ;
+}
+.delivery-header div{
+  text-decoration: #68d69d solid underline;
+  color:#68d69d;
+  cursor: pointer;
+}   
+
+.cost-info div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top:10px ;
+  
+}       
+        
+.cost-info div a{
+  font-size: x-large;
+  color: #8a8a8a;
+}        
+#total-cost{
+  color:#401d83;
+  font-weight: bolder;
+}      
+.btn-purchase{
+  margin-top: 10px;
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+  background-color: #68d69d;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  font-size: xx-large;
+  padding: 10px;
+}

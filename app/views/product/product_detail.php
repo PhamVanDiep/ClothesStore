@@ -28,39 +28,44 @@ require_once 'C:/xampp/htdocs/web/ClothesStore/app/services/ProductService.php';
                 <div class="box-card col-12">
                     <?php
                         $service = new ProductService();
-                        $product = $service->getProduct(6);
+                        $product = $service->getProduct(3);
+                        $images = $service->getAllImages($product->getProductID());
+                        $size = $service->getSizeByID($product->getProductID());
+                        $type = $service->getTypeByID($product->getProductID());
                     ?>
                     <div class="card">
                         <!-- card left -->
                         <div class="product-imgs">
                             <div class="img-display">
                                 <div class="img-showcase">
-                                    <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_1.jpg" alt="shoe image">
-                                    <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt="shoe image">
-                                    <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt="shoe image">
-                                    <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt="shoe image">
+                                    <?php 
+                                    
+                                        echo '
+                                            <img src="../../../public/res/img/products/' . $images[0] . '" >
+                                            <img src="../../../public/res/img/products/' . $images[1] . '" >
+                                            <img src="../../../public/res/img/products/' . $images[2] . '" >
+                                            <img src="../../../public/res/img/products/' . $images[3] . '" >';
+                                    
+                                    ?>
                                 </div>
                             </div>
                             <div class="img-select">
                                 <div class="img-item">
                                     <a href="#" data-id="1">
-                                        <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_1.jpg" alt="shoe image">
+                                        <?php echo '<img src="../../../public/res/img/products/' . $images[0] . '" > '?>
                                     </a>
                                 </div>
                                 <div class="img-item">
                                     <a href="#" data-id="2">
-                                        <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_2.jpg" alt="shoe image">
-                                    </a>
+                                    <?php echo '<img src="../../../public/res/img/products/' . $images[1] . '" > '?>
                                 </div>
                                 <div class="img-item">
                                     <a href="#" data-id="3">
-                                        <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_3.jpg" alt="shoe image">
-                                    </a>
+                                    <?php echo '<img src="../../../public/res/img/products/' . $images[2] . '" > '?>
                                 </div>
                                 <div class="img-item">
                                     <a href="#" data-id="4">
-                                        <img src="https://fadzrinmadu.github.io/hosted-assets/product-detail-page-design-with-image-slider-html-css-and-javascript/shoe_4.jpg" alt="shoe image">
-                                    </a>
+                                    <?php echo '<img src="../../../public/res/img/products/' . $images[3] . '" > '?>
                                 </div>
                             </div>
                         </div>
@@ -86,22 +91,28 @@ require_once 'C:/xampp/htdocs/web/ClothesStore/app/services/ProductService.php';
                                 <p><?php echo $product->getDescription() ?></p>
                                
                                 <ul>
-                                    <li> Màu sắc: <span class="custom-select" style="width:200px;">
+                                    <li> Màu sắc: <span class="select" style="width:400px;">
                                             <select>
-                                                <option value="0">Chọn màu:</option>
-                                                <option value="1">Xanh</option>
-                                                <option value="2">Đỏ</option>
-                                                <option value="3">Tím</option>
-                                               
+                                                <option selected disabled>Chọn màu:</option>
+                                                <?php 
+                                                    foreach($type as $type){
+                                                        echo '
+                                                        <option value='.$type['name'].'>'.$type['name'].'</option>
+                                                        ';
+                                                    }
+                                                ?>
                                             </select>
                                         </span></li>
-                                    <li> Size: <span class="custom-select" style="width:200px;">
+                                        <li> Size: <span class="select" style="width:400px;">
                                             <select>
-                                                <option value="0">Chọn size:</option>
-                                                <option value="1">M</option>
-                                                <option value="2">L</option>
-                                                <option value="3">XL</option>
-                                               
+                                                <option selected disabled>Chọn size:</option>
+                                                <?php 
+                                                    foreach($size as $size){
+                                                        echo '
+                                                        <option value='.$size['name'].'>'.$size['name'].'</option>
+                                                        ';
+                                                    }
+                                                ?>
                                             </select>
                                         </span></li>
                                     <li>Trạng thái: <span>Còn hàng</span></li>
