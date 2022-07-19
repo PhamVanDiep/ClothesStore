@@ -240,4 +240,26 @@ class ProductService extends Service{
         parent::setQuery($query);
         parent::deleteQuery();
     }
+
+    
+
+    // huan add services homepage
+
+    public function viewProductHomepage(){
+        $query = "select * from product LIMIT 20";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function getImageHomepage($productID) {
+        $query = "select urlimage from product_image where productID = " . $productID . " LIMIT 1;";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        if($row = mysqli_fetch_array($result)){
+            $urlimage = $row['urlimage'];
+            return $urlimage;
+        }
+        return "product1.jpg";
+    }
 }

@@ -44,37 +44,4 @@ class UserService extends Service{
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
     }
-
-    // huan add services homepage
-
-    public function viewProductHomepage(){
-        $listProduct = array();
-        $query = "select * from product LIMIT 20";
-        parent::setQuery($query);
-        $result = parent::executeQuery();
-        while($row = mysqli_fetch_array($result)){
-            $product_id = $row["productID"];
-            $description = $row["description"];
-            $name = $row["name"];
-            $categoryID = $row["categoryID"];
-            $price = $row["price"];
-            $oldPrice = $row["oldPrice"];
-            $product = new Product($product_id,$name,$categoryID,$price, $oldPrice, $description);
-            array_push($listProduct, $product);
-        }
-
-        return $listProduct;
-    }
-
-    public function getImageHomepage($productID) {
-        $query = "select urlimage from product_image where productID = " . $productID . " LIMIT 1;";
-        parent::setQuery($query);
-        $result = parent::executeQuery();
-        if($row = mysqli_fetch_array($result)){
-            $urlimage = $row['urlimage'];
-            return $urlimage;
-        }
-        return "product1.jpg";
-        
-    }
 }
