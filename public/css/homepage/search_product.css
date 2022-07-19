@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .search-content{
     margin: 30px 0 30px 8.33%;
@@ -16,3 +17,23 @@
     font-weight: bold;
 }
 
+=======
+
+.search-content{
+    margin: 30px 0 30px 8.33%;
+}
+
+.search-text{
+    margin-top: 30px !important;
+    margin-right: 40px;
+}
+
+
+
+.search-content p{
+    padding-left: 60px;
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+>>>>>>> master

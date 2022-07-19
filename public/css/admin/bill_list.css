@@ -1,75 +1,41 @@
+
+
 #bill-filter a span{
     color: #000;
 }
 table  {
     background-color: #fff;
-}
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
 
-table{
-    border-collapse: collapse;
 }
-
-table td{
-    border-bottom: 1px solid #a1a0a0;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+tr{
+    display: flex;
+   
+    justify-items: center;
 }
-
-table tbody > tr:last-child > td {
-    border-bottom: 0;
+.col1{
+    flex:1;
 }
-
-table td:nth-child(1){
-    padding-left: 20px;
+.col2{
+    flex:2;
 }
-
-table td:nth-child(2){
-    max-width: 20%;
-    padding-left: 20px;
+.col3{
+    flex:2;
 }
-
-table td:nth-child(3){
-    padding-left: 20px;
+.col4{
+    flex:3;
 }
-
-table td:nth-child(4){
-    padding-left: 20px;
+.col5{
+    flex:1;
 }
-
-table td:nth-child(5){
-    padding-left: 20px;
+.col6{
+    flex:1.5;
+    position: relative;
 }
-
-table td:nth-child(6){
-    max-width: 30%;
-    padding-left: 20px;
-}
-
-table td:nth-child(7){
-    padding-left: 20px;
-    width: 12%;
-}
-
-table td:nth-child(8){
-    padding-left: 20px;
-}
-
-table td:nth-child(9){
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-table thead tr{
-    font-weight: bold;
-}
-
-table tbody tr{
-    font-weight: 400;
-    opacity: 0.8;
-}
-
-table tbody tr:hover{
-    background-color: aquamarine;
+.col7{
+    flex:2;
 }
 
 td {
@@ -83,58 +49,105 @@ thead tr td{
     font-weight: bold;
 }
 td{
-    width: max-content;
     padding: 1%;
+   
+
 }
 tr{
     border-bottom: 1px solid #a8a8a8 ;
+    
 }
 
-.status-selector {
+.btn-confirm{
+    background-color: #db2017;
     padding: 5%;
     width: fit-content;
     text-align: center;
+    color: #ffffff;
     border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    border: none;
-    font-size: medium;
+}
+.confirmed{
+    background-color: #f4ecdf;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #FEB139;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #FEB139;
+    white-space: nowrap;
 }
 
-@media only screen and (max-width: 768px){
-    #content{
-        overflow-x: auto;
-    }
-    table {
-        min-width: 900px;
-    }
+
+.delivering{
+    background-color: #c2ecec;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #66BFBF;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid #66BFBF;
+    white-space: nowrap;
+}
+.completed{
+    background-color: #c7f3dc;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #68d69d;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #68d69d;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.cancelled{
+    background-color: #ffcaca;
+    padding: 2%;
+    width: fit-content;
+    text-align: center;
+    color: #ff0000;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid #ff0000;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
-@media only screen and (max-width: 992px) and (min-width: 768px){
-    #content{
-        overflow-x: auto;
-    }
-    table{
-        min-width: 900px;
-    }
+.onmouse{
+    background-color: #a8a8a8;
 }
 
-@media only screen and (min-width: 992px) {
-    #head-bar{
-        position: fixed;
-        z-index: 2;
-        margin-left: 16.66%;
-    }
+.selector{
+    display: none;
+    margin-top: 5px;
+    position: absolute;
+    background-color: #fff;
+    padding : 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+    border: 1px solid #a8a8a8;
+    padding-right: 20px;
+    z-index: 1;
+}
+.selector div{
+    margin-top: 5px;
+}
+
+#content{
+    overflow-x: auto;
     
-    #content{
-        margin-left: 16.66%;
-        margin-top: 10vh;
-        padding-bottom: 10px;
-        padding-left: 5%;
-        padding-top: 3vh;
-        overflow-x: auto;
-    }
+}
 
-    table {
-        width: 1200px;
-    }
+table{
+    min-width: 900px;
+}
+
+tbody tr:hover{
+    background-color: #d8d8d8;
 }
