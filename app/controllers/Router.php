@@ -174,7 +174,7 @@ class Router {
             $productID = strrpos($this->_url, '=');
             $productID = substr($this->_url, $productID + 1);
             $this->_dispath = new ProductDetailController($productID);
-            $this->_isAdmin = true;
+            $this->_isAdmin = false;
             return;
         }
     }

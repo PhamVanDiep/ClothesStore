@@ -111,6 +111,19 @@ class ProductService extends Service{
         return $result;
     }
 
+    public function getAllImagesDetail($productID) {
+        $query = "select urlimage from product_image where productID = " . $productID . ";";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        $listImageUrl = array();
+        while($row = mysqli_fetch_array($result)){
+            $url = $row['urlimage'];
+            array_push($listImageUrl, $url);
+        }
+        return $listImageUrl;
+    }
+
+
     public function updateProduct($product, $sizes, $types){
         $productID = $product->getProductID();
         $query = "update product set "

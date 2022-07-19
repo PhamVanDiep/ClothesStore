@@ -8,6 +8,10 @@
     
 }
 
+.body{
+    margin-bottom: 30px;
+}
+
 .box-card{
     /* border: 1px solid; */
     padding: 20px 20px;
@@ -286,7 +290,7 @@ select {
  .select {
     position: relative;
     display: flex;
-    width: 20em;
+    width: 15em;
     height: 3em;
     line-height: 3;
     background: #fff;
@@ -301,7 +305,6 @@ select {
   }
   /* thiết kế dấu mũi tên */
   .select::after {
-    content: '25BC';
     position: absolute;
     top: 0;
     right: 0;

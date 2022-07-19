@@ -44,4 +44,22 @@ class UserService extends Service{
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
     }
+    
+
+    //get cartID theo user
+    public function getCartID($userID){
+        // if(self::get($userID) == null){
+        //     return -1;
+        // }
+
+        $query = "select cartID from cart
+	               where userID = '" . $userID . "'";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+
+        $row = mysqli_fetch_array($result);
+        $cartID = $row["cartID"];
+
+        return $cartID;
+    }
 }

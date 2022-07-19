@@ -1,5 +1,6 @@
 <?php
 require_once ROOT . DS . 'services' . DS . 'ProductService.php';
+require_once ROOT . DS . 'services' . DS . 'UserService.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,8 +13,8 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
     <link rel="stylesheet" href="public/css/product/product_detail.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <script src="public/js/product_detail.js"></script>
+
+    <!-- <script src="public/js/product_detail.js"></script> -->
 </head>
 
 <body>
@@ -29,36 +30,47 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
             <div class="content-card col-10">
                 <div class="box-card col-12">
                     <?php
-                        $service = new ProductService();
-                        $product = $service->getProduct($productID);
-                        $images = $service->getAllImages($product->getProductID());
-                        $size = $service->getSizeByID($product->getProductID());
-                        $type = $service->getTypeByID($product->getProductID());
+                    $service = new ProductService();
+                    $product = $service->getProduct($productID);
+                    $images = $service->getAllImagesDetail($product->getProductID());
+                    $size = $service->getSizeByID($product->getProductID());
+                    $type = $service->getTypeByID($product->getProductID());
+                    
+                    $userService = new UserService();
+                    $cartID = $userService->getCartID(6);
                     ?>
                     <div class="card">
                         <!-- card left -->
                         <div class="product-imgs">
                             <div class="img-display">
                                 <div class="img-showcase">
-                                    <?php 
-                                        foreach ($images as $image) {
-                                            echo '<img src="public/res/img/products/' . $image['urlimage'] . '" >';
-                                        }
+                                    <?php
+                                    echo '
+                                         <img src="public/res/img/products/' . $images[0] . '" >
+                                         <img src="public/res/img/products/' . $images[1] . '" >
+                                         <img src="public/res/img/products/' . $images[2] . '" >
+                                         <img src="public/res/img/products/' . $images[3] . '" >';
                                     ?>
                                 </div>
                             </div>
                             <div class="img-select">
-                                <?php
-                                    $num = 0;
-                                    foreach ($images as $image) {
-                                        $num++;
-                                        echo '<div class="img-item">'
-                                                . '<a href="#" data-id="' . $num . '">'
-                                                    . '<img src="public/res/img/products/' . $image['urlimage'] . '" > '
-                                                . '</a>'
-                                            . '<div>';
-                                    }
-                                ?>
+                                <div class="img-item">
+                                    <a href="" data-id="1">
+                                        <?php echo '<img src="public/res/img/products/' . $images[0] . '" > ' ?>
+                                    </a>
+                                </div>
+                                <div class="img-item">
+                                    <a href="" data-id="2">
+                                        <?php echo '<img src="public/res/img/products/' . $images[1] . '" > ' ?>
+                                </div>
+                                <div class="img-item">
+                                    <a href="" data-id="3">
+                                        <?php echo '<img src="public/res/img/products/' . $images[2] . '" > ' ?>
+                                </div>
+                                <div class="img-item">
+                                    <a href="" data-id="4">
+                                        <?php echo '<img src="public/res/img/products/' . $images[3] . '" > ' ?>
+                                </div>
                             </div>
                         </div>
                         <!-- card right -->
@@ -75,35 +87,35 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
 
                             <div class="product-price">
                                 <p class="last-price">Old Price: <span><?php echo $product->getOldPrice() . " VNĐ" ?></span></p>
-                                <p class="new-price">New Price: <span> <?php echo $product->getPrice() . " .VNĐ"?></span></p>
+                                <p class="new-price">New Price: <span> <?php echo $product->getPrice() . " .VNĐ" ?></span></p>
                             </div>
 
                             <div class="product-detail">
                                 <h2>Thông tin sản phẩm: </h2>
                                 <p><?php echo $product->getDescription() ?></p>
-                               
+
                                 <ul>
-                                    <li> Màu sắc: <span class="select" style="width:400px;">
-                                            <select>
+                                    <li> Màu sắc: <span  class="select" style="width:400px;">
+                                            <select id="type_select">
                                                 <option selected disabled>Chọn màu:</option>
-                                                <?php 
-                                                    foreach($type as $type){
-                                                        echo '
-                                                        <option value='.$type['name'].'>'.$type['name'].'</option>
+                                                <?php
+                                                foreach ($type as $type) {
+                                                    echo '
+                                                        <option value="' . $type['name'] . '">' . $type['name'] . '</option>
                                                         ';
-                                                    }
+                                                }
                                                 ?>
                                             </select>
                                         </span></li>
-                                        <li> Size: <span class="select" style="width:400px;">
-                                            <select>
+                                    <li> Size: <span class="select" style="width:400px;">
+                                            <select id="size_select">
                                                 <option selected disabled>Chọn size:</option>
-                                                <?php 
-                                                    foreach($size as $size){
-                                                        echo '
-                                                        <option value='.$size['name'].'>'.$size['name'].'</option>
+                                                <?php
+                                                foreach ($size as $size) {
+                                                    echo '
+                                                        <option value="' . $size['name'] . '">' . $size['name'] . '</option>
                                                         ';
-                                                    }
+                                                }
                                                 ?>
                                             </select>
                                         </span></li>
@@ -112,8 +124,8 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
                                 </ul>
                             </div>
                             <div class="purchase-info">
-                                <input type="number" min="0" value="1">
-                                <button type="button" class="btn">
+                                <input id="number_product" type="number" min="0" value="1">
+                                <button type="button" class="btn" onclick="addProduct(<?php echo $cartID . ', ' . $productID; ?>)">
                                     Thêm vào giỏ hàng <i class="fas fa-shopping-cart"></i>
                                 </button>
                                 <button type="button" class="btn">Mua Hàng</button>
@@ -124,6 +136,7 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
             </div>
         </div>
     </div>
+    <script src="public/js/product_detail.js"> </script>
 </body>
 
 </html>
