@@ -134,25 +134,31 @@
     text-align: center;
 }
 
-#confirm-waiting{
+.confirm-waiting{
     background-color: rgb(252, 234, 201);
     color: orange;
 }
 
-#shipping{
+.confirmed{
+    background-color: rgb(165, 136, 120);
+    color: brown;
+}
+
+.shipping{
     background-color: rgb(178, 178, 248);
     color: blue;
 }
 
-#shipped{
+.shipped{
     background-color: rgb(186, 248, 186);
     color: green;
 }
 
-#canceled{
+.canceled{
     background-color: rgb(248, 183, 183);
     color: red;
 }
+
 #see-all-wrap{
     display: flex;
     justify-content: center;
@@ -196,6 +202,7 @@
     padding-top: 1vh;
     padding-bottom: 1vh;
     border-bottom: 1px solid #a1a0a0;
+    display: none;
 }
 
 .best-seller-image-wrap{
@@ -268,6 +275,7 @@
     background-color: #FFFFFF;
     font-weight: bold;
     opacity: 0.8;
+    cursor: pointer;
 }
 
 #chart-content{

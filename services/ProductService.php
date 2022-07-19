@@ -21,11 +21,12 @@ class ProductService extends Service{
         // echo mysqli_num_rows($result);
     }
 
-    public function getProductById($id){
-        $query = "select product.*, price.* from product, price where product.id = " . $id. "and product.productID = ";
+    public function getOnce($productID)
+    {
+        $query = "select * from product where productID = " . $productID;
         parent::setQuery($query);
         $result = parent::executeQuery();
-        return json_encode($result);
+        return mysqli_fetch_assoc($result);
     }
 
     public function insertProduct($product) {
@@ -103,7 +104,140 @@ class ProductService extends Service{
         return $result;
     }
     
-    public function update($product){
-        
+    public function getAllImages($productID) {
+        $query = "select urlimage from product_image where productID = " . $productID . ";";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function updateProduct($product, $sizes, $types){
+        $productID = $product->getProductID();
+        $query = "update product set "
+                . "name = '" . $product->getName() . "', "
+                . "categoryID = " . $product->getCategoryID() . ", "
+                . "price = " . $product->getPrice() . ", "
+                . "oldPrice = " . $product->getOldPrice() . ", "
+                . "description = '" . $product->getDescription() . "' "
+                . "where productID = " . $productID . ";";
+        parent::setQuery($query);
+        parent::updateQuery();
+        self::updateSizes($productID, $sizes);
+        self::updateTypes($productID, $types);
+    }
+
+    public function updateSizes($productID, $sizes)
+    {
+        $query = "delete from size where productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+        self::insertIntoSizeTable($productID, $sizes);
+    }
+
+    public function updateTypes($productID, $types)
+    {
+        $query = "delete from type where productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+        self::insertIntoTypeTable($productID, $types);
+    }
+
+    public function deleteImage($productID, $urlImage) {
+        $query = "delete from product_image where productID = " . $productID . " and urlimage = '" . $urlImage . "';";
+        parent::setQuery($query);
+        parent::deleteQuery();
+    }
+
+    public function updateImage($productID, $urlImage) {
+        $query = "insert into product_image values (" . $productID . ", '" . $urlImage . "');";
+        parent::setQuery($query);
+        parent::insertQuery();
+    }
+
+    public function checkImageExist($productID, $urlImage)
+    {
+        $query = "select count(*) as num from product_image where productID = " . $productID . " and urlimage = '" . $urlImage . "';";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
+    }
+
+    public function getNumberOfProducts()
+    {
+        $query = "select count(*) as res from product;";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
+    }
+
+    public function getTop10ProductOfWeek()
+    {
+        $query = "select x.name, temp.so_luong, pi.urlimage from product x, 
+        (select od.productID as productID, od.orderID as orderID, SUM(od.number) as so_luong from order_detail od 
+        INNER join `order` o on o.orderID = od.orderID 
+        where o.timeCreate >= CURRENT_DATE - 6 
+        GROUP by productID 
+        order BY so_luong DESC 
+        LIMIT 10) as temp, product_image pi 
+        where x.productID = temp.productID 
+        AND pi.urlimage = (SELECT pi.urlimage FROM product_image pi WHERE pi.productID = x.productID LIMIT 1);";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function getTop10ProductOfMonth()
+    {
+        $query = "select x.name, temp.so_luong, pi.urlimage from product x, 
+        (select od.productID as productID, od.orderID as orderID, SUM(od.number) as so_luong from order_detail od 
+        INNER join `order` o on o.orderID = od.orderID 
+        where MONTH(o.timeCreate) = MONTH(CURRENT_DATE) 
+        GROUP by productID 
+        order BY so_luong DESC 
+        LIMIT 10) as temp, product_image pi 
+        where x.productID = temp.productID 
+        AND pi.urlimage = (SELECT pi.urlimage FROM product_image pi WHERE pi.productID = x.productID LIMIT 1);";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function checkCanDelete($productID)
+    {
+        $query = "SELECT COUNT(*) AS num FROM order_detail WHERE productID = " . $productID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        $result = mysqli_fetch_assoc($result);
+        if ($result['num'] != 0) {
+            return false;
+        } else {
+            $query = "SELECT COUNT(*) AS num FROM cart_product WHERE productID = " . $productID;
+            parent::setQuery($query);
+            $result = parent::executeQuery();
+            $result = mysqli_fetch_assoc($result);
+            if ($result['num'] != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function deleteProduct($productID)
+    {
+        $query = "DELETE FROM size WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "DELETE FROM `type` WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "DELETE FROM product_image WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
+
+        $query = "DELETE FROM product WHERE productID = " . $productID;
+        parent::setQuery($query);
+        parent::deleteQuery();
     }
 }

@@ -1,6 +1,21 @@
 <?php 
     require_once ROOT . DS . 'services' . DS . 'EventService.php';
     global $path_project;
+    require_once ROOT . DS . 'services' . DS . 'UserService.php';
+
+    if(!isset($_SESSION['login_id'])){
+        header('Location: /web/ClothesStore/logout');
+        exit;
+    }
+
+    $id = $_SESSION['login_id'];
+    $user_service = new UserService();
+    $get_user = $user_service->getUserByID($id);
+
+    if($get_user['roleID'] != 2) {
+        header('Location: /web/ClothesStore/logout');
+        exit;
+    }
  ?>
  <!Doctype html>
 <html>
@@ -67,8 +82,12 @@
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
-                    alert(this.responseText);
-                    row.style.display = "none";
+                    if (this.responseText == "success") {
+                        alert("Xóa sự kiện thành công!");
+                        row.style.display = "none";
+                    } else {
+                        alert("Không thể xóa sự kiện này!");
+                    }
                 }
             };
             xhttp.open("GET", "libraries/admin/event/delete_event.php?eventID=" + eventID, false);

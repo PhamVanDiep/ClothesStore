@@ -4,6 +4,10 @@
     height: 10vh;
 }
 
+a span {
+    color: #FFFFFF;
+}
+
 .nav-wrap{
     width: fit-content;
     cursor: pointer;
@@ -80,13 +84,14 @@
     margin-right: 10px;
     height: 8vh;
     width: 8vh;
+    object-fit: contain;
 }
 
 #header-info-wrap{
     height: 8vh;
     cursor: pointer;
 }
-
+ 
 #admin-name{
     display: flex;
     justify-content: left;
