@@ -19,6 +19,7 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'InfoController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'HomeTestController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'LogoutController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AdminInfoController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'InvoiceManagementController.php';
 
 class Router {
     private $_dispath;
@@ -158,6 +159,12 @@ class Router {
 
         if(str_contains($this->_url, '/login')) {
             $this->_dispath = new LoginController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(strcmp($this->_url,"/" . $this->_path_project . "/invoice-management") == 0){
+            $this->_dispath = new InvoiceManagementController();
             $this->_isAdmin = true;
             return;
         }

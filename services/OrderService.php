@@ -83,4 +83,19 @@ class OrderService extends Service {
             parent::insertQuery($query);
         }
     }
+
+    public function getAllOrders()
+    {
+        $query = "SELECT * FROM `order`";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return $result;
+    }
+
+    public function updateOrderStatus($orderID, $statusID)
+    {
+        $query = "UPDATE `order` SET statusID = " . $statusID . " WHERE orderID = " . $orderID;
+        parent::setQuery($query);
+        parent::updateQuery();
+    }
 }

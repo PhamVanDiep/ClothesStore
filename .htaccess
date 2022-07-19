@@ -26,6 +26,7 @@
     RewriteCond %{REQUEST_URI} /update-voucher [OR]
     RewriteCond %{REQUEST_URI} /home-test [OR]
     RewriteCond %{REQUEST_URI} /logout [OR]
+    RewriteCond %{REQUEST_URI} /invoice-management [OR]
     RewriteCond %{REQUEST_URI} /$
     RewriteRule (.*) public/$1 [L]
 </IfModule>
