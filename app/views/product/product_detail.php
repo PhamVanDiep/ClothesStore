@@ -30,6 +30,7 @@ require_once 'C:/xampp/htdocs/web/ClothesStore/app/services/ProductService.php';
                         $service = new ProductService();
                         $product = $service->getProduct(3);
                         $images = $service->getAllImages($product->getProductID());
+                        $images2 = $service->getImageHomepage($product->getProductID());
                         $size = $service->getSizeByID($product->getProductID());
                         $type = $service->getTypeByID($product->getProductID());
                     ?>
