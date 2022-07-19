@@ -1,11 +1,11 @@
 <!Doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="../../../public/css/root.css" />
-        <link rel="stylesheet" href="../../../public/css/header.css" />
-        <link rel="stylesheet" href="../../../public/css/footer.css" />
-        <link rel="stylesheet" href="../../../public/css/body.css" />
-        <link rel="stylesheet" href="../../../public/css/cart/cart.css" />
+        <link rel="stylesheet" href="public/css/root.css" />
+        <link rel="stylesheet" href="public/css/header.css" />
+        <link rel="stylesheet" href="public/css/footer.css" />
+        <link rel="stylesheet" href="public/css/body.css" />
+        <link rel="stylesheet" href="public/css/cart/cart.css" />
         
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +13,7 @@
     <body>
     <div class="col-10" id="head-bar">
         <?php
-        
-        require '../components/header.php';
+        require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
         ?>
     </div>
   
@@ -41,7 +40,7 @@
                         <span class="checkmark"></span>
                     </label>
                     <div class="item">
-                        <img class ="item-img" src="../../../public/res/img/products/product1.jpg"></img>
+                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
                         <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
                     </div>
                         <div class = "item-variation">Màu trắng, XL  </div>
@@ -60,7 +59,7 @@
                         <span class="checkmark"></span>
                     </label>
                     <div class="item">
-                        <img class ="item-img" src="../../../public/res/img/products/product1.jpg"></img>
+                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
                         <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
                     </div>
                         <div class = "item-variation">Màu trắng, XL  </div>
@@ -79,7 +78,7 @@
                         <span class="checkmark"></span>
                     </label>
                     <div class="item">
-                        <img class ="item-img" src="../../../public/res/img/products/product1.jpg"></img>
+                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
                         <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
                     </div>
                         <div class = "item-variation">Màu trắng, XL  </div>
@@ -98,7 +97,7 @@
                         <span class="checkmark"></span>
                     </label>
                     <div class="item">
-                        <img class ="item-img" src="../../../public/res/img/products/product1.jpg"></img>
+                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
                         <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
                     </div>
                         <div class = "item-variation">Màu trắng, XL  </div>
@@ -117,7 +116,7 @@
                         <span class="checkmark"></span>
                     </label>
                     <div class="item">
-                        <img class ="item-img" src="../../../public/res/img/products/product1.jpg"></img>
+                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
                         <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
                     </div>
                         <div class = "item-variation">Màu trắng, XL  </div>
@@ -136,7 +135,7 @@
                         <span class="checkmark"></span>
                     </label>
                     <div class="item">
-                        <img class ="item-img" src="../../../public/res/img/products/product1.jpg"></img>
+                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
                         <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
                     </div>
                         <div class = "item-variation">Màu trắng, XL  </div>
@@ -168,7 +167,7 @@
 
                     </div>
                     <div class="delivery-address" >
-                        <img src="../../../public/res/img\footer-image\location.png">
+                        <img src="public/res/img\footer-image\location.png">
                         <div>178 Ngõ 999 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</div>
                     </div>
                         
@@ -223,5 +222,5 @@
 
       
     </body>
-    <script  src="../../../public/js/cart.js"></script>
+    <script  src="public/js/cart.js"></script>
 </html>

@@ -53,7 +53,7 @@
                                 $product_name = implode(" ", $product_name);
                                 $product_name = $product_name . ' ...';
                             }
-                            echo '<div class="product-detail" onclick="location.href=\'/web/ClothesStore/product?productID=\''. $product['productID'] . '">'
+                            echo '<div class="product-detail" onclick="location.href=\'/web/ClothesStore/product?productID='. $product['productID'] . '\'">'
                                     . '<div class="product-image col-12">'
                                         .'<img src="public/res/img/products/' . $service->getImageHomepage($product['productID']) . '" />'
                                     . '</div>'
