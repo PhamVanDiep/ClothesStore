@@ -240,4 +240,23 @@ class ProductService extends Service{
         parent::setQuery($query);
         parent::deleteQuery();
     }
+
+    public function getProduct($productID)
+    {
+        $query = "select * from product where productID = " . $productID;
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        if($row = mysqli_fetch_assoc($result)){
+            $product_id = $row["productID"];
+            $description = $row["description"];
+            $name = $row["name"];
+            $categoryID = $row["categoryID"];
+            $price = $row["price"];
+            $oldPrice = $row["oldPrice"];
+            $product = new Product($product_id,$name,$categoryID,$price, $oldPrice, $description);
+            return $product;
+        }
+        return null;
+    }
+
 }
