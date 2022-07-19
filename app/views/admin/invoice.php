@@ -71,7 +71,9 @@
                     <tr>
                         <td>ID</td>
                         <td>Ngày tạo</td>
-                        <td>Khách hàng</td>
+                        <td>Tên khách hàng</td>
+                        <td>Số điện thoại</td>
+                        <td>Địa chỉ</td>
                         <td>Sản phẩm</td>
                         <td>Tổng tiền</td>
                         <td>Trạng thái</td>
@@ -106,6 +108,8 @@
                                     . '<td>#' . $orderID . '</td>'
                                     . '<td>' . $timeCreate . '</td>'
                                     . '<td>' . $order_user['name'] . '</td>'
+                                    . '<td>' . $order_user['phoneNumber'] . '</td>'
+                                    . '<td>' . $order_user['address'] . '</td>'
                                     . '<td>';
                             foreach ($allProductsOfOrder as $product) {
                                 echo 'x'. $product['number'] . '; ' . $product['name'] . '; ' . 'Phân loại hàng : '. $product['size'] . ', ' . $product['type'] . '<br>';
