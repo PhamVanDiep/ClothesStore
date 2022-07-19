@@ -16,19 +16,19 @@
     require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
     ?>
 
-    <div class="body col-12">
+<div class="body col-12">
         <div class="content col-10">
             <div class="slide col-12">
                 <!-- slide  -->
                 <div class="image-1 col-8">
-                    <img src="public/res/img/events/event1.png" alt="slide san pham">
+                    <img src="../../../public/res/img/events/event1.png" alt="slide san pham">
                 </div>
                 <div class="image-2 col-4">
                     <div class="image-2-1 col-12">
-                        <img src="public/res/img/events/event2.png" alt="slide san pham">
+                        <img src="../../../public/res/img/events/event2.png" alt="slide san pham">
                     </div>
                     <div class="image-2-2 col-12">
-                        <img src="public/res/img/events/envent3.png" alt="slide san pham">
+                        <img src="../../../public/res/img/events/envent3.png" alt="slide san pham">
                     </div>
                 </div>
             </div>
@@ -40,107 +40,48 @@
 
             <!-- product suggest-->
             <div class="product-suggest col-12">
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 10</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                $service = new ProductService();
+                $listProduct = $service->viewProductHomepage();
+                
+                $cnt = 0;
+                foreach ($listProduct as $product) {
+                    $cnt++;
+                ?>
+                    <div class="product-suggest-item col-2">
+                        <div class="item-image col-12">
+                            <?php
+                            //echo  $images;
+                            $service = new ProductService();
+                            $images = $service->getImageHomepage($product->getProductID());
+                            $urlimage = "public/res/img/products/" . $images . "";
+                            echo '
+                            <img src="../../../public/res/img/products/' . $images . '" >'
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
+                            // 
+                            ?>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
                         </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
+                        <div class="item-name">
+                            <p> <?php echo $product->getName() ?></p>
+                        </div>
+                        <div class="item-description">
+                            <div class="item-cost">
+                                <p><?php echo $product->getPrice() . " VNĐ" ?></p>
+                            </div>
+                            <div class="item-selled">
+                                <p>Đã bán 10</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php
+                    if ($cnt > 15) break;
+                }
+                ?>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="product-suggest-item col-2">
-                    <div class="item-image col-12">
-                        <img src="public/res/img/products/product1.jpg" alt="">
-                    </div>
-                    <div class="item-name">
-                        <p> Váy dự tiệc trễ vai</p>
-                    </div>
-                    <div class="item-description">
-                        <div class="item-cost">
-                            <p>100.000đ</p>
-                        </div>
-                        <div class="item-selled">
-                            <p>Đã bán 100</p>
-                        </div>
-                    </div>
-                </div>
+
 
                 <!-- pagination  -->
                 <div class="container">
@@ -148,7 +89,7 @@
                         <ul>
                             <a href="#">
                                 <li>
-                                    << /li>
+                                    <</li>
                             </a>
                             <a class="is-active" href="#">
                                 <li>1</li>
@@ -174,6 +115,8 @@
                         </ul>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
