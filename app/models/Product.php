@@ -60,6 +60,7 @@ class Product {
         return $this->name;
     }
 
+    
     public function getPrice()
     {
         return $this->price;
