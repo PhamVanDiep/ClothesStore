@@ -29,6 +29,8 @@
                         <span class="checkmark"></span>
                     </label>
                     <a> Chọn tất cả </a>    
+                    <div style="flex:1"></div>
+                     <button id= "btn-del-select" >Delete</button>
                     
                 </div>
             <div class="item-list">
@@ -153,7 +155,7 @@
                 <div class="delivery-info">
                     <div class="delivery-header">
                         <a>Giao hàng tới:</a>
-                        <div>Thay đổi</div>
+                        
                     </div>
                     <div class="receiver-info">
                         <div class="receiver-name" >
@@ -176,9 +178,13 @@
                         <a> Tổng: </a>
                         <a id="total-item"> </a>
                     </div>
-                    <div class="delivery-cost" style="display: none">
+                    <div class="delivery-cost" style="visibility: hidden">
                         <a> Phí vận chuyển:</a>
                         <a id ="delivery-cost"> 15.000</a>
+                    </div>
+                    <div class="voucher-discount" style="visibility: hidden">
+                        <a> Voucher:</a>
+                        <a id ="voucher-discount" ></a>
                     </div>
                     <div style="flex:1; border-bottom: 2px solid #b8b8b8"></div>
                     <div class ="total-cost">
@@ -190,7 +196,20 @@
               
                 <div class = "payment-info">
                     <a style="color:#b8b8b8"> Phương thức thanh toán </a>
-                    <a> Thanh toán khi nhận hàng
+                    <a> Thanh toán khi nhận hàng</a>
+
+                </div>
+                <div class = "voucher-select">
+                    <a style="color:#b8b8b8"> Voucher </a>
+                    <select id="voucher-selector" default="">
+                        <option value="0"style="display:none; font-weight: normal;" >Chọn voucher</option>
+                        <option value="10" >MUAHEXANH - Giảm 10%</option>
+                        <option value="15">MUAHEXANH - Giảm 15%</option>
+                        <option value="5">MUAHEXANH - Giảm 5%</option>
+                        <option value="5">MUAHEXANH - Giảm 5%</option>
+                        <option value="5">MUAHEXANH - Giảm 5%</option>
+                        <option value="2">MUAHEXANH - Giảm 2%</option>
+                    </select>
 
                 </div>
             <button class="btn-purchase">Mua hàng</button>

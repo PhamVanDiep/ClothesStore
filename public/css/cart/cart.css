@@ -155,7 +155,7 @@
   flex:1;
   align-items: center;
 }
-.btn-del{
+.btn-del {
   flex:0.5;
   margin:20px;
   height: 30px;
@@ -167,7 +167,17 @@
   color: white;
   font-weight: bold;
 }
-
+#btn-del-select{
+  height: 25px;
+  width: 60px;
+  margin-right: 20px;
+  cursor: pointer;
+  background-color: #ee4d2d;
+  border:none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
 /* it will support chrome and firefox */
 .quantity-select input[type=number]::-webkit-inner-spin-button,
 .quantity-select input[type=number]::-webkit-outer-spin-button{
@@ -255,11 +265,39 @@
   background-color: #fff;
   flex:0.7;
   margin-bottom: 5px;
-  padding: 5%;
+  padding: 3% 5% 3% 5%;
   display: flex;
   flex-direction: column;
 
 }
+
+.voucher-select{
+  background-color: #fff;
+  flex:0.7;
+  margin-bottom: 5px;
+  padding: 3% 5% 3% 5%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.voucher-select a{
+  font-weight: bolder;
+  font-size: larger;
+}
+#voucher-selector{
+  border: 0;
+  height: 30px;
+  font-weight: bold;
+  border-bottom: 1px solid #d8d8d8;
+  font-size: medium;
+  
+}
+#voucher-selector option{
+  font-weight: normal;
+  font-size: medium;
+  padding: 2px;
+}
+
 .payment-info a{
   font-weight: bolder;
   font-size: larger;
@@ -276,7 +314,7 @@
 }       
         
 .delivery-info{
-  padding: 5%;
+  padding: 3% 5% 3% 5%;
   border-radius: 5px;
 }     
 .receiver-info{
@@ -318,7 +356,7 @@
   padding: 10px;
 }
         
-    
+
         
         
         

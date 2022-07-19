@@ -1,20 +1,6 @@
 let selectors = document.getElementsByClassName("selector")
 let popup 
 
-list = document.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
-
-
-for(const item of list){
-    item.addEventListener('mouseover', function handleMouseOver() {
-        item.style.backgroundColor  = '#d8d8d8';
-      });
-      
-      // 👇️ Change text color back on mouseout
-      item.addEventListener('mouseout', function handleMouseOut() {
-        item.style.backgroundColor  = '#ffffff';
-      });
-}
-
 // tao selector 
     function addClickableSelector(select){
     select.parentElement.children[0].onclick= function(e){

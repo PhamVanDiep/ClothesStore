@@ -4,8 +4,8 @@ const totalItem = document.getElementById("total-item");
 const delivery = document.getElementById("delivery-cost").parentElement
 const totalCost = document.getElementById("total-cost")
 const quantitySelect = document.getElementsByClassName("quantity-select")
-
-
+const voucher_discount = document.getElementById("voucher-discount")
+const voucher_selector = document.getElementById("voucher-selector")
 selectAll.onclick = function(){
     let isCheck = selectAll.children[0].checked;
     for (let i = 1; i < checkbox.length; i++) {
@@ -34,11 +34,20 @@ function updateCost(){
   }
   totalItem.innerText = addDots(total);
   if(total != 0) {
-    delivery.style.display="flex";
-    totalCost.innerHTML = addDots(total+15000);
+    delivery.style.visibility="visible";
+    
+    if(voucher_selector.value != 0){
+      voucher_discount.parentElement.style.visibility="visible"
+      voucher_discount.innerHTML=addDots(-total*voucher_selector.value/100)
+    }
+    else{
+      voucher_discount.parentElement.style.visibility="hidden"
+    }
+    totalCost.innerHTML = addDots(total*(100-voucher_selector.value)/100+15000);
   }
   else{
-    delivery.style.display= "none";
+    voucher_discount.parentElement.style.visibility="hidden"
+    delivery.style.visibility= "hidden";
     totalCost.innerHTML = "";
     totalItem.innerText ="";
   }
@@ -74,3 +83,24 @@ for(const btn of del_btns) {
   }
 }
 
+// xoa da chon 
+del_select_btn = document.getElementById("btn-del-select")
+del_select_btn.onclick= function(){
+  var answer = window.confirm("Xóa sản phẩm đã chọn ?");
+    if (answer==true) {
+      
+      for (let i = 1; i < checkbox.length; i++) {
+        if(checkbox[i].children[0].checked){
+       
+          checkbox[i].parentElement.remove()
+          i--;
+        }
+      }
+      
+      updateCost()
+    }
+}
+
+voucher_selector.onchange = function(){
+  updateCost()
+}
