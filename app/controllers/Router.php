@@ -20,6 +20,7 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'HomeTestController.p
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'LogoutController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AdminInfoController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'InvoiceManagementController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'ProductDetailController.php';
 
 class Router {
     private $_dispath;
@@ -165,6 +166,14 @@ class Router {
 
         if(strcmp($this->_url,"/" . $this->_path_project . "/invoice-management") == 0){
             $this->_dispath = new InvoiceManagementController();
+            $this->_isAdmin = true;
+            return;
+        }
+
+        if(str_contains($this->_url, 'products')) {
+            $productID = strrpos($this->_url, '=');
+            $productID = substr($this->_url, $productID + 1);
+            $this->_dispath = new ProductDetailController($productID);
             $this->_isAdmin = true;
             return;
         }

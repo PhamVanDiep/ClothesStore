@@ -2,23 +2,25 @@
 require_once ROOT . DS . 'services' . DS . 'ProductService.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <link rel="stylesheet" href="../../../public/css/root.css" />
-    <link rel="stylesheet" href="../../../public/css/header.css" />
-    <link rel="stylesheet" href="../../../public/css/footer.css" />
-    <link rel="stylesheet" href="../../../public/css/body.css" />
-    <link rel="stylesheet" href="../../../public/css/product/product_detail.css     " />
+    <link rel="stylesheet" href="public/css/root.css" />
+    <link rel="stylesheet" href="public/css/header.css" />
+    <link rel="stylesheet" href="public/css/footer.css" />
+    <link rel="stylesheet" href="public/css/body.css" />
+    <link rel="stylesheet" href="public/css/product/product_detail.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <script src="public/js/product_detail.js"></script>
 </head>
 
 <body>
 
     <!-- header -->
     <?php
-    require '../components/header.php';
+    require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
     ?>
 
     <!-- body -->
@@ -28,7 +30,7 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
                 <div class="box-card col-12">
                     <?php
                         $service = new ProductService();
-                        $product = $service->getProduct(3);
+                        $product = $service->getProduct($productID);
                         $images = $service->getAllImages($product->getProductID());
                         $size = $service->getSizeByID($product->getProductID());
                         $type = $service->getTypeByID($product->getProductID());
@@ -39,34 +41,24 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
                             <div class="img-display">
                                 <div class="img-showcase">
                                     <?php 
-                                    
-                                        echo '
-                                            <img src="../../../public/res/img/products/' . $images[0] . '" >
-                                            <img src="../../../public/res/img/products/' . $images[1] . '" >
-                                            <img src="../../../public/res/img/products/' . $images[2] . '" >
-                                            <img src="../../../public/res/img/products/' . $images[3] . '" >';
-                                    
+                                        foreach ($images as $image) {
+                                            echo '<img src="public/res/img/products/' . $image['urlimage'] . '" >';
+                                        }
                                     ?>
                                 </div>
                             </div>
                             <div class="img-select">
-                                <div class="img-item">
-                                    <a href="#" data-id="1">
-                                        <?php echo '<img src="../../../public/res/img/products/' . $images[0] . '" > '?>
-                                    </a>
-                                </div>
-                                <div class="img-item">
-                                    <a href="#" data-id="2">
-                                    <?php echo '<img src="../../../public/res/img/products/' . $images[1] . '" > '?>
-                                </div>
-                                <div class="img-item">
-                                    <a href="#" data-id="3">
-                                    <?php echo '<img src="../../../public/res/img/products/' . $images[2] . '" > '?>
-                                </div>
-                                <div class="img-item">
-                                    <a href="#" data-id="4">
-                                    <?php echo '<img src="../../../public/res/img/products/' . $images[3] . '" > '?>
-                                </div>
+                                <?php
+                                    $num = 0;
+                                    foreach ($images as $image) {
+                                        $num++;
+                                        echo '<div class="img-item">'
+                                                . '<a href="#" data-id="' . $num . '">'
+                                                    . '<img src="public/res/img/products/' . $image['urlimage'] . '" > '
+                                                . '</a>'
+                                            . '<div>';
+                                    }
+                                ?>
                             </div>
                         </div>
                         <!-- card right -->
@@ -117,11 +109,8 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
                                         </span></li>
                                     <li>Trạng thái: <span>Còn hàng</span></li>
                                     <li>Loại: <span>Quần áo</span></li>
-
-
                                 </ul>
                             </div>
-
                             <div class="purchase-info">
                                 <input type="number" min="0" value="1">
                                 <button type="button" class="btn">
@@ -129,24 +118,12 @@ require_once ROOT . DS . 'services' . DS . 'ProductService.php';
                                 </button>
                                 <button type="button" class="btn">Mua Hàng</button>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-    <!-- footer -->
-    <?php
-    require '../components/footer.php';
-    ?>
 </body>
 
 </html>

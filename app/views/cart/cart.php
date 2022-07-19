@@ -215,7 +215,7 @@
             </div>
             
             <?php 
-            require '../components/footer.php';
+            require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'footer.php';
             ?>
         </div>
 

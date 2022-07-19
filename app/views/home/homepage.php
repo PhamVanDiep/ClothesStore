@@ -17,16 +17,38 @@
     ?>
 
     <div class="body col-12">
-        <div class="slide col-12">
-            <img src="public/res/img/events/event1.png" alt="slide san pham">
-            <!-- <div class="image-2 col-4">
-                <div class="image-2-1 col-12">
-                    <img src="public/res/img/events/event2.png" alt="slide san pham">
+        <div class="slider slide col-12" id="launcher">
+            <div class="slides">
+                <!--radio buttons start-->
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <!--radio buttons end-->
+                <!--slide images start-->
+                <div class="slide first">
+                    <img src="../../masterial/image/bgrhomepage/head0.jpg" alt="">
                 </div>
-                <div class="image-2-2 col-12">
-                    <img src="public/res/img/events/envent3.png" alt="slide san pham">
+                <div class="slide">
+                    <img src="../../masterial/image/bgrhomepage/head1.jpg" alt="">
                 </div>
-            </div> -->
+                <div class="slide">
+                    <img src="../../masterial/image/bgrhomepage/head2.jpg" alt="">
+                </div>
+                <div class="slide">
+                    <img src="../../masterial/image/bgrhomepage/head3.jpg" alt="">
+                </div>
+                <!--slide images end-->
+
+            </div>
+            <!--manual navigation start-->
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+            </div>
+            <!--manual navigation end-->
         </div>
         <div class="content col-10">
             <!-- thanh san pham goi y  -->
@@ -53,7 +75,7 @@
                                 $product_name = implode(" ", $product_name);
                                 $product_name = $product_name . ' ...';
                             }
-                            echo '<div class="product-detail" onclick="location.href=\'/web/ClothesStore/product?productID='. $product['productID'] . '\'">'
+                            echo '<div class="product-detail" onclick="location.href=\'/web/ClothesStore/products?productID='. $product['productID'] . '\'">'
                                     . '<div class="product-image col-12">'
                                         .'<img src="public/res/img/products/' . $service->getImageHomepage($product['productID']) . '" />'
                                     . '</div>'
