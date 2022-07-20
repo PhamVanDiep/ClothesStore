@@ -1,40 +1,6 @@
-const titles = document.getElementsByClassName('order-status');
-
-// set anmation 
-let clicked = [true, false, false, false, false, false];
-let preIndex = 0;
-titles[0].style.color = '#401D83';
-titles[0].style.borderBottom = '2px solid #401D83';
-for (let index = 0; index < titles.length; index++) {
-    const element = titles[index];
-
-    element.onclick = function () {
-        titles[preIndex].style.color = '#000000';
-        titles[preIndex].style.borderBottom = 'none';
-        clicked[index] = true;
-        clicked[preIndex] = false;
-        preIndex = index;
-        element.style.color = '#401D83';
-        element.style.borderBottom = '2px solid #401D83';
-        filterByStatus(index);
-        document.getElementById('search-order-status').value = "";
-    }
-
-    element.onmouseenter = function () {
-        element.style.color = '#401D83';
-        element.style.borderBottom = '2px solid #401D83';
-    }
-
-    element.onmouseleave = function () {
-        if (!clicked[index]) {
-            element.style.color = '#000000';
-            element.style.borderBottom = 'none';
-        }else{
-            element.style.color = '#401D83';
-            element.style.borderBottom = '2px solid #401D83';
-        }
-    }
-}
+let init = document.getElementById("order-status-0");
+init.style.color = '#401D83';
+init.style.borderBottom = '2px solid #401D83';
 
 function filterByStatus(statusID) {
     if (statusID == 0) {
@@ -66,6 +32,18 @@ function filterByStatus(statusID) {
             }
         }
     }
+    document.getElementById('search-order-status').value = "";
+    let element_clicked = document.getElementById("order-status-" + statusID);
+    element_clicked.style.color = '#401D83';
+    element_clicked.style.borderBottom = '2px solid #401D83';
+
+    for (let index = 0; index < 6; index++) {
+        if (index != statusID) {
+            let element_non_clicked = document.getElementById("order-status-" + index);
+            element_non_clicked.style.color = '#000000';
+            element_non_clicked.style.borderBottom = 'none';
+        }
+    }
 }
 
 function filterByName(input) {
@@ -84,10 +62,10 @@ function filterByName(input) {
 
 function cancelOrder(orderID, button) {
     let option = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
-    if(!option) return;
+    if (!option) return;
     else {
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseText.toLowerCase() == "success") {
                     alert("Hủy đơn hàng thành công!");
@@ -110,10 +88,10 @@ function cancelOrder(orderID, button) {
 
 function reBuy(orderID, userID) {
     let option = confirm('Bạn có chắc chắn muốn mua lại những sản phẩm này không?');
-    if(!option) return;
+    if (!option) return;
     else {
         var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseText.toLowerCase() == "success") {
                     alert("Sản phẩm đã được thêm vào giỏ hàng!");

@@ -13,6 +13,7 @@
 <body>
     <?php
         require 'info_header.php';
+        require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'header.php';
         require 'info_body.php';
     ?>
 </body>

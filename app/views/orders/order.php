@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="public/css/root.css" />
         <link rel="stylesheet" href="public/css/header.css" />
+        <link rel="stylesheet" href="public/css/admin_header.css" />
         <link rel="stylesheet" href="public/css/footer.css" />
         <link rel="stylesheet" href="public/css/body.css" />
         <link rel="stylesheet" href="public/css/orders/order_header.css" />
@@ -18,17 +19,17 @@
         <div class="body col-12" id="body">
             <div class="order-header-wrap col-12">
                 <div class="main-order-header-wrap col-10">
-                    <div class="order-status">
+                    <div class="order-status" id="order-status-0" onclick="filterByStatus(0)">
                         Tất cả
-                    </div><div class="order-status">
+                    </div><div class="order-status" id="order-status-1" onclick="filterByStatus(1)">
                         Chờ xác nhận
-                    </div><div class="order-status">
+                    </div><div class="order-status" id="order-status-2" onclick="filterByStatus(2)">
                         Đã xác nhận
-                    </div><div class="order-status">
+                    </div><div class="order-status" id="order-status-3" onclick="filterByStatus(3)">
                         Đang giao
-                    </div><div class="order-status">
+                    </div><div class="order-status" id="order-status-4" onclick="filterByStatus(4)">
                         Đã giao
-                    </div><div class="order-status">
+                    </div><div class="order-status" id="order-status-5" onclick="filterByStatus(5)">
                         Đã hủy
                     </div>
                 </div>

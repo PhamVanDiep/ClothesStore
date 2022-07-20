@@ -17,12 +17,12 @@
         // header('Location: /web/ClothesStore/home-test');
         
         if (is_null($get_user)) {
-            header('Location: /web/ClothesStore/edit-info');
+            header('Location: /web/ClothesStore/');
         } else {
             if (strcmp($password, $get_user['password']) == 0) {
                 $_SESSION['login_id'] = $get_user['userID']; 
                 if ($get_user['roleID'] == 1) {
-                    header('Location: /web/ClothesStore/edit-info');
+                    header('Location: /web/ClothesStore/');
                 } else if ($get_user['roleID'] == 2) {
                     header('Location: /web/ClothesStore/dashboard');
                 }

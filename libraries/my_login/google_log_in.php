@@ -11,7 +11,7 @@ require_once ROOT . DS . 'api' . DS . 'google-api' . DS . 'vendor' . DS . 'autol
 
 
 if(isset($_SESSION['login_id'])){
-    header('Location: /web/ClothesStore/edit-info');
+    header('Location: /web/ClothesStore/');
     exit;
 }
 
@@ -58,7 +58,7 @@ if(isset($_GET['code'])):
         $get_user = $user_service->getUserByEmail($email);
         if(!is_null($get_user)){
             $_SESSION['login_id'] = $get_user['userID']; 
-            header('Location: /web/ClothesStore/edit-info');
+            header('Location: /web/ClothesStore/');
             exit;
 
         }
@@ -69,7 +69,7 @@ if(isset($_GET['code'])):
             $new_user = $user_service->getUserByEmail($email);
             $_SESSION['login_id'] = $new_user['userID'];
             if (is_null($checkRegister)) {
-                header('Location: /web/ClothesStore/edit-info');
+                header('Location: /web/ClothesStore/');
             } else {
                 header('Location: /web/ClothesStore/login');
             }

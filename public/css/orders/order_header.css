@@ -1,7 +1,7 @@
 @media only screen and (max-width: 768px){
     .order-header-wrap{
         background-color: #FFFFFF;
-        z-index: 2;
+        /* z-index: 2; */
     }
 
     .order-status{
@@ -23,7 +23,7 @@
     .order-header-wrap{
         background-color: #FFFFFF;
         position: fixed;
-        z-index: 2;
+        /* z-index: 2; */
     }
 
     .main-order-header-wrap{
@@ -49,7 +49,7 @@
     .order-header-wrap{
         background-color: #FFFFFF;
         position: fixed;
-        z-index: 2;
+        /* z-index: 2; */
     }
     
     .main-order-header-wrap{
