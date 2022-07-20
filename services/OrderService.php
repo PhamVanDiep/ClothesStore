@@ -28,8 +28,8 @@ class OrderService extends Service {
     {
         $query = "SELECT o.orderID , o.totalCost, o.statusID, s.name  
                     FROM `order` o, status s 
-                    WHERE o.statusID = s.statusID;";
-        // them dk AND o.userID = $userID
+                    WHERE o.statusID = s.statusID
+                    AND o.userID = $userID;";
         parent::setQuery($query);
         $result = parent::executeQuery();
         return $result;

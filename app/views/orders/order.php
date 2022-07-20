@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION['login_id'])){
+        header('Location: /web/ClothesStore/logout');
+        exit;
+    }
+?>
 <!Doctype html>
 <html>
     <head>
@@ -44,8 +50,8 @@
         <?php
             require_once ROOT . DS . 'services' . DS . 'OrderService.php';
             $order_service = new OrderService();
-            $userID = 1;
-            $all_orders = $order_service->getAllOrdersOfUser($userID); // must reconfig
+            $userID = $_SESSION['login_id'];
+            $all_orders = $order_service->getAllOrdersOfUser($userID);
             // print_r($all_orders);
             foreach ($all_orders as $order) {
                 $orderID = $order['orderID'];
