@@ -21,6 +21,7 @@ require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'LogoutController.php
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'AdminInfoController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'InvoiceManagementController.php';
 require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'ProductDetailController.php';
+require_once ROOT . DS . 'app' . DS . 'controllers' . DS . 'SearchProductController.php';
 
 class Router {
     private $_dispath;
@@ -174,6 +175,14 @@ class Router {
             $productID = strrpos($this->_url, '=');
             $productID = substr($this->_url, $productID + 1);
             $this->_dispath = new ProductDetailController($productID);
+            $this->_isAdmin = false;
+            return;
+        }
+
+        if(str_contains($this->_url, 'search')) {
+            $productSearchName = strrpos($this->_url, '=');
+            $productSearchName = substr($this->_url, $productSearchName + 1);
+            $this->_dispath = new SearchProductController($productSearchName);
             $this->_isAdmin = false;
             return;
         }

@@ -22,10 +22,10 @@
         </div>
         <div class="search-wrap col-7">
             <div class="input-wrap col-5">
-                <input type="text" placeholder="Nhập tên sản phẩm muốn tìm kiếm" ></input>
+                <input type="text" placeholder="Nhập tên sản phẩm muốn tìm kiếm" id="search-input-text" />
             </div>
             <div class="button-wrap col-2">
-                <button class="search-btn">
+                <button class="search-btn" id="search-button" onclick="searchByName()">
                 <img src= "public/res/img/header-image/search.png" alt="" id="search-btn"/>
                 Tìm kiếm</button>
             </div>
@@ -46,3 +46,4 @@
         </div>
     </div>
 </div>
+<script src="public/js/header.js"></script>
