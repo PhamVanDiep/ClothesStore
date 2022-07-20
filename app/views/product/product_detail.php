@@ -45,6 +45,7 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                             <div class="img-display">
                                 <div class="img-showcase">
                                     <?php
+                                    if (sizeof($images) >= 4)
                                     echo '
                                          <img src="public/res/img/products/' . $images[0] . '" >
                                          <img src="public/res/img/products/' . $images[1] . '" >
@@ -56,20 +57,20 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                             <div class="img-select">
                                 <div class="img-item">
                                     <a href="" data-id="1">
-                                        <?php echo '<img src="public/res/img/products/' . $images[0] . '" > ' ?>
+                                        <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[0] . '" > ' ?>
                                     </a>
                                 </div>
                                 <div class="img-item">
                                     <a href="" data-id="2">
-                                        <?php echo '<img src="public/res/img/products/' . $images[1] . '" > ' ?>
+                                        <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[1] . '" > ' ?>
                                 </div>
                                 <div class="img-item">
                                     <a href="" data-id="3">
-                                        <?php echo '<img src="public/res/img/products/' . $images[2] . '" > ' ?>
+                                        <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[2] . '" > ' ?>
                                 </div>
                                 <div class="img-item">
                                     <a href="" data-id="4">
-                                        <?php echo '<img src="public/res/img/products/' . $images[3] . '" > ' ?>
+                                        <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[3] . '" > ' ?>
                                 </div>
                             </div>
                         </div>

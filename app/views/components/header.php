@@ -33,9 +33,9 @@
         <div class="login-cart col-3">
             <div class="login">
                 <img src= "public/res/img/header-image/person.png" alt=""></img>
-                <span>Đăng ký</span>
+                <span><a href=<?php echo "/" . $path_project . "/" . "register"?>>Đăng ký</a></span>
                 <span>/</span>
-                <span>Đăng nhập</span>
+                <span><a href=<?php echo "/" . $path_project . "/" . "login"?>>Đăng nhập</a></span>
             </div>
             <a href=<?php echo "/" . $path_project . "/" . "cart"?>>
                 <div class="cart">

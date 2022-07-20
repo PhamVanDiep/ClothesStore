@@ -2,6 +2,8 @@
     require_once ROOT . DS . 'services' . DS . 'TurnoverService.php';
     require_once ROOT . DS . 'services' . DS . 'UserService.php';
 
+    global $path_project;
+
     if(!isset($_SESSION['login_id'])){
         header('Location: /web/ClothesStore/logout');
         exit;
@@ -178,7 +180,7 @@
                         </table>
                     </div>
                     <div id="see-all-wrap">
-                        <span>Chi tiết</span>
+                        <span><a href= <?php echo "/" . $path_project . "/invoice-management"; ?>>Chi tiết</a></span>
                     </div>
                 </div>
                 <div id="best-seller-wrap">

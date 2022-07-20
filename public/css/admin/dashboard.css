@@ -169,6 +169,9 @@
     text-decoration: underline;
 }
 
+#see-all-wrap span a{
+    color: blue;
+}
 #see-all-wrap span:hover{
     cursor: pointer;
 }

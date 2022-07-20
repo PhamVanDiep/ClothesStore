@@ -10,51 +10,34 @@
             <span class="left-title">Tổng quan</span>
         </div>
     </div></a>
-    <div class="list-managements col-12" id="order-wrap">
+    <a href= <?php echo "/" . $path_project . "/invoice-management"; ?>><div class="list-managements col-12" id="order-wrap">
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/order.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
             <span class="left-title">Đơn hàng</span>
-        </div><div class="leftbar-extend-wrap">
-            <img src="public/res/img/admin/right.png" id="order-extend-icon">
         </div>
-    </div>
-    <div class="col-12" id="list-order-wrap">
-        <div class="leftbar-small-title-wrap">
-            <span class="left-title">Tất cả đơn hàng</span>
-        </div><div class="leftbar-small-title-wrap">
-            <span class="left-title">Đơn hàng mới</span>
-        </div><div class="leftbar-small-title-wrap">
-            <span class="left-title">Đơn hàng đã xác nhận</span>
-        </div><div class="leftbar-small-title-wrap">
-            <span class="left-title">Đơn hàng đang giao</span>
-        </div><div class="leftbar-small-title-wrap">
-            <span class="left-title">Đơn hàng đã giao</span>
-        </div><div class="leftbar-small-title-wrap">
-            <span class="left-title">Đơn hàng đã hủy</span>
-        </div>
-    </div>
+    </div></a>
     <div class="list-managements col-12" id="product-wrap">
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/product.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
-            <span class="left-title">Sản phẩm</span>
+            <a href= <?php echo "/" . $path_project . "/product-management"; ?>><span class="left-title">Sản phẩm</span></a>
         </div><div class="leftbar-extend-wrap">
             <img src="public/res/img/admin/right.png" id="product-extend-icon">
         </div>
     </div>
     <div class="col-12" id="list-product-wrap">
-        <div class="leftbar-small-title-wrap">
+        <a href= <?php echo "/" . $path_project . "/product-management"; ?>><div class="leftbar-small-title-wrap">
             <span class="left-title">Danh sách sản phẩm</span>
-        </div><div class="leftbar-small-title-wrap">
+        </div></a><a href= <?php echo "/" . $path_project . "/add-product"; ?>><div class="leftbar-small-title-wrap">
             <span class="left-title">Thêm sản phẩm</span>
-        </div>
+        </div></a>
     </div>
     <div class="list-managements col-12" id="event-wrap">
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/event.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
-            <span class="left-title">Sự kiện</span>
+            <a href= <?php echo "/" . $path_project . "/event-management"; ?>><span class="left-title">Sự kiện</span></a>
         </div><div class="leftbar-extend-wrap">
             <img src="public/res/img/admin/right.png" id="event-extend-icon">
         </div>
@@ -70,7 +53,7 @@
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/voucher.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
-            <span class="left-title">Mã giảm giá</span>
+            <a href= <?php echo "/" . $path_project . "/manage-voucher"; ?>><span class="left-title">Mã giảm giá</span></a>
         </div><div class="leftbar-extend-wrap">
             <img src="public/res/img/admin/right.png" id="voucher-extend-icon">
         </div>
