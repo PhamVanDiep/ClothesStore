@@ -1,5 +1,4 @@
 <?php
-require_once ROOT . DS . 'libraries' . DS . 'library_config.php';
 require_once ROOT . DS . 'config' . DS . 'config.php';
 require_once ROOT . DS . 'app' . DS . 'models' . DS . 'User.php';
 require_once ROOT . DS . 'services' . DS . 'RegisterService.php';
