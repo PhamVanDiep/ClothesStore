@@ -2,7 +2,7 @@
     global $path_project;
     require_once ROOT . DS . 'services' . DS . 'CartService.php';
     require_once ROOT . DS . 'services' . DS . 'ProductService.php';
-
+    require_once ROOT . DS . 'services' . DS . 'UserService.php';
     if(!isset($_SESSION['login_id'])){
         header('Location: /web/ClothesStore/logout');
         exit;
@@ -10,6 +10,8 @@
 
     $id = $_SESSION['login_id'];
     $cart_service = new CartService();
+    $userService = new UserService();
+    $user = $userService->getUserByID($id);
  ?>
 <!Doctype html>
 <html>
@@ -88,17 +90,17 @@
                     </div>
                     <div class="receiver-info">
                         <div class="receiver-name" >
-                            Customer 1
+                            <?php echo $user['name']?>
                         </div>
                         <a>|</a>
                         <div class ="receiver-tel">
-                            0899924343
+                            <?php echo $user['phoneNumber']?> 
                         </div>
 
                     </div>
                     <div class="delivery-address" >
                         <img src="public/res/img\footer-image\location.png">
-                        <div>178 Ngõ 999 Đại Cồ Việt, Hai Bà Trưng, Hà Nội</div>
+                        <div> <?php echo $user['address']?> </div>
                     </div>
                         
                 </div>
