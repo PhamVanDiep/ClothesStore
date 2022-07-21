@@ -69,7 +69,7 @@ class CartService extends Service{
         $cartID = self::getCartID($userID);
         $query = "select cp.*,p.name,p.price from cart_product cp, product p 
                     where cp.productID = p.productID
-                    and cartID =" . $cartID;
+                    and cp.cartID = " . $cartID;
 
         parent::setQuery($query);
         $result = parent::executeQuery();

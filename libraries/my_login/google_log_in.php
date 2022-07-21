@@ -66,6 +66,7 @@ if(isset($_GET['code'])):
             $register_service = new RegisterService();
             $checkRegister = $register_service->insertGoogle($user);
             $new_user = $user_service->getUserByEmail($email);
+            $user_service->addCart($new_user['userID']);
             $_SESSION['login_id'] = $new_user['userID'];
             if (is_null($checkRegister)) {
                 header('Location: /web/ClothesStore/');

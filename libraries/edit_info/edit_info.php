@@ -32,7 +32,13 @@
 
         $urlAvatar = "public/res/img/info/" . $avatar;
 
-        $user = new User($userID, $name, $username, $email, $phoneNumber, $gender, NULL, $address, NULL, $urlAvatar, NULL);
+        $get_user = $user_service->getUserByID($userID);
+
+        if ($get_user['googleId'] == null) {
+            $user = new User($userID, $name, $username, $email, $phoneNumber, $gender, NULL, $address, NULL, $urlAvatar, NULL);
+        } else {
+            $user = new User($userID, $name, $username, $email, $phoneNumber, $gender, NULL, $address, NULL, $get_user['urlAvatar'], NULL);
+        }
         $edit_service = new EditInfoService();
         $edit_service->update($user);
 
