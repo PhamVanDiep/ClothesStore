@@ -7,7 +7,7 @@
     require_once ROOT . DS . 'services' . DS . 'UserService.php';
 
     session_start();
-    $targetDir = "../../../public/res/img/admin/";
+    $targetDir = "../../../public/res/img/info/";
     if (isset($_POST)) {
         $userID = $_SESSION['login_id'];
         $name = $_POST['name'];
@@ -26,8 +26,15 @@
             if ($avatar != NULL) {
                 unlink($targetDir.$avatar);
             }
-            $avatar = $_FILES['image']['name'];
-            move_uploaded_file($_FILES['image']['tmp_name'], $targetDir.$avatar);
+            $temp = explode(".", $_FILES['image']['name']);
+            $avatar = $userID . '.' . end($temp);
+            move_uploaded_file($_FILES['image']['tmp_name'], $targetDir . $avatar);
+        }
+
+        if (str_contains($avatar, "public/res/img/info/")) {
+            $urlAvatar = $avatar;
+        } else {
+            $urlAvatar = "public/res/img/info/" . $avatar;
         }
 
         if (str_contains($avatar, "public/res/img/info/")) {
