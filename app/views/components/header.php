@@ -100,5 +100,18 @@
             dropdown_res.style.display = "none";
         }
     }
+
+    function searchByName() {
+        let search = document.getElementById("search-input-text").value;
+        if (search.length > 0) {
+            window.location.href = '/web/ClothesStore/search?product-name=' + search;
+        }
+    }
+
+    document.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            searchByName()
+        }
+    });
 </script>
 <?php if (isset($_SESSION['login_id'])) echo '<script src="public/js/header.js"></script>' ?>

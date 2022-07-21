@@ -56,20 +56,20 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                             </div>
                             <div class="img-select">
                                 <div class="img-item">
-                                    <a href="" data-id="1">
+                                    <a data-id="1">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[0] . '" > ' ?>
                                     </a>
                                 </div>
                                 <div class="img-item">
-                                    <a href="" data-id="2">
+                                    <a data-id="2">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[1] . '" > ' ?>
                                 </div>
                                 <div class="img-item">
-                                    <a href="" data-id="3">
+                                    <a data-id="3">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[2] . '" > ' ?>
                                 </div>
                                 <div class="img-item">
-                                    <a href="" data-id="4">
+                                    <a data-id="4">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[3] . '" > ' ?>
                                 </div>
                             </div>
@@ -97,8 +97,7 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
 
                                 <ul>
                                     <li> Màu sắc: <span  class="select" style="width:400px;">
-                                            <select id="type_select">
-                                                <option selected disabled>Chọn màu:</option>
+                                            <select id="type_select" required>
                                                 <?php
                                                 foreach ($type as $type) {
                                                     echo '
@@ -109,8 +108,7 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                                             </select>
                                         </span></li>
                                     <li> Size: <span class="select" style="width:400px;">
-                                            <select id="size_select">
-                                                <option selected disabled>Chọn size:</option>
+                                            <select id="size_select" required>
                                                 <?php
                                                 foreach ($size as $size) {
                                                     echo '
