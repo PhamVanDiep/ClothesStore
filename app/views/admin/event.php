@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="public/css/admin/event.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+        <title>Danh sách sự kiện</title>
     </head>
     <body>
     <div class="col-10" id="head-bar">

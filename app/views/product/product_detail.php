@@ -7,8 +7,16 @@ if(!isset($_SESSION['login_id'])){
 }
 
 $userID = $_SESSION['login_id'];
-$userService = new UserService();
 
+
+$service = new ProductService();
+$product = $service->getProduct($productID);
+$images = $service->getAllImagesDetail($product->getProductID());
+$size = $service->getSizeByID($product->getProductID());
+$type = $service->getTypeByID($product->getProductID());
+
+$userService = new UserService();
+$cartID = $userService->getCartID(6);
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +29,8 @@ $userService = new UserService();
     <link rel="stylesheet" href="public/css/product/product_detail.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+    <title><?php echo $product->getName() ?></title>
 
     <!-- <script src="public/js/product_detail.js"></script> -->
 </head>
@@ -64,20 +74,20 @@ $userService = new UserService();
                             </div>
                             <div class="img-select">
                                 <div class="img-item">
-                                    <a href="" data-id="1">
+                                    <a data-id="1">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[0] . '" > ' ?>
                                     </a>
                                 </div>
                                 <div class="img-item">
-                                    <a href="" data-id="2">
+                                    <a data-id="2">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[1] . '" > ' ?>
                                 </div>
                                 <div class="img-item">
-                                    <a href="" data-id="3">
+                                    <a data-id="3">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[2] . '" > ' ?>
                                 </div>
                                 <div class="img-item">
-                                    <a href="" data-id="4">
+                                    <a data-id="4">
                                         <?php if (sizeof($images) >= 4) echo '<img src="public/res/img/products/' . $images[3] . '" > ' ?>
                                 </div>
                             </div>
@@ -104,9 +114,8 @@ $userService = new UserService();
                                 <p><?php echo $product->getDescription() ?></p>
 
                                 <ul>
-                                    <li> Màu sắc: <span  class="select" style="width:400px;">
-                                            <select id="type_select">
-                                                <option selected disabled>Chọn màu:</option>
+                                    <li> Màu sắc: <span  class="select" style="width: 300px;">
+                                            <select id="type_select" required>
                                                 <?php
                                                 foreach ($type as $type) {
                                                     echo '
@@ -116,9 +125,8 @@ $userService = new UserService();
                                                 ?>
                                             </select>
                                         </span></li>
-                                    <li> Size: <span class="select" style="width:400px;">
-                                            <select id="size_select">
-                                                <option selected disabled>Chọn size:</option>
+                                    <li> Size: <span class="select" style="width: 300px;">
+                                            <select id="size_select" required>
                                                 <?php
                                                 foreach ($size as $size) {
                                                     echo '

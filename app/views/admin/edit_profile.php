@@ -32,6 +32,8 @@ if($user['roleID'] != 2) {
         <link rel="stylesheet" href="public/css/admin/edit_profile.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+        <title>Thông tin cá nhân</title>
     </head>
     <body>
         <div class="col-10" id="head-bar">
@@ -83,7 +85,7 @@ if($user['roleID'] != 2) {
                             </div>
                             <div class="col-5">
                                 <div class="wrap-edit-avt">
-                                    <img id="output" src="<?php echo 'public/res/img/admin/' . $user['urlAvatar']?>" alt="">
+                                    <img id="output" src="<?php echo $user['urlAvatar']?>" alt="">
                                     <input type="file" accept="image/*" name="image" id="image"  onchange="loadFile(event)" style="display: none;">
                                     <input type="button" value="Chọn ảnh" onclick="document.getElementById('image').click();">
                                     <script>

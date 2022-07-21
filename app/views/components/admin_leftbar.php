@@ -21,7 +21,7 @@
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/product.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
-            <a href= <?php echo "/" . $path_project . "/product-management"; ?>><span class="left-title">Sản phẩm</span></a>
+            <a><span class="left-title">Sản phẩm</span></a>
         </div><div class="leftbar-extend-wrap">
             <img src="public/res/img/admin/right.png" id="product-extend-icon">
         </div>
@@ -37,7 +37,7 @@
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/event.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
-            <a href= <?php echo "/" . $path_project . "/event-management"; ?>><span class="left-title">Sự kiện</span></a>
+            <a><span class="left-title">Sự kiện</span></a>
         </div><div class="leftbar-extend-wrap">
             <img src="public/res/img/admin/right.png" id="event-extend-icon">
         </div>
@@ -53,7 +53,7 @@
         <div class="leftbar-icon-wrap">
             <img src="public/res/img/admin/voucher.png" class="left-icon">
         </div><div class="leftbar-title-wrap">
-            <a href= <?php echo "/" . $path_project . "/manage-voucher"; ?>><span class="left-title">Mã giảm giá</span></a>
+            <a><span class="left-title">Mã giảm giá</span></a>
         </div><div class="leftbar-extend-wrap">
             <img src="public/res/img/admin/right.png" id="voucher-extend-icon">
         </div>
