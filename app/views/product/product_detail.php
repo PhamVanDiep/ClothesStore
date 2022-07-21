@@ -1,6 +1,14 @@
 <?php
 require_once ROOT . DS . 'services' . DS . 'ProductService.php';
 require_once ROOT . DS . 'services' . DS . 'UserService.php';
+$service = new ProductService();
+$product = $service->getProduct($productID);
+$images = $service->getAllImagesDetail($product->getProductID());
+$size = $service->getSizeByID($product->getProductID());
+$type = $service->getTypeByID($product->getProductID());
+
+$userService = new UserService();
+$cartID = $userService->getCartID(6);
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +21,8 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
     <link rel="stylesheet" href="public/css/product/product_detail.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+    <title><?php echo $product->getName() ?></title>
 
     <!-- <script src="public/js/product_detail.js"></script> -->
 </head>
@@ -29,16 +39,6 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
         <div class="card-wrapper col-10">
             <div class="content-card col-10">
                 <div class="box-card col-12">
-                    <?php
-                    $service = new ProductService();
-                    $product = $service->getProduct($productID);
-                    $images = $service->getAllImagesDetail($product->getProductID());
-                    $size = $service->getSizeByID($product->getProductID());
-                    $type = $service->getTypeByID($product->getProductID());
-                    
-                    $userService = new UserService();
-                    $cartID = $userService->getCartID(6);
-                    ?>
                     <div class="card">
                         <!-- card left -->
                         <div class="product-imgs">

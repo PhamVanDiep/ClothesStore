@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="public/css/root.css" />
     <link rel="stylesheet" href="public/css/info/info_header.css" />
     <link rel="stylesheet" href="public/css/info/info_body.css" />
-    <title>Document</title>
+    <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+    <title>Thông tin cá nhân</title>
 </head>
 <body>
     <?php

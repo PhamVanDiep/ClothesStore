@@ -64,6 +64,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+        <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+        <title>Dashboard</title>
     </head>
     <body>
         <div class="col-10" id="head-bar">

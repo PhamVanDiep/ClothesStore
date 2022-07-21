@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="public/css/orders/order_detail.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+        <title>Đơn hàng</title>
     </head>
     <body>
     <?php 
