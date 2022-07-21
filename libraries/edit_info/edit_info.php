@@ -30,7 +30,11 @@
             move_uploaded_file($_FILES['image']['tmp_name'], $targetDir . $avatar);
         }
 
-        $urlAvatar = "public/res/img/info/" . $avatar;
+        if (str_contains($avatar, "public/res/img/info/")) {
+            $urlAvatar = $avatar;
+        } else {
+            $urlAvatar = "public/res/img/info/" . $avatar;
+        }
 
         $get_user = $user_service->getUserByID($userID);
 
