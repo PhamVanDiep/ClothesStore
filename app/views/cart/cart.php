@@ -64,7 +64,7 @@
                         $url_img = $product_service->getImageHomepage($productID);
                         echo'<div class="item-info" id="'.$productID.'">
                                 <label class="container">   
-                                    <input type="checkbox" >
+                                    <input type="checkbox" id="checkbox-'. $productID . '-' . $type . '-' . $size .'" class="cart-checkbox">
                                     <span class="checkmark"></span>
                                 </label>
                                 <div class="item">
@@ -75,11 +75,11 @@
                                 <div class = "item-price"> ₫'  . number_format($product['price']) .'</div>
                                 <div class = "quantity-select"> 
                             
-                                    <button class="btn-decrease" onclick="this.parentNode.querySelector(\'input[type=number]\').stepDown()">-</button>
-                                    <input class="quantity" id="id_form-0-quantity" min="1" value="'. $product['number'].'" type="number">
+                                    <button class="btn-decrease"  onclick="this.parentNode.querySelector(\'input[type=number]\').stepDown()">-</button>
+                                    <input class="quantity" id="quantity-'. $productID . '-' . $type . '-' . $size .'" min="1" value="'. $product['number'].'" type="number">
                                     <button class="btn-increase" onclick="this.parentNode.querySelector(\'input[type=number]\').stepUp()">+</button>
                                 </div>
-                                <input type="button" value="DELETE" class= "btn-del" onclick="delete_product(this,'. $cartID . ',' . $productID . ',\'' . $size . '\',\'' . $type . '\')"/>
+                                <input type="button" value="Delete" class= "btn-del" onclick="delete_product(this,'. $cartID . ',' . $productID . ',\'' . $size . '\',\'' . $type . '\')"/>
                             </div>';
                             
                     }
@@ -150,7 +150,7 @@
                     </select>
 
                 </div>
-            <button class="btn-purchase" id="btn-purchase">Mua hàng</button>
+            <button class="btn-purchase" id="btn-purchase" onclick="buy(<?php echo $id;?>)">Mua hàng</button>
             </div>
             
             <?php 

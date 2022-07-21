@@ -132,7 +132,7 @@
                                                 $product_concat = $product_concat . ", " . $res['name'] . " (x" . $res['number'] . ") ";
                                             } else {
                                                 echo "<tr>"
-                                                        . "<td>#" . $res['orderID'] . "</td>"
+                                                        . "<td>#" . $pre_orderID . "</td>"
                                                         . "<td>" . $product_concat . "</td>"
                                                         . "<td>" . number_format($price) .  "đ</td>"
                                                         . "<td><span class='general-status " . $status_class . "'>" . $status . "</span></td>"

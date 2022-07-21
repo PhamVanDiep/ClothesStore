@@ -86,7 +86,7 @@ class OrderService extends Service {
 
     public function getAllOrders()
     {
-        $query = "SELECT * FROM `order`";
+        $query = "SELECT * FROM `order` order by orderID DESC";
         parent::setQuery($query);
         $result = parent::executeQuery();
         return $result;
@@ -97,5 +97,31 @@ class OrderService extends Service {
         $query = "UPDATE `order` SET statusID = " . $statusID . " WHERE orderID = " . $orderID;
         parent::setQuery($query);
         parent::updateQuery();
+    }
+
+    public function insertOrder($order)
+    {
+        $query = "INSERT INTO `order`(userID, timeCreate, totalCost, statusID, delivery) values(" 
+                . $order->getUserID() . ",'" . $order->getTimeCreate() . "'," . $order->getTotalCost()
+                . "," . $order->getStatusID() . ",'" . $order->getDelivery() . "')";
+        parent::setQuery($query);
+        parent::insertQuery();
+    }
+
+    public function getLastOrderID()
+    {
+        $query = "SELECT orderID FROM `order` ORDER BY orderID DESC LIMIT 1";
+        parent::setQuery($query);
+        $result = parent::executeQuery();
+        return mysqli_fetch_assoc($result);
+    }
+
+    public function insertOrderDetail($productID, $orderID, $number, $type, $size)
+    {
+        $query = "INSERT INTO `order_detail` values(" 
+                . $productID . "," . $orderID . "," . $number
+                . ",'" . $type . "','" . $size . "')";
+        parent::setQuery($query);
+        parent::insertQuery();
     }
 }
