@@ -113,7 +113,7 @@
                         </div>';
                 } else if ($statusID == 1 || $statusID == 2) {
                     echo '<div class="order-button order-cancel" id="order-cancel-' . $orderID .'">
-                            <button class="cancel-btn" onclick="cancelOrder(' . $orderID . ',' . $userID . ')">Hủy đơn hàng</button>
+                            <button class="cancel-btn" onclick="cancelOrder(' . $orderID . ')">Hủy đơn hàng</button>
                         </div>
                         <div class="order-button order-success" id="order-success-' . $orderID . '" style="display:none;">
                             <button class="success-btn" onclick="reBuy('. $orderID . ',' . $userID . ')">Mua lại</button>

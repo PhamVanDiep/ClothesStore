@@ -224,12 +224,13 @@ function order_ajax(json_data) {
           for (let index = 0; index < checkboxs.length; index++) {
             const element = checkboxs[index];
             if (element.checked) {
-              element.parentElement.parentElement.remove();
-              let values = element.getAttribute("id").split("-");
-              let productID_val = values[1];
-              let type_val = values[2];
-              let size_val = values[3];
-              removeProductAfterOrderSuccess(productID_val, type_val, size_val);
+              // element.parentElement.parentElement.remove();
+              // let values = element.getAttribute("id").split("-");
+              // let productID_val = values[1];
+              // let type_val = values[2];
+              // let size_val = values[3];
+              // removeProductAfterOrderSuccess(productID_val, type_val, size_val);
+              console.log(element.getAttribute("id").split("-")[1]);
             }
           }
         } else {

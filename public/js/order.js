@@ -60,7 +60,7 @@ function filterByName(input) {
     }
 }
 
-function cancelOrder(orderID, button) {
+function cancelOrder(orderID) {
     let option = confirm('Bạn có chắc chắn muốn hủy đơn hàng này không?');
     if (!option) return;
     else {
@@ -69,11 +69,10 @@ function cancelOrder(orderID, button) {
             if (this.readyState == 4 && this.status == 200) {
                 if (this.responseText.toLowerCase() == "success") {
                     alert("Hủy đơn hàng thành công!");
-                    button.style.display = "none";
                     let statusText = document.getElementById("status-text-" + orderID);
                     statusText.className = "canceled";
                     statusText.innerHTML = "Đã hủy";
-                    document.getElementById("order-success-" + orderID).style.display = "";
+                    document.getElementById("order-success-" + orderID).style.display = "table-cell";
                     document.getElementById("order-cancel-" + orderID).style.display = "none";
                 } else {
                     console.log(this.responseText);

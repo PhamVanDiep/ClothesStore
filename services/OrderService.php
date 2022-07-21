@@ -57,11 +57,7 @@ class OrderService extends Service {
 
     public function reBuy($orderID, $userID)
     {
-        $query = "INSERT INTO cart(userID) values(" . $userID . ");";
-        parent::setQuery($query);
-        parent::insertQuery();
-        
-        $query = "SELECT cartID FROM cart ORDER BY cartID DESC LIMIT 1";
+        $query = "SELECT cartID FROM cart WHERE userID = " . $userID;
         parent::setQuery($query);
         $result = parent::executeQuery($query);
         $result = mysqli_fetch_assoc($result);
