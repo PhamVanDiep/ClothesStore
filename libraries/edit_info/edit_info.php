@@ -30,7 +30,9 @@
             move_uploaded_file($_FILES['image']['tmp_name'], $targetDir . $avatar);
         }
 
-        $user = new User($userID, $name, $username, $email, $phoneNumber, $gender, NULL, $address, NULL, $avatar, NULL);
+        $urlAvatar = "public/res/img/info/" . $avatar;
+
+        $user = new User($userID, $name, $username, $email, $phoneNumber, $gender, NULL, $address, NULL, $urlAvatar, NULL);
         $edit_service = new EditInfoService();
         $edit_service->update($user);
 

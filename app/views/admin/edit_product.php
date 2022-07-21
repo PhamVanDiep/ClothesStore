@@ -1,5 +1,19 @@
 <?php
     require_once ROOT . DS . 'services' . DS . 'ProductService.php';
+    require_once ROOT . DS . 'services' . DS . 'UserService.php';
+    if(!isset($_SESSION['login_id'])){
+        header('Location: /web/ClothesStore/logout');
+        exit;
+    }
+
+    $id = $_SESSION['login_id'];
+    $user_service = new UserService();
+    $get_user = $user_service->getUserByID($id);
+
+    if($get_user['roleID'] != 2) {
+        header('Location: /web/ClothesStore/logout');
+        exit;
+    }
     $product_service = new ProductService();
     $categories = $product_service->getCategories(); // get all categories
 
@@ -38,6 +52,8 @@
         <link rel="stylesheet" href="public/css/admin/add_event.css" />
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel = "icon" href = "public\res\img\logo\online-shopping.png" type = "image/x-icon">
+        <title>Cập nhật sản phẩm</title>
     </head>
     <body>
         <div class="col-10" id="head-bar">

@@ -13,13 +13,11 @@ require_once ROOT . DS . 'libraries' . DS . 'my_login' . DS . 'google_log_in.php
                 <input type="text" placeholder="Email" name="email" required>
                 <input type="password" placeholder="Mật khẩu" name="password" required>
                 <div class="wrap-method">
-                    <h4>Đăng nhập nhanh bằng</h4>
                     <div class="other-method col-12">
-                        <div class="method-item col-4" style="color: #1873E7;"><i class="fa-brands fa-facebook"></i> Facebook</div>
+                        <h4 class=" method-title col-6">Đăng nhập nhanh bằng</h4>
                         <a style="color: #000;" class="login-btn" href="<?php echo $client->createAuthUrl(); ?>">
-                            <div class="method-item col-3"><i class="fa-brands fa-google"></i> Gmail</div>
+                            <div class="method-item col-5"><i class="fa-brands fa-google"></i> Gmail</div>
                         </a>
-                        <div class="method-item col-4"><i class="fa-solid fa-phone"></i> Điện thoại</div>
                     </div>
                 </div>
                 <div class="wrap-login-button mt-16 col-12">

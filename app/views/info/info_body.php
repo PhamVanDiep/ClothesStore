@@ -71,7 +71,7 @@ if (is_null($user)) {
                 </div>
                 <div class="col-5">
                     <div class="wrap-edit-avt">
-                        <img id="output" src="<?php if ($checkGoogleUser) echo $user['urlAvatar']; else echo 'public/res/img/info/' . $user['urlAvatar']; ?>" alt="">
+                        <img id="output" src="<?php if ($checkGoogleUser) echo $user['urlAvatar']; else echo $user['urlAvatar']; ?>" alt="">
                         <input type="file"  accept="image/*" name="image" id="selectedFile"  onchange="loadFile(event)" style="display: none;">
                         <input type="button" value="Chọn ảnh" onclick="document.getElementById('selectedFile').click();" <?php if($checkGoogleUser) echo 'disabled';?> />
                         <?php

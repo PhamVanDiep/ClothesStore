@@ -1,4 +1,6 @@
-<?php global $path_project; ?>
+<?php global $path_project;
+require_once ROOT . DS . 'libraries' . DS . 'my_login' . DS . 'google_log_in.php';
+?>
 <div class="login-body">
     <h2 class="body-title">Đăng ký</h2>
     <div class="col-12">
@@ -32,11 +34,11 @@
                     </div>
                 </div>
                 <div class="wrap-method">
-                    <h4>Đăng nhập nhanh bằng</h4>
                     <div class="other-method col-12">
-                        <div class="method-item col-4" style="color: #1873E7;"><i class="fa-brands fa-facebook"></i> Facebook</div>
-                        <div class="method-item col-3"><i class="fa-brands fa-google"></i> Gmail</div>
-                        <div class="method-item col-4"><i class="fa-solid fa-phone"></i> Điện thoại</div>
+                        <h4 class=" method-title col-6">Đăng nhập nhanh bằng</h4>
+                        <a style="color: #000;" class="login-btn" href="<?php echo $client->createAuthUrl(); ?>">
+                            <div class="method-item col-5"><i class="fa-brands fa-google"></i> Gmail</div>
+                        </a>
                     </div>
                 </div>
             </div>

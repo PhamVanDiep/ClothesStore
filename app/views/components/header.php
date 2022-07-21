@@ -61,7 +61,7 @@
                     echo '<div id="main-account">'
                             . '<div id="header-content-wrap">'
                                 . '<div id="header-img-wrap">'
-                                    . '<img src="public/res/img/info/' . $get_user['urlAvatar'] . '" >'
+                                    . '<img src="' . $get_user['urlAvatar'] . '" >'
                                 . '</div><div id="header-info-wrap">'
                                     . '<div id="user-name">'
                                         . '<b>' . $get_user['username'] . '</b>'
