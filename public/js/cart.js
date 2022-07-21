@@ -104,3 +104,36 @@ del_select_btn.onclick= function(){
 voucher_selector.onchange = function(){
   updateCost()
 }
+
+
+
+const purchase = document.getElementsByClassName("purchase-info")[0]
+window.onscroll = function(){
+  if(window.pageYOffset > Math.max(480,document.getElementById("item-list").offsetHeight) - 480){
+    
+    purchase.classList.remove("sticky")
+    purchase.classList.add("scroll")
+    purchase.style.marginTop = (Math.max(560,document.getElementById("item-list").offsetHeight) - 700).toString() + 'px';
+  }
+  else{
+    purchase.classList.add("sticky")
+    purchase.classList.remove("scroll")
+    purchase.style.marginTop = '0'
+  }
+}
+
+
+//Dat hang 
+const purchase_btn = document.getElementById("btn-purchase")
+purchase_btn.onclick = function(){
+  let a = 0
+  for (let i = 1; i < checkbox.length; i++) {
+    if(checkbox[i].children[0].checked == true) a++;  
+  }
+  if(a == 0){
+    alert("Chưa chọn sản phẩm")
+  }
+  else{
+    
+  }
+}

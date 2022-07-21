@@ -1,7 +1,7 @@
 <?php
 require_once ROOT . DS . 'services' . DS . 'Service.php';
 require_once ROOT . DS . 'app' . DS . 'models' . DS . 'User.php';
-
+require_once ROOT . DS . 'services' . DS . 'ProductService.php';
 class CartService extends Service{
     // public function get($userID){
     //     $query = "select * from user
@@ -67,20 +67,22 @@ class CartService extends Service{
         $listCartProducts = array();
 
         $cartID = self::getCartID($userID);
-        $query = "select * from cart_product
-                    where cartID =" . $cartID;
+        $query = "select cp.*,p.name,p.price from cart_product cp, product p 
+                    where cp.productID = p.productID
+                    and cartID =" . $cartID;
 
         parent::setQuery($query);
         $result = parent::executeQuery();
 
-        while($row = mysqli_fetch_array($result)){
-            $product_id = $row["productID"];
-            $service = new ProductService();
-            $product = $service->getProduct($product_id);
-            array_push($listCartProducts,$product);
+        // while($row = mysqli_fetch_array($result)){
+        //     $product_id = $row["productID"];
+        //     $service = new ProductService();
+        //     $product = $service->getProduct($product_id);
+        //     array_push($listCartProducts,$product);
 
-        }
-        return $listCartProducts;
+        // }
+        //return $listCartProducts;
+        return $result;
     }
 
 

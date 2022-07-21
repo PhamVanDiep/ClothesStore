@@ -1,3 +1,16 @@
+<?php
+    global $path_project;
+    require_once ROOT . DS . 'services' . DS . 'CartService.php';
+    require_once ROOT . DS . 'services' . DS . 'ProductService.php';
+
+    if(!isset($_SESSION['login_id'])){
+        header('Location: /web/ClothesStore/logout');
+        exit;
+    }
+
+    $id = $_SESSION['login_id'];
+    $cart_service = new CartService();
+ ?>
 <!Doctype html>
 <html>
     <head>
@@ -32,125 +45,42 @@
                      <button id= "btn-del-select" >Delete</button>
                     
                 </div>
-            <div class="item-list">
+            <div class="item-list" id="item-list">
+                <?php 
+                    $cart = $cart_service->getListCartProducts($_SESSION['login_id']);
+                    $product_service = new ProductService();
+                    
+                    foreach($cart as $product ){
+                        $productID = $product['productID'];
+                        $url_img = $product_service->getImageHomepage($productID);
+                        echo'<div class="item-info" id="'.$productID.'">
+                                <label class="container">   
+                                    <input type="checkbox" >
+                                    <span class="checkmark"></span>
+                                </label>
+                                <div class="item">
+                                    <img class ="item-img" src="public/res/img/products/'.$url_img.'"></img>
+                                    <div class = "item-name">'. $product['name'].' </div>
+                                </div>
+                                    <div class = "item-variation">'.$product['type'].', '. $product['size'].'</div>
+                                <div class = "item-price"> ₫'  . number_format($product['price']) .'</div>
+                                <div class = "quantity-select"> 
+                            
+                                    <button class="btn-decrease" onclick="this.parentNode.querySelector(\'input[type=number]\').stepDown()">-</button>
+                                    <input class="quantity" id="id_form-0-quantity" min="1" value="'. $product['number'].'" type="number">
+                                    <button class="btn-increase" onclick="this.parentNode.querySelector(\'input[type=number]\').stepUp()">+</button>
+                                </div>
+                                <button class= "btn-del" >Delete</button>
+                            </div>';
+                            
+                    }
+                ?>
                 
-                <div class="item-info">
-                    <label class="container">   
-                        <input type="checkbox" id="id1">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="item">
-                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
-                        <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
-                    </div>
-                        <div class = "item-variation">Màu trắng, XL  </div>
-                    <div class = "item-price"> ₫100.000</div>
-                    <div class = "quantity-select"> 
-                   
-                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
-                        <input class="quantity" id="id_form-0-quantity" min="1" value="1" type="number">
-                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
-                    </div>
-                    <button class= "btn-del" >Delete</button>
-                </div>
-                <div class="item-info">
-                    <label class="container">   
-                        <input type="checkbox" >
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="item">
-                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
-                        <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
-                    </div>
-                        <div class = "item-variation">Màu trắng, XL  </div>
-                    <div class = "item-price"> ₫100.000</div>
-                    <div class = "quantity-select"> 
-                   
-                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
-                        <input class="quantity" id="id_form-0-quantity" min="1" value="1" type="number">
-                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
-                    </div>
-                    <button class= "btn-del" >Delete</button>
-                </div>
-                <div class="item-info">
-                    <label class="container">   
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="item">
-                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
-                        <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
-                    </div>
-                        <div class = "item-variation">Màu trắng, XL  </div>
-                    <div class = "item-price"> ₫100.000</div>
-                    <div class = "quantity-select"> 
-                   
-                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
-                        <input class="quantity" id="id_form-0-quantity" min="1" value="1" type="number">
-                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
-                    </div>
-                    <button class= "btn-del" >Delete</button>
-                </div>
-                <div class="item-info">
-                    <label class="container">   
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="item">
-                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
-                        <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
-                    </div>
-                        <div class = "item-variation">Màu trắng, XL  </div>
-                    <div class = "item-price"> ₫100.000</div>
-                    <div class = "quantity-select"> 
-                   
-                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
-                        <input class="quantity" id="id_form-0-quantity" min="1" value="1" type="number">
-                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
-                    </div>
-                    <button class= "btn-del" >Delete</button>
-                </div>
-                <div class="item-info">
-                    <label class="container">   
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="item">
-                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
-                        <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
-                    </div>
-                        <div class = "item-variation">Màu trắng, XL  </div>
-                    <div class = "item-price"> ₫100.000</div>
-                    <div class = "quantity-select"> 
-                   
-                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">-</button>
-                        <input class="quantity" id="id_form-0-quantity" min="1" value="1" type="number">
-                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">+</button>
-                    </div>
-                    <button class= "btn-del" >Delete</button>
-                </div>
-                <div class="item-info">
-                    <label class="container">   
-                        <input type="checkbox">
-                        <span class="checkmark"></span>
-                    </label>
-                    <div class="item">
-                        <img class ="item-img" src="public/res/img/products/product1.jpg"></img>
-                        <div class = "item-name">Áo sơ mi nữ ngắn tay </div>
-                    </div>
-                        <div class = "item-variation">Màu trắng, XL  </div>
-                    <div class = "item-price"> ₫100.000</div>
-                    <div class = "quantity-select"> 
-                   
-                        <button class="btn-decrease" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCost()">-</button>
-                        <input class="quantity" id="id_form-0-quantity" min="1" value="1" type="number">
-                        <button class="btn-increase" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCost()">+</button>
-                    </div>
-                    <button class= "btn-del" >Delete</button>
-                </div>
+              
+
                 
             </div>
-            <div class="purchase-info">
+            <div class="purchase-info sticky">
                 <div class="delivery-info">
                     <div class="delivery-header">
                         <a>Giao hàng tới:</a>
@@ -202,16 +132,16 @@
                     <a style="color:#b8b8b8"> Voucher </a>
                     <select id="voucher-selector" default="">
                         <option value="0"style="display:none; font-weight: normal;" >Chọn voucher</option>
-                        <option value="10" >MUAHEXANH - Giảm 10%</option>
+                        <!-- <option value="10" >MUAHEXANH - Giảm 10%</option>
                         <option value="15">MUAHEXANH - Giảm 15%</option>
                         <option value="5">MUAHEXANH - Giảm 5%</option>
                         <option value="5">MUAHEXANH - Giảm 5%</option>
                         <option value="5">MUAHEXANH - Giảm 5%</option>
-                        <option value="2">MUAHEXANH - Giảm 2%</option>
+                        <option value="2">MUAHEXANH - Giảm 2%</option> -->
                     </select>
 
                 </div>
-            <button class="btn-purchase">Mua hàng</button>
+            <button class="btn-purchase" id="btn-purchase">Mua hàng</button>
             </div>
             
             <?php 

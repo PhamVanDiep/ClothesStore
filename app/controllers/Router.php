@@ -44,7 +44,7 @@ class Router {
         }
         if(strcmp($this->_url,"/" . $this->_path_project . "/cart") == 0){
             $this->_dispath = new CartController();
-            $this->_isAdmin = false;
+            $this->_isAdmin = true;
             return;
         }
         if(strcmp($this->_url,"/" . $this->_path_project . "/dashboard") == 0){
