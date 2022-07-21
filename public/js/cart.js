@@ -154,7 +154,7 @@ function delete_product(btn, cartID, productID, size, type) {
             if (this.readyState == 4 && this.status == 200) {
                 console.log(this.responseText);
                 if (this.responseText.toLowerCase() == "success") {
-                    alert("ok");
+                    alert("Xoá sản phẩm thành công");
                     btn.parentElement.remove();
                     checkbox = document.getElementsByClassName("container");
                 } else {

@@ -29,8 +29,14 @@
             $avatar = $_FILES['image']['name'];
             move_uploaded_file($_FILES['image']['tmp_name'], $targetDir.$avatar);
         }
+
+        if (str_contains($avatar, "public/res/img/info/")) {
+            $urlAvatar = $avatar;
+        } else {
+            $urlAvatar = "public/res/img/info/" . $avatar;
+        }
         
-        $user = new User($userID, $name, $username, $email, $phoneNumber, $gender, NULL, $address, NULL, $avatar, NULL);
+        $user = new User($userID, $name, $username, $email, $phoneNumber, $gender, NULL, $address, NULL, $urlAvatar, NULL);
         $edit_service = new EditInfoService();
         $edit_service->update($user);
 
