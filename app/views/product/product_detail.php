@@ -35,9 +35,14 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                     $images = $service->getAllImagesDetail($product->getProductID());
                     $size = $service->getSizeByID($product->getProductID());
                     $type = $service->getTypeByID($product->getProductID());
-                    
+
                     $userService = new UserService();
-                    $cartID = $userService->getCartID(6);
+                    $userID = 0;
+                    $cartID = 0;
+                    if (isset($_SESSION['login_id'])) {
+                        $userID = $_SESSION['login_id'];
+                        $cartID = $userService->getCartID($userID);
+                    }
                     ?>
                     <div class="card">
                         <!-- card left -->
