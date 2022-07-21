@@ -124,16 +124,37 @@ window.onscroll = function(){
 
 
 //Dat hang 
-const purchase_btn = document.getElementById("btn-purchase")
-purchase_btn.onclick = function(){
-  let a = 0
-  for (let i = 1; i < checkbox.length; i++) {
-    if(checkbox[i].children[0].checked == true) a++;  
-  }
-  if(a == 0){
-    alert("Chưa chọn sản phẩm")
-  }
-  else{
+// const purchase_btn = document.getElementById("btn-purchase")
+// purchase_btn.onclick = function(){
+//   let a = 0
+//   for (let i = 1; i < checkbox.length; i++) {
+//     if(checkbox[i].children[0].checked == true) a++;  
+//   }
+//   if(a == 0){
+//     alert("Chưa chọn sản phẩm")
+//   }
+//   else{
     
-  }
+//   }
+// }
+
+const cartID = document.getElementById("cartID").value  ;
+
+
+
+function delete_product(productID){
+  var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText.toLowerCase() == "success") {
+                    alert("ok");
+                   
+                } else {
+                   
+                    alert("Xóa không thành công!");
+                }
+            }
+        };
+        xhttp.open("GET", "libraries/customer/cart/delete_product.php?productID=" + productID + "?cartID=" +cartID, false);
+        xhttp.send();
 }

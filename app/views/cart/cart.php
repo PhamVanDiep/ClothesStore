@@ -35,7 +35,8 @@
         
         <div class="body col-12">
             <div class="cart-title">
-                <a> | Giỏ hàng</a>
+                <a> | Giỏ hàng </a>
+                <input type="hidden" id = "cartID" value="<?php echo $cart_service->getCartID($_SESSION['login_id'])?>" >  
             </div>
             <div class="list-header">
                     <label class="container" id="select-all">   
@@ -47,7 +48,7 @@
                      <button id= "btn-del-select" >Delete</button>
                     
                 </div>
-            <div class="item-list" id="item-list">
+            <div class="item-list" id="item-list" >
                 <?php 
                     $cart = $cart_service->getListCartProducts($_SESSION['login_id']);
                     $product_service = new ProductService();

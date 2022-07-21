@@ -1,6 +1,14 @@
 <?php
 require_once ROOT . DS . 'services' . DS . 'ProductService.php';
 require_once ROOT . DS . 'services' . DS . 'UserService.php';
+if(!isset($_SESSION['login_id'])){
+    header('Location: /web/ClothesStore/logout');
+    exit;
+}
+
+$userID = $_SESSION['login_id'];
+$userService = new UserService();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,7 +45,7 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                     $type = $service->getTypeByID($product->getProductID());
                     
                     $userService = new UserService();
-                    $cartID = $userService->getCartID(6);
+                    $cartID = $userService->getCartID($userID);
                     ?>
                     <div class="card">
                         <!-- card left -->
@@ -45,7 +53,7 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                             <div class="img-display">
                                 <div class="img-showcase">
                                     <?php
-                                    if (sizeof($images) >= 4)
+                                    if(sizeof($images) >=4)
                                     echo '
                                          <img src="public/res/img/products/' . $images[0] . '" >
                                          <img src="public/res/img/products/' . $images[1] . '" >
