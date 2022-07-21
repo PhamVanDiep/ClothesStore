@@ -96,7 +96,7 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                                 <p><?php echo $product->getDescription() ?></p>
 
                                 <ul>
-                                    <li> Màu sắc: <span  class="select" style="width:400px;">
+                                    <li> Màu sắc: <span  class="select" style="width: 300px;">
                                             <select id="type_select" required>
                                                 <?php
                                                 foreach ($type as $type) {
@@ -107,7 +107,7 @@ require_once ROOT . DS . 'services' . DS . 'UserService.php';
                                                 ?>
                                             </select>
                                         </span></li>
-                                    <li> Size: <span class="select" style="width:400px;">
+                                    <li> Size: <span class="select" style="width: 300px;">
                                             <select id="size_select" required>
                                                 <?php
                                                 foreach ($size as $size) {
