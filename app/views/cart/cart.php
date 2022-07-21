@@ -12,6 +12,7 @@
     $cart_service = new CartService();
     $userService = new UserService();
     $user = $userService->getUserByID($id);
+    $cartID = $cart_service->getCartID($_SESSION['login_id']);
  ?>
 <!Doctype html>
 <html>
@@ -47,16 +48,19 @@
                     </label>
                     <a> Chọn tất cả </a>    
                     <div style="flex:1"></div>
-                     <button id= "btn-del-select" >Delete</button>
+                     <button id= "btn-del-select" >
+                        Delete
+                     </button>
                     
-                </div>
+            </div>
             <div class="item-list" id="item-list" >
                 <?php 
                     $cart = $cart_service->getListCartProducts($_SESSION['login_id']);
                     $product_service = new ProductService();
-                    
                     foreach($cart as $product ){
                         $productID = $product['productID'];
+                        $type = $product['type'];
+                        $size = $product['size'];
                         $url_img = $product_service->getImageHomepage($productID);
                         echo'<div class="item-info" id="'.$productID.'">
                                 <label class="container">   
@@ -75,7 +79,7 @@
                                     <input class="quantity" id="id_form-0-quantity" min="1" value="'. $product['number'].'" type="number">
                                     <button class="btn-increase" onclick="this.parentNode.querySelector(\'input[type=number]\').stepUp()">+</button>
                                 </div>
-                                <button class= "btn-del" >Delete</button>
+                                <input type="button" value="DELETE" class= "btn-del" onclick="delete_product(this,'. $cartID . ',' . $productID . ',\'' . $size . '\',\'' . $type . '\')"/>
                             </div>';
                             
                     }
@@ -153,9 +157,6 @@
             require_once ROOT . DS . 'app' . DS . 'views' . DS . 'components' . DS . 'footer.php';
             ?>
         </div>
-
-
-      
     </body>
     <script  src="public/js/cart.js"></script>
 </html>

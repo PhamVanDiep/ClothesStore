@@ -6,7 +6,9 @@
     if (isset($_GET)) {
         $cartID = $_GET['cartID'];
         $productID =$_GET['productID'];
-        $cartService->deleteProduct($cartID,$productID);
+        $type = $_GET['type'];
+        $size = $_GET['size'];
+        $cartService->deleleProduct($cartID,$productID, $size, $type);
         echo 'success';
     } else{
         echo 'not successfull';

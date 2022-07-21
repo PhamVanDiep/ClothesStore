@@ -38,7 +38,7 @@ class CartService extends Service{
         $row = mysqli_fetch_array($result);
         $cartID = $row["cartID"];
 
-        return $cartID; 
+        return $cartID;
     }
 
     /**
@@ -55,6 +55,12 @@ class CartService extends Service{
         parent::setQuery($query);
         parent::insertQuery();
 
+    }
+
+    public function deleleProduct($cartID, $productID, $size, $type){
+        $query = "delete from cart_product where cartID = " . $cartID . " and productID = " . $productID . " and size = '". $size ."' and type = '" . $type . "' ;";
+        parent::setQuery($query);
+        parent::deleteQuery();
     }
 
 
@@ -84,10 +90,6 @@ class CartService extends Service{
         //return $listCartProducts;
         return $result;
     }
- public function deleteProduct($cartID, $productID){
-        $query = "delete from cart_product where cartID = '".$cartID."' and productID = '".$productID."'";
-        parent::setQuery($query);
-        parent::insertQuery();
-    }
+
 
 }

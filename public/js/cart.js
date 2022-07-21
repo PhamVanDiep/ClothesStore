@@ -69,19 +69,19 @@ function addDots(nStr)
 
 //delete sản phẩm
 
-let del_btns = document.getElementsByClassName("btn-del")
+// let del_btns = document.getElementsByClassName("btn-del")
 
-for(const btn of del_btns) {
- btn.onclick = function(){
-    var answer = window.confirm("Xóa sản phẩm ?");
-    if (answer==true) {
-      btn.parentElement.remove();
-      checkbox = document.getElementsByClassName("container");
+// for(const btn of del_btns) {
+//  btn.onclick = function(){
+//     var answer = window.confirm("Xóa sản phẩm ?");
+//     if (answer==true) {
+//       btn.parentElement.remove();
+//       checkbox = document.getElementsByClassName("container");
       
-    }
-    updateCost();
-  }
-}
+//     }
+//     updateCost();
+//   }
+// }
 
 // xoa da chon 
 del_select_btn = document.getElementById("btn-del-select")
@@ -142,19 +142,31 @@ const cartID = document.getElementById("cartID").value  ;
 
 
 
-function delete_product(productID){
-  var xhttp = new XMLHttpRequest();
+function delete_product(btn, cartID, productID, size, type) {
+  console.log("clicked");
+  var answer = window.confirm("Xóa sản phẩm ?");
+    if (answer==true) {
+      btn.parentElement.remove();
+      checkbox = document.getElementsByClassName("container");
+      console.log("clicked");
+      var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
                 if (this.responseText.toLowerCase() == "success") {
                     alert("ok");
-                   
+                    btn.parentElement.remove();
+                    checkbox = document.getElementsByClassName("container");
                 } else {
-                   
                     alert("Xóa không thành công!");
                 }
             }
         };
-        xhttp.open("GET", "libraries/customer/cart/delete_product.php?productID=" + productID + "?cartID=" +cartID, false);
+        xhttp.open("GET", "libraries/customer/cart/delete_product.php?productID=" + productID + "&cartID=" +cartID 
+                    + "&type="+type
+                    + "&size="+size, false);
         xhttp.send();
+    }
+    updateCost();
+  
 }
