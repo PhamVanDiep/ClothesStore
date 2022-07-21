@@ -44,6 +44,12 @@ class UserService extends Service{
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
     }
+
+    public function addCart($userID) {
+        $query = "insert into cart (`userID`)  values ('" . $userID ."');";
+        parent::setQuery($query);
+        return parent::insertQuery();
+    }
     
 
     //get cartID theo user

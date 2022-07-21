@@ -17,7 +17,7 @@
         $confirmedPassword = $_POST['confirmedPassword'];
         $gender = $_POST['gender'];
         $roleID = 1;
-        $urlAvatar = 'public\res\img\info\avt.png';
+        $urlAvatar = 'public/res/img/info/avt.png';
         $googleId = NULL;
      
 
@@ -28,6 +28,8 @@
                 $user = new User(0, $name, $username, $email, $phoneNumber, $gender, $password, $address, $roleID, $urlAvatar, $googleId);
                 $register_service = new RegisterService();
                 $checkRegister = $register_service->insert($user);
+                $new_user = $user_service->getUserByEmail($email);
+                $user_service->addCart($new_user['userID']);
                 if (is_null($checkRegister)) {
                     header('Location: ../../login');
                 } else {
