@@ -10,7 +10,7 @@ class SearchProductController extends ComponentsController implements Controller
     }
     
     public function __render(){
-        $productSearchName = $this->_productSearchName;
+        $productSearchName = urldecode($this->_productSearchName);
         require_once ROOT . DS . 'app' . DS . 'views' . DS . 'home' . DS . 'search_product.php';
     }
 }

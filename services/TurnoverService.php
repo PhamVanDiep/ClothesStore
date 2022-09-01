@@ -22,7 +22,7 @@ class TurnoverService extends Service {
                 . "from `order` "
                 . "where statusID != 1 "
                 . "and statusID != 5 "
-                . "and timeCreate >= CURRENT_DATE - 6;";
+                . "and timeCreate >= DATE(NOW() - INTERVAL 7 DAY);";
         parent::setQuery($query);
         $result = parent::executeQuery();
         return mysqli_fetch_assoc($result);
@@ -33,7 +33,7 @@ class TurnoverService extends Service {
         $query = "SELECT DATE_FORMAT(timeCreate,'%d-%m') as day, SUM(totalCost) as turnover 
             FROM `order`
             WHERE `statusID` != 1 and `statusID` != 5
-            and timeCreate >= CURRENT_DATE - 6
+            and timeCreate >= DATE(NOW() - INTERVAL 7 DAY)
             GROUP BY DATE_FORMAT(timeCreate, '%y-%m-%d')
             ORDER BY timeCreate ASC";
         parent::setQuery($query);

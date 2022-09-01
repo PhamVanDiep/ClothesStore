@@ -182,6 +182,7 @@ class Router {
         if(str_contains($this->_url, 'search')) {
             $productSearchName = strrpos($this->_url, '=');
             $productSearchName = substr($this->_url, $productSearchName + 1);
+            // echo $productSearchName;
             $this->_dispath = new SearchProductController($productSearchName);
             $this->_isAdmin = false;
             return;

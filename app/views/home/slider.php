@@ -31,7 +31,7 @@
     <!--manual navigation end-->
 </div>
 <script>
-    let counter = 1;
+    var counter = 1;
     setInterval(function(){
     document.getElementById('radio' + counter).checked = true;
     counter++;

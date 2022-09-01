@@ -104,7 +104,8 @@
     function searchByName() {
         let search = document.getElementById("search-input-text").value;
         if (search.length > 0) {
-            window.location.href = '/web/ClothesStore/search?product-name=' + search;
+            window.location.href = '/web/ClothesStore/search?product-name=' + encodeURI(search);
+            // console.log('/web/ClothesStore/search?product-name=' + encodeURI(search));
         }
     }
 
